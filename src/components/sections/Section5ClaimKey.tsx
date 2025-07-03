@@ -38,8 +38,8 @@ const Section5ClaimKey = () => {
     };
 
     return (
-        <AnimatedSection id="claim-key">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl">
+        <AnimatedSection id="claim-key" className="bg-neural-pattern">
+            <div className="z-10 flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl">
                 <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
                     <VerificationCube />
                     <p className="text-accent glow-accent text-2xl md:text-3xl font-bold mt-8 text-center">Claim Your Neural Key</p>

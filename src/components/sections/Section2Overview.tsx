@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 const Section2Overview = () => {
     return (
         <AnimatedSection id="token-overview">
-            <div className="absolute inset-0 bg-grid-pattern opacity-5" />
             <Terminal title="SHADOW_SPEC.md">
                 <motion.div
                     initial={{ y: 20, opacity: 0 }}

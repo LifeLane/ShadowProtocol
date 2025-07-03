@@ -36,15 +36,15 @@ const Section3Ecosystem = () => {
     ];
 
     return (
-        <AnimatedSection id="ecosystem">
-            <div className="text-center mb-12">
+        <AnimatedSection id="ecosystem" className="bg-circuit-pattern">
+            <div className="z-10 text-center mb-12">
                 <Typewriter
                     texts={['> Shadow is not a protocol.', '> It’s a multi-intelligence infrastructure.']}
                     className="text-2xl md:text-4xl font-bold text-accent glow-accent"
                 />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+            <div className="z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
                 {modules.map((module, index) => (
                     <motion.div
                         key={module.title}

@@ -96,4 +96,88 @@
     background-image: linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--primary) / 0.05) 1px, transparent 1px);
     background-size: 2rem 2rem;
   }
+
+  @keyframes scanline {
+    0% { transform: translateY(-10%); }
+    100% { transform: translateY(110%); }
+  }
+
+  .bg-scanline-pattern::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: hsl(var(--primary) / 0.1);
+    animation: scanline 5s linear infinite;
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.2);
+    z-index: 0;
+  }
+
+  @keyframes bg-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: -100px -100px; }
+  }
+
+  .bg-circuit-pattern {
+    background-image:
+      radial-gradient(hsl(var(--primary) / 0.08) 0.5px, transparent 0.5px),
+      radial-gradient(hsl(var(--primary) / 0.08) 0.5px, transparent 0.5px);
+    background-size: 25px 25px;
+    background-position: 0 0, 12.5px 12.5px;
+    animation: bg-scroll 5s linear infinite;
+  }
+
+  @keyframes binary-scroll {
+      from { background-position-y: 0, 0, 0; }
+      to   { background-position-y: 0, -20px, 0; }
+  }
+  .bg-binary-pattern {
+      background:
+          linear-gradient(rgba(0,0,0,0.98), rgba(0,0,0,0.98)),
+          repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.03) 19px, hsl(var(--primary) / 0.03) 20px),
+          repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.03) 19px, hsl(var(--primary) / 0.03) 20px);
+      background-size: 100% 100%, 20px 20px, 20px 20px;
+      animation: binary-scroll 2s linear infinite;
+  }
+
+
+  .bg-neural-pattern {
+    background-image:
+      radial-gradient(circle at 100% 100%, hsl(var(--accent) / 0.04) 0, hsl(var(--accent) / 0.04) 2px, transparent 2px),
+      radial-gradient(circle at 0 0, hsl(var(--accent) / 0.04) 0, hsl(var(--accent) / 0.04) 2px, transparent 2px);
+    background-size: 25px 25px;
+  }
+
+  @keyframes move-twink-back {
+      from {background-position:0 0;}
+      to {background-position:-10000px 5000px;}
+  }
+  .stars, .twinkling {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    display:block;
+    z-index: 0;
+  }
+  .stars {
+    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93irAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACgAAAAoACs3o2sAAADSSURBVEjH7daxCYAwGAbgvyUlhdi2HwtrYQeI6b0WwgZi2+B/eU9z3XwzIHD5VwAwf/8MAP5dAN4C8ALwCgC8ALwCvAIA7wDvAMALwCvACwC8ALwA3gGAVwBvAG8A4AvAG8AbwBvA+wLwCgC8ALwA/AIAvwC8AXwB+ALwCwA/gC8AbwBvgC/gLwB/gG8A7wBfAe8AXwD+AsBPAX8B5Av4C0B+AfwFkC/gzwDkBfAXYMmCXUDikA4BAPj7AT9yAbVRAQcnY/3AAAAAAElFTSuQmCC') repeat top center;
+  }
+  .twinkling {
+    background:transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93irAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACgAAAAoACs3o2sAAADRSURBVEjH7daxDcAwCARB2f+8tJoUR2gSg2AIi3/BwZFDYe/b948BAC8A/y4A/wHwAIATwBOAE8ATgA/AEYATwBOA/wHwBOAE8ARgA/gBMAJ4AnACGAE8AXwBGAE8AbwAjASeADwBfAG8AJwBPAE8AbwBnASeAZwAvgE8AZwB/gOcAZwBvACEALwBfAGMAF4AfgG8AbwBvAGMAF4A3gDeAN4AXgA+AF4AXgBeAM4AfgB+AAYAbwAXgB+AGMAK8AswAgA/T1wA3zYBpAAAAABJRU5ErkJggg==') repeat top center;
+    animation:move-twink-back 200s linear infinite;
+  }
+
+  .bg-core-pattern {
+    background-image:
+      radial-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      radial-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+  }
 }

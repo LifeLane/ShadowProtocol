@@ -15,8 +15,8 @@ const allocations = [
 
 const Section4Tokenomics = () => {
     return (
-        <AnimatedSection id="tokenomics">
-            <Terminal title="SHADOW TOKEN ALLOCATION" className="w-full max-w-4xl">
+        <AnimatedSection id="tokenomics" className="bg-binary-pattern">
+            <Terminal title="SHADOW TOKEN ALLOCATION" className="z-10 w-full max-w-4xl">
                 <div className="text-center mb-6">
                     <p className="text-accent text-lg">Forged in precision. Controlled by design.</p>
                 </div>

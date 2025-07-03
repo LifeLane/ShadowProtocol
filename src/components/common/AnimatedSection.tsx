@@ -13,7 +13,7 @@ const AnimatedSection = ({ children, id, className = '' }: AnimatedSectionProps)
   return (
     <motion.section
       id={id}
-      className={`w-full flex flex-col items-center justify-center p-8 py-16 lg:p-16 lg:py-24 relative ${className}`}
+      className={`w-full flex flex-col items-center justify-center p-8 py-16 lg:p-16 lg:py-24 relative isolate ${className}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}

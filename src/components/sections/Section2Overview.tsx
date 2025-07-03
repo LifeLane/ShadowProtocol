@@ -14,7 +14,7 @@ const Section2Overview = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <pre className="text-primary glow text-sm md:text-base whitespace-pre-wrap">
+                    <pre className="text-primary glow text-base md:text-lg whitespace-pre-wrap mb-8">
 {`┌─ SHADOW COIN ───────────────────────┐
 │  Ticker: SHADOW                     │
 │  Supply: 1,000,000,000              │
@@ -24,7 +24,7 @@ const Section2Overview = () => {
                 </motion.div>
 
                 <motion.div
-                    className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                    className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
@@ -46,8 +46,8 @@ const Section2Overview = () => {
                                 visible: { opacity: 1, y: 0 }
                             }}
                         >
-                            <h3 className="font-bold text-accent group-hover:text-primary glow transition-colors">{item.title}</h3>
-                            <p className="text-foreground/70 mt-2 text-sm">{item.description}</p>
+                            <h3 className="font-bold text-xl text-primary glow transition-colors">{item.title}</h3>
+                            <p className="text-foreground/70 mt-2 text-base">{item.description}</p>
                         </motion.div>
                     ))}
                 </motion.div>

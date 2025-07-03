@@ -40,7 +40,7 @@ const Section3Ecosystem = () => {
             <div className="z-10 text-center mb-12">
                 <Typewriter
                     texts={['> Shadow is not a protocol.', '> It’s a multi-intelligence infrastructure.']}
-                    className="text-2xl md:text-4xl font-bold text-accent glow-accent"
+                    className="text-3xl md:text-5xl font-bold text-accent glow-accent"
                 />
             </div>
 
@@ -55,10 +55,10 @@ const Section3Ecosystem = () => {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
                         <div className="flex items-center gap-4 mb-4">
-                            <module.icon className="w-8 h-8 text-primary" />
-                            <h3 className="text-xl font-bold text-primary glow">{module.title}</h3>
+                            <module.icon className="w-10 h-10 text-primary" />
+                            <h3 className="text-2xl font-bold text-primary glow">{module.title}</h3>
                         </div>
-                        <p className="text-foreground/70 text-sm flex-grow">{module.description}</p>
+                        <p className="text-foreground/70 text-base flex-grow">{module.description}</p>
                         {module.title === "Token Factory" && (
                              <p className="mt-4 text-accent animate-flicker">&gt; booting...</p>
                         )}
@@ -74,7 +74,7 @@ const Section3Ecosystem = () => {
                             </Button>
                             {isLoading && <p className="text-accent animate-pulse">Scanning market signals...</p>}
                             {insight && (
-                                <div className="text-primary whitespace-pre-wrap text-sm w-full">
+                                <div className="text-primary whitespace-pre-wrap text-base w-full">
                                     <Typewriter texts={[insight]} speed={10} />
                                 </div>
                             )}

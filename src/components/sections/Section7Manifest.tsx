@@ -8,7 +8,7 @@ const Section7Manifest = () => {
   return (
     <AnimatedSection id="manifest" className="bg-core-pattern">
         <Terminal title="MANIFEST.md" className="z-10 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary glow mb-6 text-center">The Shadow Manifest</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary glow mb-8 text-center">The Shadow Manifest</h2>
             <div className="space-y-4 text-foreground/80">
                 <Typewriter 
                     texts={[
@@ -20,7 +20,7 @@ const Section7Manifest = () => {
                     ]}
                     speed={40}
                     pause={2000}
-                    className="text-base md:text-lg"
+                    className="text-lg md:text-xl"
                 />
             </div>
         </Terminal>

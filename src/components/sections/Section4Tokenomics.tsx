@@ -17,35 +17,41 @@ const Section4Tokenomics = () => {
     return (
         <AnimatedSection id="tokenomics" className="bg-binary-pattern">
             <Terminal title="SHADOW TOKEN ALLOCATION" className="z-10 w-full max-w-4xl">
-                <div className="text-center mb-6">
-                    <p className="text-accent text-lg">Forged in precision. Controlled by design.</p>
+                <div className="text-center mb-8">
+                    <p className="text-accent text-xl font-bold">Forged in precision. Controlled by design.</p>
                 </div>
                 <TooltipProvider>
-                    <div className="space-y-6 font-code text-xs sm:text-sm md:text-base">
-                        {allocations.map((item, index) => {
-                            const filled = Math.round(item.percentage / 4);
-                            const empty = 25 - filled;
-                            const bar = `[${'█'.repeat(filled)}${' '.repeat(empty)}]`;
-
-                            return (
-                                <Tooltip key={index}>
-                                    <TooltipTrigger asChild>
-                                        <motion.div 
-                                            className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4 items-center"
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        >
-                                            <p className="md:col-span-3 text-primary whitespace-nowrap">{`${bar} ${item.percentage}% ${item.name}`}</p>
-                                        </motion.div>
-                                    </TooltipTrigger>
-                                    <TooltipContent className="font-code bg-black border-accent text-accent">
-                                        <p>{item.tooltip}</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            )
-                        })}
+                    <div className="space-y-6 font-code text-base md:text-lg">
+                        {allocations.map((item, index) => (
+                             <Tooltip key={index} delayDuration={0}>
+                                <TooltipTrigger asChild>
+                                    <motion.div
+                                        className="grid grid-cols-5 gap-4 items-center"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    >
+                                        <p className="col-span-2 text-accent font-semibold whitespace-nowrap">{item.name}</p>
+                                        <div className="col-span-3 flex items-center gap-4">
+                                            <div className="w-full bg-primary/10 border border-primary/20 p-0.5 h-6 flex items-center rounded-sm">
+                                                <motion.div 
+                                                    style={{ width: "0%" }}
+                                                    whileInView={{ width: `${item.percentage}%`}}
+                                                    viewport={{ once: true }}
+                                                    transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                                                    className="bg-primary h-full rounded-sm"
+                                                ></motion.div>
+                                            </div>
+                                            <p className="text-primary font-bold w-[4ch] text-right">{item.percentage}%</p>
+                                        </div>
+                                    </motion.div>
+                                </TooltipTrigger>
+                                <TooltipContent className="font-code bg-black border-accent text-accent">
+                                    <p>{item.tooltip}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        ))}
                     </div>
                 </TooltipProvider>
             </Terminal>

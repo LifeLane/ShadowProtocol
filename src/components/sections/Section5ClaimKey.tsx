@@ -42,28 +42,28 @@ const Section5ClaimKey = () => {
             <div className="z-10 flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl">
                 <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
                     <VerificationCube />
-                    <p className="text-accent glow-accent text-2xl md:text-3xl font-bold mt-8 text-center">Claim Your Neural Key</p>
-                    <p className="text-foreground/70 mt-4 text-center">Only 1,000 addresses will qualify for the Genesis Offering.</p>
+                    <p className="text-accent glow-accent text-3xl md:text-4xl font-bold mt-8 text-center">Claim Your Neural Key</p>
+                    <p className="text-foreground/70 mt-4 text-center text-lg">Only 1,000 addresses will qualify for the Genesis Offering.</p>
                 </div>
                 <div className="w-full md:w-1/2">
                     <Terminal title="GENESIS_CLAIM.sh">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
-                                <Label htmlFor="telegram" className="text-primary/80">Telegram Handle</Label>
+                                <Label htmlFor="telegram" className="text-primary/80 text-base">Telegram Handle</Label>
                                 <div className="relative">
                                     <Send className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
                                     <Input id="telegram" placeholder="@username" className="pl-10 bg-black/30 border-primary/30" />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="wallet" className="text-primary/80">Wallet Address</Label>
+                                <Label htmlFor="wallet" className="text-primary/80 text-base">Wallet Address</Label>
                                 <div className="relative">
                                     <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
                                     <Input id="wallet" placeholder="0x..." className="pl-10 bg-black/30 border-primary/30" />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="email" className="text-primary/80">Email Address</Label>
+                                <Label htmlFor="email" className="text-primary/80 text-base">Email Address</Label>
                                 <div className="relative">
                                     <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/50" />
                                     <Input id="email" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30" />

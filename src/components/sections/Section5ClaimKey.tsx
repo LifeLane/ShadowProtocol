@@ -46,7 +46,7 @@ const Section5ClaimKey = () => {
                     <p className="text-foreground/70 mt-4 text-center text-xl">Only 1,000 addresses will qualify for the Genesis Offering.</p>
                 </div>
                 <div className="w-full md:w-1/2">
-                    <Terminal title="GENESIS_CLAIM.sh">
+                    <Terminal title="GENESIS_CLAIM.sh" className="animate-border-glow">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
                                 <Label htmlFor="telegram" className="text-primary/80 text-lg">Telegram Handle</Label>
@@ -70,7 +70,7 @@ const Section5ClaimKey = () => {
                                     <Input id="email" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12 text-lg" />
                                 </div>
                             </div>
-                            <Button type="submit" size="lg" className="w-full animate-pulse text-lg" disabled={status === 'pending' || status === 'success'}>
+                            <Button type="submit" size="lg" className="w-full text-lg btn-shine glow" disabled={status === 'pending' || status === 'success'}>
                                 {status === 'idle' && '-> claim --neural-key'}
                                 {status === 'pending' && '> rank: pending...'}
                                 {status === 'success' && ':: neural key reserved.'}

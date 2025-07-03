@@ -46,7 +46,7 @@ const Section8Airdrop = () => {
               className="text-4xl md:text-6xl font-bold text-accent glow-accent"
           />
       </div>
-      <Terminal title="AIRDROP_REGISTRATION.sh" className="z-10 max-w-2xl">
+      <Terminal title="AIRDROP_REGISTRATION.sh" className="z-10 max-w-2xl animate-border-glow">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email-airdrop" className="text-primary/80 text-lg">Email Address</Label>
@@ -55,7 +55,7 @@ const Section8Airdrop = () => {
               <Input id="email-airdrop" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12 text-lg" />
             </div>
           </div>
-          <Button type="submit" size="lg" className="w-full animate-pulse text-lg" disabled={status === 'pending' || status === 'success'}>
+          <Button type="submit" size="lg" className="w-full text-lg btn-shine glow" disabled={status === 'pending' || status === 'success'}>
             {status === 'idle' && '-> register --airdrop'}
             {status === 'pending' && '> verifying credentials...'}
             {status === 'success' && ':: registration confirmed.'}

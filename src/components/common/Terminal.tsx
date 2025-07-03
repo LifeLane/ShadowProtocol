@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { cn } from "@/lib/utils";
 
 type TerminalProps = {
   children: ReactNode;
@@ -12,7 +13,7 @@ type TerminalProps = {
 const Terminal = ({ children, title, className = '' }: TerminalProps) => {
   return (
     <motion.div
-      className={`bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm w-full max-w-4xl ${className}`}
+      className={cn("bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm w-full max-w-4xl", className)}
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.5 }}

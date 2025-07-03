@@ -69,18 +69,28 @@ const Section3Ecosystem = () => {
                 ))}
                 
                 <div className="md:col-span-2 lg:col-span-3">
-                    <Terminal title="AI Signal Feed">
-                         <div className="flex flex-col items-start gap-4">
-                            <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg">
-                                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                                Initiate Signal Scan
-                            </Button>
-                            {isLoading && <p className="text-accent animate-pulse">Scanning market signals...</p>}
-                            {insight && (
-                                <div className="text-primary whitespace-pre-wrap text-lg w-full">
-                                    <Typewriter texts={[insight]} speed={10} />
+                    <Terminal title="AI Signal Feed" className="max-w-none">
+                        <div className="flex flex-col items-start gap-6">
+                            <div>
+                                <h4 className="text-2xl font-bold text-accent glow-accent mb-2">Activate On-Chain Intelligence</h4>
+                                <p className="text-foreground/70 text-lg">
+                                The Signal Feed is a direct interface to the SHADOW neural core. It analyzes real-time blockchain data and market sentiment to generate actionable insights. Use SHADOW tokens to run a scan and receive an AI-generated analysis of current BTC/ETH trends.
+                                </p>
+                            </div>
+                            <div className="w-full border-t border-primary/20 pt-6">
+                                <div className="flex flex-col items-start gap-4">
+                                    <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg">
+                                        {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                                        Initiate Signal Scan
+                                    </Button>
+                                    {isLoading && <p className="text-accent animate-pulse">Scanning market signals...</p>}
+                                    {insight && (
+                                        <div className="text-primary whitespace-pre-wrap text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20 mt-4">
+                                            <Typewriter texts={[insight]} speed={10} />
+                                        </div>
+                                    )}
                                 </div>
-                            )}
+                            </div>
                         </div>
                     </Terminal>
                 </div>

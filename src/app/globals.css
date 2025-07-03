@@ -100,7 +100,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, hsl(var(--primary) / 0.15), transparent 40%);
+    background: radial-gradient(circle at center, hsl(var(--primary) / 0.25), transparent 40%);
     animation: pulse-eye 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     z-index: 0;
   }
@@ -111,7 +111,7 @@
       left: 50%;
       width: 200%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.2), transparent);
+      background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.3), transparent);
       animation: scan-eye 6s linear infinite;
       transform-origin: center;
       z-index: 0;
@@ -128,8 +128,8 @@
   /* Section 2: Pulse Grid Overlay */
   .bg-pulse-grid-pattern {
     background-image:
-      linear-gradient(to right, hsl(var(--primary) / 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+      linear-gradient(to right, hsl(var(--primary) / 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.2) 1px, transparent 1px);
     background-size: 3rem 3rem;
     animation: pulse-grid-glow 5s linear infinite;
   }
@@ -138,7 +138,7 @@
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(hsl(var(--primary) / 0.1) 2px, transparent 2px);
+      radial-gradient(hsl(var(--primary) / 0.2) 2px, transparent 2px);
     background-size: 3rem 3rem;
     animation: pulse-grid-dots 5s linear infinite alternate;
     z-index: 0;
@@ -184,8 +184,8 @@
   .bg-matrix-drift-pattern {
       background:
           linear-gradient(hsl(var(--background)/0.98), hsl(var(--background)/0.98)),
-          repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.05) 19px, hsl(var(--primary) / 0.05) 20px),
-          repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.05) 19px, hsl(var(--primary) / 0.05) 20px);
+          repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.1) 19px, hsl(var(--primary) / 0.1) 20px),
+          repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.1) 19px, hsl(var(--primary) / 0.1) 20px);
       background-size: 100% 100%, 20px 20px, 20px 20px;
       animation: matrix-drift 4s linear infinite;
   }
@@ -202,8 +202,8 @@
       position: absolute;
       inset: -100%;
       background-image:
-          radial-gradient(circle, hsl(var(--accent) / 0.1) 2%, transparent 10%),
-          radial-gradient(circle, hsl(var(--primary) / 0.05) 2%, transparent 10%);
+          radial-gradient(circle, hsl(var(--accent) / 0.2) 2%, transparent 10%),
+          radial-gradient(circle, hsl(var(--primary) / 0.1) 2%, transparent 10%);
       background-size: 50px 50px, 70px 70px;
       mix-blend-mode: screen;
       animation: quantum-flicker 15s linear infinite;
@@ -228,8 +228,8 @@
     inset: 0;
     z-index: 0;
     background-image:
-      radial-gradient(hsl(var(--primary) / 0.08) 0.5px, transparent 0.5px),
-      radial-gradient(hsl(var(--primary) / 0.08) 0.5px, transparent 0.5px);
+      radial-gradient(hsl(var(--primary) / 0.15) 0.5px, transparent 0.5px),
+      radial-gradient(hsl(var(--primary) / 0.15) 0.5px, transparent 0.5px);
     background-size: 25px 25px;
     background-position: 0 0, 12.5px 12.5px;
     animation: bg-scroll 5s linear infinite;

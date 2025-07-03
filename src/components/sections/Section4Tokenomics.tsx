@@ -6,7 +6,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { motion } from "framer-motion";
 
 const allocations = [
-    { name: "Staking", percentage: 20, tooltip: "> unlocked: 10% | vesting: 12m | phase: pre-DAO" },
+    { name: "Community & Ecosystem", percentage: 49, tooltip: "> airdrops: TBD | grants: ongoing | phase: growth" },
+    { name: "Staking Rewards", percentage: 20, tooltip: "> unlocked: 10% | vesting: 12m | phase: pre-DAO" },
     { name: "Treasury", percentage: 15, tooltip: "> unlocked: 5% | vesting: 24m | phase: strategic" },
     { name: "AI Governance", percentage: 10, tooltip: "> unlocked: 0% | vesting: 36m | phase: core-dev" },
     { name: "Private Sale", percentage: 5, tooltip: "> unlocked: 25% | vesting: 6m cliff" },

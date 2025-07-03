@@ -7,7 +7,7 @@ import Typewriter from "@/components/common/Typewriter";
 import { Button } from "@/components/ui/button";
 import { generateBtcEthInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2, BrainCircuit, ShieldCheck, Code, Globe, FlaskConical } from "lucide-react";
+import { Loader2, BrainCircuit, ShieldCheck, Code, Globe, FlaskConical, Vote } from "lucide-react";
 
 const Section3Ecosystem = () => {
     const [insight, setInsight] = useState("");
@@ -33,6 +33,7 @@ const Section3Ecosystem = () => {
         { icon: ShieldCheck, title: "Self-Custody Chain", description: "Neon blocks assemble to show Mainnet. (Visualized)" },
         { icon: Globe, title: "DeFi/DAO Layer", description: "Text explodes into orbiting DAO nodes. (Conceptual)" },
         { icon: FlaskConical, title: "Token Factory", description: "Flickering 'booting...' status." },
+        { icon: Vote, title: "DAO Governance", description: "SHADOW holders form a distributed cognitive entity." },
     ];
 
     return (

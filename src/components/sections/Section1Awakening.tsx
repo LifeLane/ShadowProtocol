@@ -6,19 +6,19 @@ import { motion } from "framer-motion";
 
 const ShadowLogo = () => (
     <motion.pre
-        className="text-primary glow font-bold text-center text-[1.8vw]"
+        className="text-primary glow font-bold text-center text-[clamp(8px,3.5vw,22px)] leading-tight"
         initial={{ opacity: 0, scale: 0.5, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 1, delay: 3.5 }}
     >
 {`
-███████╗██╗  ██╗ █████╗ ██████╗  ██████╗ ██╗    ██╗
-██╔════╝██║  ██║██╔══██╗██╔══██╗██╔═══██╗██║    ██║
-███████╗███████║███████║██║  ██║██║   ██║██║    ██║
-╚════██║██╔══██║██╔══██║██║  ██║██║   ██║██║ █╗ ██║
-███████║██║  ██║██║  ██║██████╔╝╚██████╔╝███╗█║███║
-╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══╝╚╝╚══╝
+███████╗   ██╗  ██╗    █████╗   ██████╗   ██████╗  ██╗    ██╗
+██╔════╝   ██║  ██║   ██╔══██╗  ██╔══██╗ ██╔═══██╗ ██║    ██║
+███████╗   ███████║   ███████║  ██║  ██║ ██║   ██║ ██║    ██║
+╚════██║   ██╔══██║   ██╔══██║  ██║  ██║ ██║   ██║ ██║ █╗ ██║
+███████║   ██║  ██║   ██║  ██║  ██████╔╝ ╚██████╔╝ ███╗█║███║
+╚══════╝   ╚═╝  ╚═╝   ╚═╝  ╚═╝  ╚═════╝   ╚═════╝  ╚══╝╚╝╚══╝
 `}
     </motion.pre>
 );
@@ -26,7 +26,7 @@ const ShadowLogo = () => (
 const Section1Awakening = () => {
     return (
         <AnimatedSection id="init-core" className="h-screen bg-ai-eye-pulse !py-0">
-            <div className="z-10 text-center flex flex-col items-center justify-center h-full w-full overflow-hidden">
+            <div className="z-10 text-center flex flex-col items-center justify-center h-full w-full">
                 <Typewriter
                     texts={[
                         '> boot --shadow-core',

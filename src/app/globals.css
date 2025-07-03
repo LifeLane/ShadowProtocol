@@ -152,7 +152,7 @@
     to { transform: scale(1.05); opacity: 1; }
   }
 
-  /* Section 3: Neural Particle Web (Stars) */
+  /* Section 3 & 7: Neural Particle Web / ASCII Constellation (Stars) */
   @keyframes move-twink-back {
       from {background-position:0 0;}
       to {background-position:-10000px 5000px;}
@@ -231,7 +231,7 @@
     animation: bg-scroll 5s linear infinite;
   }
   
-  /* Section 7: Blockchain Forge Sparks */
+  /* Section 8: Blockchain Forge Sparks */
   .forge-sparks-container {
       position: absolute;
       inset: 0;

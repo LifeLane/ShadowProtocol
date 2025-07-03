@@ -9,6 +9,8 @@ import Section4Tokenomics from "@/components/sections/Section4Tokenomics";
 import Section5ClaimKey from "@/components/sections/Section5ClaimKey";
 import Section6Roadmap from "@/components/sections/Section6Roadmap";
 import Section7Manifest from "@/components/sections/Section7Manifest";
+import Section8Airdrop from "@/components/sections/Section8Airdrop";
+import Footer from "@/components/common/Footer";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -38,7 +40,7 @@ export default function Home() {
   return (
     <>
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-50" style={{ scaleX }} />
-      <main className="flex flex-col items-center justify-center text-foreground/80">
+      <div className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
         <Section2Overview />
         <Section3Ecosystem />
@@ -46,7 +48,9 @@ export default function Home() {
         <Section5ClaimKey />
         <Section6Roadmap />
         <Section7Manifest />
-      </main>
+        <Section8Airdrop />
+        <Footer />
+      </div>
     </>
   );
 }

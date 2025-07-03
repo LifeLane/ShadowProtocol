@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Section2Overview = () => {
     return (
-        <AnimatedSection id="token-overview">
+        <AnimatedSection id="token-overview" className="bg-pulse-grid-pattern">
             <Terminal title="SHADOW_SPEC.md">
                 <motion.div
                     initial={{ y: 20, opacity: 0 }}
@@ -14,8 +14,8 @@ const Section2Overview = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <pre className="text-primary glow text-base md:text-lg whitespace-pre-wrap mb-8">
-{`┌─ SHADOW COIN ───────────────────────┐
+                    <pre className="text-primary glow text-lg md:text-xl whitespace-pre-wrap mb-8 text-center font-bold">
+{`┌─ SHADOW COIN ──────────────────────┐
 │  Ticker: SHADOW                     │
 │  Supply: 1,000,000,000              │
 │  Utility: Fuel for On-Chain Mind    │
@@ -46,8 +46,8 @@ const Section2Overview = () => {
                                 visible: { opacity: 1, y: 0 }
                             }}
                         >
-                            <h3 className="font-bold text-xl text-primary glow transition-colors">{item.title}</h3>
-                            <p className="text-foreground/70 mt-2 text-base">{item.description}</p>
+                            <h3 className="font-bold text-2xl text-primary glow transition-colors">{item.title}</h3>
+                            <p className="text-foreground/70 mt-2 text-lg">{item.description}</p>
                         </motion.div>
                     ))}
                 </motion.div>

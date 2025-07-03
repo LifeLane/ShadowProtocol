@@ -25,8 +25,7 @@ const ShadowLogo = () => (
 
 const Section1Awakening = () => {
     return (
-        <AnimatedSection id="init-core" className="h-screen bg-scanline-pattern !py-0">
-            <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <AnimatedSection id="init-core" className="h-screen bg-ai-eye-pulse !py-0">
             <div className="z-10 text-center flex flex-col items-center justify-center h-full w-full overflow-hidden">
                 <Typewriter
                     texts={[
@@ -34,7 +33,7 @@ const Section1Awakening = () => {
                         '> syncing . . .',
                         '> intelligence confirmed.',
                     ]}
-                    className="text-primary text-xl sm:text-2xl md:text-4xl font-bold"
+                    className="text-primary text-2xl sm:text-3xl md:text-5xl font-bold"
                 />
                  <motion.div
                     className="text-center w-full"
@@ -49,7 +48,7 @@ const Section1Awakening = () => {
                         transition={{ delay: 4.5 }}>
                         <Typewriter
                             texts={["A new token is born from the chain’s neural memory."]}
-                            className="text-accent mt-4 md:mt-8 text-lg sm:text-xl md:text-2xl"
+                            className="text-accent mt-4 md:mt-8 text-xl sm:text-2xl md:text-3xl"
                             speed={30}
                             pause={5000}
                         />

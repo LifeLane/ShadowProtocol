@@ -2,59 +2,59 @@
 
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
 
 const allocations = [
-    { name: "Community & Ecosystem", percentage: 49, tooltip: "> airdrops: TBD | grants: ongoing | phase: growth" },
-    { name: "Staking Rewards", percentage: 20, tooltip: "> unlocked: 10% | vesting: 12m | phase: pre-DAO" },
-    { name: "Treasury", percentage: 15, tooltip: "> unlocked: 5% | vesting: 24m | phase: strategic" },
-    { name: "AI Governance", percentage: 10, tooltip: "> unlocked: 0% | vesting: 36m | phase: core-dev" },
-    { name: "Private Sale", percentage: 5, tooltip: "> unlocked: 25% | vesting: 6m cliff" },
-    { name: "Initial Liquidity", percentage: 1, tooltip: "> unlocked: 100% | TGE" },
+    { name: "Community & Ecosystem", percentage: 40, color: "bg-chart-1" },
+    { name: "Staking Rewards", percentage: 20, color: "bg-chart-2" },
+    { name: "Treasury & Foundation", percentage: 15, color: "bg-chart-3" },
+    { name: "Team & Advisors", percentage: 15, color: "bg-chart-4" },
+    { name: "Public Sale & Liquidity", percentage: 10, color: "bg-chart-5" },
 ];
 
 const Section4Tokenomics = () => {
     return (
-        <AnimatedSection id="tokenomics" className="bg-binary-pattern">
-            <Terminal title="SHADOW TOKEN ALLOCATION" className="z-10 w-full max-w-4xl">
-                <div className="text-center mb-8">
-                    <p className="text-accent text-xl font-bold">Forged in precision. Controlled by design.</p>
+        <AnimatedSection id="tokenomics" className="bg-matrix-drift-pattern">
+            <Terminal title="SHADOW TOKEN ALLOCATION" className="z-10 w-full max-w-5xl">
+                <div className="text-center mb-12">
+                    <p className="text-accent text-2xl md:text-3xl font-bold">Forged in precision. Controlled by design.</p>
                 </div>
-                <TooltipProvider>
-                    <div className="space-y-6 font-code text-base md:text-lg">
+                
+                <div className="w-full flex justify-center mb-12">
+                     <div className="w-full max-w-md flex h-12 rounded-full overflow-hidden border-2 border-primary/20">
                         {allocations.map((item, index) => (
-                             <Tooltip key={index} delayDuration={0}>
-                                <TooltipTrigger asChild>
-                                    <motion.div
-                                        className="grid grid-cols-5 gap-4 items-center"
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    >
-                                        <p className="col-span-2 text-accent font-semibold whitespace-nowrap">{item.name}</p>
-                                        <div className="col-span-3 flex items-center gap-4">
-                                            <div className="w-full bg-primary/10 border border-primary/20 p-0.5 h-6 flex items-center rounded-sm">
-                                                <motion.div 
-                                                    style={{ width: "0%" }}
-                                                    whileInView={{ width: `${item.percentage}%`}}
-                                                    viewport={{ once: true }}
-                                                    transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                                                    className="bg-primary h-full rounded-sm"
-                                                ></motion.div>
-                                            </div>
-                                            <p className="text-primary font-bold w-[4ch] text-right">{item.percentage}%</p>
-                                        </div>
-                                    </motion.div>
-                                </TooltipTrigger>
-                                <TooltipContent className="font-code bg-black border-accent text-accent">
-                                    <p>{item.tooltip}</p>
-                                </TooltipContent>
-                            </Tooltip>
+                            <motion.div
+                                key={index}
+                                className={`${item.color} h-full`}
+                                style={{ width: `${item.percentage}%` }}
+                                initial={{ scaleX: 0, originX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
+                            />
                         ))}
                     </div>
-                </TooltipProvider>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 font-code text-lg">
+                    {allocations.map((item, index) => (
+                         <motion.div
+                            key={index}
+                            className="flex flex-col gap-2"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                        >
+                            <div className="flex justify-between items-baseline">
+                                <p className="text-accent font-semibold whitespace-nowrap">{item.name}</p>
+                                <p className="text-primary font-bold text-right">{item.percentage}%</p>
+                            </div>
+                            <Progress value={item.percentage} className="h-3" indicatorClassName={item.color} />
+                        </motion.div>
+                    ))}
+                </div>
             </Terminal>
         </AnimatedSection>
     );

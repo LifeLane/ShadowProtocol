@@ -8,7 +8,6 @@ import Section3Ecosystem from "@/components/sections/Section3Ecosystem";
 import Section4Tokenomics from "@/components/sections/Section4Tokenomics";
 import Section5ClaimKey from "@/components/sections/Section5ClaimKey";
 import Section6Roadmap from "@/components/sections/Section6Roadmap";
-import Section7Manifest from "@/components/sections/Section7Manifest";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -45,7 +44,6 @@ export default function Home() {
         <Section4Tokenomics />
         <Section5ClaimKey />
         <Section6Roadmap />
-        <Section7Manifest />
       </main>
     </>
   );

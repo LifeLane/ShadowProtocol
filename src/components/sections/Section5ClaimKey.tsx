@@ -70,9 +70,9 @@ const Section5ClaimKey = () => {
                                 </div>
                             </div>
                             <Button type="submit" className="w-full animate-pulse" disabled={status === 'pending' || status === 'success'}>
-                                {status === 'idle' && '> claim --neural-key'}
+                                {status === 'idle' && '-> claim --neural-key'}
                                 {status === 'pending' && '> rank: pending...'}
-                                {status === 'success' && '> Key Claimed. Synchronizing...'}
+                                {status === 'success' && ':: neural key reserved.'}
                                 {status === 'error' && '> Error. Try again.'}
                             </Button>
                         </form>

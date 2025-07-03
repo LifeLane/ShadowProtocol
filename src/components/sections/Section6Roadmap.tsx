@@ -30,7 +30,7 @@ const Section6Roadmap = () => {
                          <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left order-3'}`}>
                             <h3 className="text-xl font-bold text-accent">{item.phase}</h3>
                             <p className="text-foreground/70 mt-1">{item.description}</p>
-                            <p className={`mt-2 font-bold ${item.status === 'Complete' ? 'text-green-400' : 'text-yellow-400'}`}>&gt; {item.status}</p>
+                            <p className={`mt-2 font-bold ${item.status === 'Complete' ? 'text-primary' : 'text-accent'}`}>&gt; {item.status}</p>
                         </div>
                         <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex-shrink-0 flex items-center justify-center absolute left-1/2 -translate-x-1/2 z-10">
                             <div className="w-4 h-4 rounded-full bg-primary animate-pulse"></div>

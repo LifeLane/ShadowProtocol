@@ -6,8 +6,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { motion } from "framer-motion";
 
 const allocations = [
-    { name: "Community + Staking", percentage: 20, tooltip: "> unlocked: 10% | vesting: 12m | phase: pre-DAO" },
-    { name: "Treasury Vault", percentage: 15, tooltip: "> unlocked: 5% | vesting: 24m | phase: strategic" },
+    { name: "Staking", percentage: 20, tooltip: "> unlocked: 10% | vesting: 12m | phase: pre-DAO" },
+    { name: "Treasury", percentage: 15, tooltip: "> unlocked: 5% | vesting: 24m | phase: strategic" },
     { name: "AI Governance", percentage: 10, tooltip: "> unlocked: 0% | vesting: 36m | phase: core-dev" },
     { name: "Private Sale", percentage: 5, tooltip: "> unlocked: 25% | vesting: 6m cliff" },
     { name: "Initial Liquidity", percentage: 1, tooltip: "> unlocked: 100% | TGE" },
@@ -25,7 +25,7 @@ const Section4Tokenomics = () => {
                         {allocations.map((item, index) => {
                             const filled = Math.round(item.percentage / 2);
                             const empty = 25 - filled;
-                            const bar = `[${'■'.repeat(filled)}${' '.repeat(empty)}]`;
+                            const bar = `[${'█'.repeat(filled)}${' '.repeat(empty)}]`;
 
                             return (
                                 <Tooltip key={index}>

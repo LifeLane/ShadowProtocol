@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const ShadowLogo = () => (
     <motion.pre
-        className="text-primary glow font-bold text-center text-[3.5vw] md:text-5xl lg:text-7xl"
+        className="text-primary glow font-bold text-center text-[1.8vw]"
         initial={{ opacity: 0, scale: 0.5, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}

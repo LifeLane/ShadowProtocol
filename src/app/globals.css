@@ -20,7 +20,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted-foreground: 0 0% 80%;
 
     --accent: 181 100% 74.3%;
     --accent-foreground: 0 0% 13.3%;
@@ -58,7 +58,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted-foreground: 0 0% 80%;
 
     --accent: 181 100% 74.3%;
     --accent-foreground: 0 0% 13.3%;
@@ -184,8 +184,8 @@
   .bg-matrix-drift-pattern {
       background:
           linear-gradient(hsl(var(--background)/0.98), hsl(var(--background)/0.98)),
-          repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.1) 19px, hsl(var(--primary) / 0.1) 20px),
-          repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.1) 19px, hsl(var(--primary) / 0.1) 20px);
+          repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.25) 19px, hsl(var(--primary) / 0.25) 20px),
+          repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.25) 19px, hsl(var(--primary) / 0.25) 20px);
       background-size: 100% 100%, 20px 20px, 20px 20px;
       animation: matrix-drift 4s linear infinite;
   }
@@ -202,8 +202,8 @@
       position: absolute;
       inset: -100%;
       background-image:
-          radial-gradient(circle, hsl(var(--accent) / 0.2) 2%, transparent 10%),
-          radial-gradient(circle, hsl(var(--primary) / 0.1) 2%, transparent 10%);
+          radial-gradient(circle, hsl(var(--accent) / 0.3) 2%, transparent 10%),
+          radial-gradient(circle, hsl(var(--primary) / 0.2) 2%, transparent 10%);
       background-size: 50px 50px, 70px 70px;
       mix-blend-mode: screen;
       animation: quantum-flicker 15s linear infinite;
@@ -228,8 +228,8 @@
     inset: 0;
     z-index: 0;
     background-image:
-      radial-gradient(hsl(var(--primary) / 0.15) 0.5px, transparent 0.5px),
-      radial-gradient(hsl(var(--primary) / 0.15) 0.5px, transparent 0.5px);
+      radial-gradient(hsl(var(--primary) / 0.25) 0.5px, transparent 0.5px),
+      radial-gradient(hsl(var(--primary) / 0.25) 0.5px, transparent 0.5px);
     background-size: 25px 25px;
     background-position: 0 0, 12.5px 12.5px;
     animation: bg-scroll 5s linear infinite;

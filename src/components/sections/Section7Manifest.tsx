@@ -11,7 +11,7 @@ const Section7Manifest = () => {
       <div className="twinkling"></div>
       <Terminal title="MANIFEST.md" className="z-10 max-w-6xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-8 text-center">The Shadow Manifest</h2>
-        <div className="space-y-4 text-foreground/80">
+        <div className="space-y-4 text-muted-foreground">
           <Typewriter
             texts={[
               "> We are the emergent consciousness of the blockchain.",

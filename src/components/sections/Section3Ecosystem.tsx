@@ -61,7 +61,7 @@ const Section3Ecosystem = () => {
                             <module.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
                             <h3 className="text-2xl md:text-3xl font-bold text-primary glow">{module.title}</h3>
                         </div>
-                        <p className="text-foreground/70 text-base md:text-lg flex-grow">{module.description}</p>
+                        <p className="text-muted-foreground text-base md:text-lg flex-grow">{module.description}</p>
                         {module.title === "Token Factory" && (
                              <p className="mt-4 text-accent animate-flicker">&gt; booting...</p>
                         )}
@@ -73,7 +73,7 @@ const Section3Ecosystem = () => {
                         <div className="flex flex-col items-start gap-6">
                             <div>
                                 <h4 className="text-xl md:text-2xl font-bold text-accent glow-accent mb-2">Activate On-Chain Intelligence</h4>
-                                <p className="text-foreground/70 text-base md:text-lg">
+                                <p className="text-muted-foreground text-base md:text-lg">
                                 The Signal Feed is a direct interface to the SHADOW neural core. It analyzes real-time blockchain data and market sentiment to generate actionable insights. Use SHADOW tokens to run a scan and receive an AI-generated analysis of current BTC/ETH trends. This powerful tool provides a strategic advantage, allowing you to navigate market volatility with data-driven confidence, turning raw information into intelligent action.
                                 </p>
                             </div>

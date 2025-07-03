@@ -25,7 +25,7 @@ const Terminal = ({ children, title, className = '' }: TerminalProps) => {
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
-        {title && <p className="text-center text-sm text-foreground/70 flex-grow">{title}</p>}
+        {title && <p className="text-center text-sm text-muted-foreground flex-grow">{title}</p>}
       </div>
       <div className="p-4 md:p-6 font-code text-sm md:text-base">
         {children}

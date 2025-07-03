@@ -43,7 +43,7 @@ const Section5ClaimKey = () => {
                 <div className="w-full md:w-1/2 flex flex-col items-center justify-center scale-90 md:scale-100">
                     <VerificationCube />
                     <p className="text-accent glow-accent text-3xl sm:text-4xl md:text-5xl font-bold mt-8 text-center">Claim Your Neural Key</p>
-                    <p className="text-foreground/70 mt-4 text-center text-lg md:text-xl">Only 1,000 addresses will qualify for the Genesis Offering.</p>
+                    <p className="text-muted-foreground mt-4 text-center text-lg md:text-xl">Only 1,000 addresses will qualify for the Genesis Offering.</p>
                 </div>
                 <div className="w-full md:w-1/2">
                     <Terminal title="GENESIS_CLAIM.sh" className="animate-border-glow">

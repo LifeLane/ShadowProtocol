@@ -52,7 +52,7 @@ Utility:   Fuel for On-Chain Mind`}
                             }}
                         >
                             <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors whitespace-pre-wrap">{item.title}</h3>
-                            <p className="text-foreground/70 mt-2 text-base md:text-lg whitespace-pre-wrap">{item.description}</p>
+                            <p className="text-muted-foreground mt-2 text-base md:text-lg whitespace-pre-wrap">{item.description}</p>
                         </motion.div>
                     ))}
                 </motion.div>

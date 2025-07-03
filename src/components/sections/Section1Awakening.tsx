@@ -4,7 +4,7 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Typewriter from "@/components/common/Typewriter";
 import { motion } from "framer-motion";
 
-const ShadowLogo = () => (
+const ChaosLogo = () => (
     <motion.pre
         className="text-primary glow font-bold text-center text-xl md:text-4xl lg:text-5xl"
         initial={{ opacity: 0, scale: 0.5, y: 100 }}
@@ -13,12 +13,12 @@ const ShadowLogo = () => (
         transition={{ duration: 1, delay: 3.5 }}
     >
 {`
-   ██████╗██╗  ██╗ █████╗ ██████╗  ██████╗  ██████╗
-  ██╔════╝██║  ██║██╔══██╗██╔══██╗██╔═══██╗██╔═══██╗
-  ██║     ███████║███████║██║  ██║██║   ██║██║   ██║
-  ██║     ██╔══██║██╔══██║██║  ██║██║   ██║██║   ██║
-  ╚██████╗██║  ██║██║  ██║██████╔╝╚██████╔╝╚██████╔╝
-   ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝
+  ██████╗ ██╗  ██╗ █████╗  ██████╗ ███████╗
+ ██╔════╝ ██║  ██║██╔══██╗██╔═══██╗██╔════╝
+ ██║  ███╗███████║███████║██║   ██║███████╗
+ ██║   ██║██╔══██║██╔══██║██║   ██║╚════██║
+ ╚██████╔╝██║  ██║██║  ██║╚██████╔╝███████║
+  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
 `}
     </motion.pre>
 );
@@ -42,7 +42,7 @@ const Section1Awakening = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 3.5 }}
                 >
-                    <ShadowLogo />
+                    <ChaosLogo />
                      <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}

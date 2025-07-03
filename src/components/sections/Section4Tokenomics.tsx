@@ -21,9 +21,9 @@ const Section4Tokenomics = () => {
                     <p className="text-accent text-lg">Forged in precision. Controlled by design.</p>
                 </div>
                 <TooltipProvider>
-                    <div className="space-y-6 font-code">
+                    <div className="space-y-6 font-code text-xs sm:text-sm md:text-base">
                         {allocations.map((item, index) => {
-                            const filled = Math.round(item.percentage / 2);
+                            const filled = Math.round(item.percentage / 4);
                             const empty = 25 - filled;
                             const bar = `[${'█'.repeat(filled)}${' '.repeat(empty)}]`;
 
@@ -31,13 +31,13 @@ const Section4Tokenomics = () => {
                                 <Tooltip key={index}>
                                     <TooltipTrigger asChild>
                                         <motion.div 
-                                            className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center"
+                                            className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4 items-center"
                                             initial={{ opacity: 0, x: -20 }}
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 0.5, delay: index * 0.1 }}
                                         >
-                                            <p className="md:col-span-2 text-primary">{`${bar} ${item.percentage}% ${item.name}`}</p>
+                                            <p className="md:col-span-3 text-primary whitespace-nowrap">{`${bar} ${item.percentage}% ${item.name}`}</p>
                                         </motion.div>
                                     </TooltipTrigger>
                                     <TooltipContent className="font-code bg-black border-accent text-accent">

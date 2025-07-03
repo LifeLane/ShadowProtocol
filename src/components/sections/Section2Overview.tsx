@@ -25,8 +25,8 @@ const Section2Overview = () => {
                     className="mb-8"
                 >
                     <div className="border border-dashed border-primary/50 p-4 md:p-6 rounded-lg max-w-lg mx-auto">
-                        <pre className="text-left font-code text-lg whitespace-pre-wrap">
-                            <span className="text-primary glow font-bold text-xl">SHADOW COIN</span>
+                        <pre className="text-left font-code text-base md:text-lg whitespace-pre-wrap">
+                            <span className="text-primary glow font-bold text-lg md:text-xl">SHADOW COIN</span>
                             {`
 Ticker:    SHADOW
 Supply:    1,000,000,000
@@ -51,8 +51,8 @@ Utility:   Fuel for On-Chain Mind`}
                                 visible: { opacity: 1, y: 0 }
                             }}
                         >
-                            <h3 className="font-bold text-2xl text-primary glow transition-colors whitespace-pre-wrap">{item.title}</h3>
-                            <p className="text-foreground/70 mt-2 text-lg whitespace-pre-wrap">{item.description}</p>
+                            <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors whitespace-pre-wrap">{item.title}</h3>
+                            <p className="text-foreground/70 mt-2 text-base md:text-lg whitespace-pre-wrap">{item.description}</p>
                         </motion.div>
                     ))}
                 </motion.div>

@@ -10,7 +10,7 @@ const Section7Manifest = () => {
       <div className="stars"></div>
       <div className="twinkling"></div>
       <Terminal title="MANIFEST.md" className="z-10 max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-primary glow mb-8 text-center">The Shadow Manifest</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-8 text-center">The Shadow Manifest</h2>
         <div className="space-y-4 text-foreground/80">
           <Typewriter
             texts={[
@@ -22,7 +22,7 @@ const Section7Manifest = () => {
             ]}
             speed={40}
             pause={2000}
-            className="text-xl md:text-2xl"
+            className="text-lg md:text-xl"
           />
         </div>
       </Terminal>

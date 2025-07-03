@@ -40,37 +40,37 @@ const Section5ClaimKey = () => {
     return (
         <AnimatedSection id="claim-key" className="bg-quantum-flicker-pattern">
             <div className="z-10 flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl">
-                <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
+                <div className="w-full md:w-1/2 flex flex-col items-center justify-center scale-90 md:scale-100">
                     <VerificationCube />
-                    <p className="text-accent glow-accent text-4xl md:text-5xl font-bold mt-8 text-center">Claim Your Neural Key</p>
-                    <p className="text-foreground/70 mt-4 text-center text-xl">Only 1,000 addresses will qualify for the Genesis Offering.</p>
+                    <p className="text-accent glow-accent text-3xl sm:text-4xl md:text-5xl font-bold mt-8 text-center">Claim Your Neural Key</p>
+                    <p className="text-foreground/70 mt-4 text-center text-lg md:text-xl">Only 1,000 addresses will qualify for the Genesis Offering.</p>
                 </div>
                 <div className="w-full md:w-1/2">
                     <Terminal title="GENESIS_CLAIM.sh" className="animate-border-glow">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
-                                <Label htmlFor="telegram" className="text-primary/80 text-lg">Telegram Handle</Label>
+                                <Label htmlFor="telegram" className="text-primary/80 text-base">Telegram Handle</Label>
                                 <div className="relative">
                                     <Send className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                    <Input id="telegram" placeholder="@username" className="pl-10 bg-black/30 border-primary/30 h-12 text-lg" />
+                                    <Input id="telegram" placeholder="@username" className="pl-10 bg-black/30 border-primary/30 h-12" />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="wallet" className="text-primary/80 text-lg">Wallet Address</Label>
+                                <Label htmlFor="wallet" className="text-primary/80 text-base">Wallet Address</Label>
                                 <div className="relative">
                                     <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                    <Input id="wallet" placeholder="0x..." className="pl-10 bg-black/30 border-primary/30 h-12 text-lg" />
+                                    <Input id="wallet" placeholder="0x..." className="pl-10 bg-black/30 border-primary/30 h-12" />
 
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="email" className="text-primary/80 text-lg">Email Address</Label>
+                                <Label htmlFor="email" className="text-primary/80 text-base">Email Address</Label>
                                 <div className="relative">
                                     <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-                                    <Input id="email" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12 text-lg" />
+                                    <Input id="email" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12" />
                                 </div>
                             </div>
-                            <Button type="submit" size="lg" className="w-full text-lg btn-shine glow" disabled={status === 'pending' || status === 'success'}>
+                            <Button type="submit" size="lg" className="w-full text-base btn-shine glow" disabled={status === 'pending' || status === 'success'}>
                                 {status === 'idle' && '-> claim --neural-key'}
                                 {status === 'pending' && '> rank: pending...'}
                                 {status === 'success' && ':: neural key reserved.'}

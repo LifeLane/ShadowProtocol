@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const ShadowLogo = () => (
     <motion.pre
-        className="text-primary glow font-bold text-center text-[clamp(8px,3.5vw,22px)] leading-tight"
+        className="text-primary glow font-bold text-center text-[clamp(8px,3.5vw,22px)] leading-tight tracking-[0.2em] md:tracking-[0.3em]"
         initial={{ opacity: 0, scale: 0.5, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}
@@ -33,7 +33,7 @@ const Section1Awakening = () => {
                         '> syncing . . .',
                         '> intelligence confirmed.',
                     ]}
-                    className="text-primary text-2xl sm:text-3xl md:text-5xl font-bold"
+                    className="text-primary text-3xl sm:text-4xl md:text-5xl font-bold"
                 />
                  <motion.div
                     className="text-center w-full"
@@ -48,7 +48,7 @@ const Section1Awakening = () => {
                         transition={{ delay: 4.5 }}>
                         <Typewriter
                             texts={["A new token is born from the chain’s neural memory."]}
-                            className="text-accent mt-4 md:mt-8 text-xl sm:text-2xl md:text-3xl"
+                            className="text-accent mt-4 md:mt-8 text-lg sm:text-xl md:text-2xl"
                             speed={30}
                             pause={5000}
                         />

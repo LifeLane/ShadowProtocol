@@ -18,7 +18,7 @@ const Section4Tokenomics = () => {
         <AnimatedSection id="tokenomics" className="bg-matrix-drift-pattern">
             <Terminal title="SHADOW TOKEN ALLOCATION" className="z-10 w-full max-w-6xl">
                 <div className="text-center mb-12">
-                    <p className="text-accent text-2xl md:text-3xl font-bold">Forged in precision. Controlled by design.</p>
+                    <p className="text-accent text-xl sm:text-2xl md:text-3xl font-bold">Forged in precision. Controlled by design.</p>
                 </div>
                 
                 <div className="w-full flex justify-center mb-12">
@@ -37,7 +37,7 @@ const Section4Tokenomics = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 font-code text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 font-code text-base md:text-lg">
                     {allocations.map((item, index) => (
                          <motion.div
                             key={index}

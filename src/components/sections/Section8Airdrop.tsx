@@ -43,19 +43,19 @@ const Section8Airdrop = () => {
       <div className="z-10 text-center mb-12">
           <Typewriter
               texts={['> Secure Your Genesis Airdrop']}
-              className="text-4xl md:text-6xl font-bold text-accent glow-accent"
+              className="text-3xl sm:text-5xl md:text-6xl font-bold text-accent glow-accent"
           />
       </div>
       <Terminal title="AIRDROP_REGISTRATION.sh" className="z-10 max-w-2xl animate-border-glow">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="email-airdrop" className="text-primary/80 text-lg">Email Address</Label>
+            <Label htmlFor="email-airdrop" className="text-primary/80 text-base">Email Address</Label>
             <div className="relative">
               <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-              <Input id="email-airdrop" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12 text-lg" />
+              <Input id="email-airdrop" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12" />
             </div>
           </div>
-          <Button type="submit" size="lg" className="w-full text-lg btn-shine glow" disabled={status === 'pending' || status === 'success'}>
+          <Button type="submit" size="lg" className="w-full text-base btn-shine glow" disabled={status === 'pending' || status === 'success'}>
             {status === 'idle' && '-> register --airdrop'}
             {status === 'pending' && '> verifying credentials...'}
             {status === 'success' && ':: registration confirmed.'}

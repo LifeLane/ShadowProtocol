@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -7,7 +8,8 @@ import Typewriter from "@/components/common/Typewriter";
 import { Button } from "@/components/ui/button";
 import { generateBtcEthInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2, BrainCircuit, ShieldCheck, Code, Globe, FlaskConical, Box } from "lucide-react";
+import { Loader2, BrainCircuit, ShieldCheck, Code, Globe, FlaskConical, Box, Lock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Section3Ecosystem = () => {
     const [insight, setInsight] = useState("");
@@ -28,12 +30,12 @@ const Section3Ecosystem = () => {
     };
 
     const modules = [
-        { icon: BrainCircuit, title: "Signal Terminal", description: "Live BTC/ETH market analysis powered by on-chain intelligence." },
-        { icon: Code, title: "Solidity Console", description: "Simulates code auto-generating with flicker. (Simulated)" },
-        { icon: ShieldCheck, title: "Self-Custody Chain", description: "Neon blocks assemble to show Mainnet. (Visualized)" },
-        { icon: Globe, title: "DeFi/DAO Layer", description: "Text explodes into orbiting DAO nodes. (Conceptual)" },
-        { icon: FlaskConical, title: "Token Factory", description: "Flickering 'booting...' status." },
-        { icon: Box, title: "Governance Module", description: "SHADOW holders form a distributed cognitive entity." },
+        { icon: BrainCircuit, title: "Signal Terminal", description: "Live BTC/ETH market analysis powered by on-chain intelligence.", status: 'early-access' },
+        { icon: Code, title: "Solidity Console", description: "Generate and audit smart contracts with AI assistance.", status: 'early-access' },
+        { icon: ShieldCheck, title: "Self-Custody Chain", description: "A dedicated side-chain for ultra-secure asset management.", status: 'coming-soon' },
+        { icon: Globe, title: "DeFi/DAO Layer", description: "Tools for decentralized finance and autonomous governance.", status: 'coming-soon' },
+        { icon: FlaskConical, title: "Token Factory", description: "Create and launch new tokens within the Shadow ecosystem.", status: 'coming-soon' },
+        { icon: Box, title: "Governance Module", description: "Vote on protocol upgrades and treasury allocations with SHADOW.", status: 'coming-soon' },
     ];
 
     return (
@@ -51,20 +53,36 @@ const Section3Ecosystem = () => {
                 {modules.map((module, index) => (
                     <motion.div
                         key={module.title}
-                        className="border border-primary/20 p-6 rounded-lg bg-black/20 flex flex-col items-start hover:border-primary/50 hover:bg-primary/10 transition-all card-hover-glow"
+                        className={cn(
+                            "border border-primary/20 p-6 rounded-lg bg-black/20 flex flex-col items-start transition-all relative overflow-hidden",
+                            module.status === 'early-access' ? "card-hover-glow hover:border-primary/50 hover:bg-primary/10" : "grayscale opacity-70"
+                        )}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                        <div className="flex items-center gap-4 mb-4">
-                            <module.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-                            <h3 className="text-2xl md:text-3xl font-bold text-primary glow">{module.title}</h3>
+                         {module.status === 'coming-soon' && (
+                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20">
+                                <div className="text-center">
+                                    <Lock className="w-12 h-12 text-accent mx-auto mb-2" />
+                                    <p className="text-xl font-bold text-accent glow-accent">COMING SOON</p>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="flex items-center justify-between w-full mb-4">
+                            <div className="flex items-center gap-4">
+                                <module.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
+                                <h3 className="text-2xl md:text-3xl font-bold text-primary glow">{module.title}</h3>
+                            </div>
+                             {module.status === 'early-access' && (
+                                <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
+                                    EARLY ACCESS
+                                </div>
+                            )}
                         </div>
                         <p className="text-muted-foreground text-base md:text-lg flex-grow">{module.description}</p>
-                        {module.title === "Token Factory" && (
-                             <p className="mt-4 text-accent animate-flicker">&gt; booting...</p>
-                        )}
                     </motion.div>
                 ))}
                 
@@ -79,7 +97,7 @@ const Section3Ecosystem = () => {
                             </div>
                             <div className="w-full border-t border-primary/20 pt-6">
                                 <div className="flex flex-col items-start gap-4">
-                                    <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg">
+                                    <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg" className="btn-shine">
                                         {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                                         Initiate Signal Scan
                                     </Button>

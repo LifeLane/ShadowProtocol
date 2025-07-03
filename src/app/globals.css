@@ -222,7 +222,11 @@
     0% { background-position: 0 0; }
     100% { background-position: -100px -100px; }
   }
-  .bg-circuit-pattern {
+  .bg-circuit-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     background-image:
       radial-gradient(hsl(var(--primary) / 0.08) 0.5px, transparent 0.5px),
       radial-gradient(hsl(var(--primary) / 0.08) 0.5px, transparent 0.5px);

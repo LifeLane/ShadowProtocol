@@ -36,7 +36,7 @@ const Section1Awakening = () => {
                         '> syncing . . .',
                         '> intelligence confirmed.',
                     ]}
-                    className="text-primary text-xl sm:text-4xl md:text-5xl font-bold"
+                    className="text-primary text-lg sm:text-3xl md:text-5xl font-bold"
                     whitespaceClass="whitespace-pre"
                 />
                  <motion.div

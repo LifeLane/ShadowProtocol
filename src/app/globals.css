@@ -19,8 +19,8 @@
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
 
     --accent: 181 100% 74.3%;
     --accent-foreground: 0 0% 13.3%;
@@ -52,8 +52,8 @@
     --primary-foreground: 0 0% 13.3%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
     --accent: 181 100% 74.3%;
     --accent-foreground: 0 0% 13.3%;
     --destructive: 0 62.8% 30.6%;
@@ -80,7 +80,7 @@
     --secondary: 220 20% 15%;
     --secondary-foreground: 0 0% 98%;
     --muted: 220 20% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted-foreground: 0 0% 70%;
     --accent: 210 100% 60%;
     --accent-foreground: 210 100% 15%;
     --destructive: 0 62.8% 30.6%;
@@ -107,7 +107,7 @@
     --secondary: 245 25% 20%;
     --secondary-foreground: 0 0% 98%;
     --muted: 245 25% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted-foreground: 0 0% 70%;
     --accent: 45 100% 55%;
     --accent-foreground: 45 100% 10%;
     --destructive: 0 62.8% 30.6%;
@@ -145,7 +145,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, hsl(var(--primary) / 0.35), transparent 40%);
+    background: radial-gradient(circle at center, hsl(var(--primary) / 0.55), transparent 40%);
     animation: pulse-eye 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     z-index: 0;
   }
@@ -156,7 +156,7 @@
       left: 50%;
       width: 200%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.4), transparent);
+      background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.6), transparent);
       animation: scan-eye 6s linear infinite;
       transform-origin: center;
       z-index: 0;
@@ -177,8 +177,8 @@
     inset: 0;
     z-index: 0;
     background-image:
-      linear-gradient(to right, hsl(var(--primary) / 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--primary) / 0.3) 1px, transparent 1px);
+      linear-gradient(to right, hsl(var(--primary) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.5) 1px, transparent 1px);
     background-size: 3rem 3rem;
     animation: pulse-grid-glow 5s linear infinite;
   }
@@ -188,7 +188,7 @@
     inset: 0;
     z-index: 0;
     background-image:
-      radial-gradient(hsl(var(--primary) / 0.3) 2px, transparent 2px);
+      radial-gradient(hsl(var(--primary) / 0.5) 2px, transparent 2px);
     background-size: 3rem 3rem;
     animation: pulse-grid-dots 5s linear infinite alternate;
   }
@@ -229,18 +229,14 @@
   }
 
   /* Section 4: Matrix Drift + Code Pulse */
-  @keyframes matrix-drift {
-      from { background-position-y: 0; }
-      to   { background-position-y: -200px; }
-  }
   .bg-matrix-drift-pattern::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 0;
     background:
-        repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.35) 19px, hsl(var(--primary) / 0.35) 20px),
-        repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.35) 19px, hsl(var(--primary) / 0.35) 20px);
+        repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.55) 19px, hsl(var(--primary) / 0.55) 20px),
+        repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.55) 19px, hsl(var(--primary) / 0.55) 20px);
     background-size: 20px 20px, 20px 20px;
     animation: matrix-drift 4s linear infinite;
   }
@@ -257,8 +253,8 @@
       position: absolute;
       inset: -100%;
       background-image:
-          radial-gradient(circle, hsl(var(--accent) / 0.4) 2%, transparent 10%),
-          radial-gradient(circle, hsl(var(--primary) / 0.3) 2%, transparent 10%);
+          radial-gradient(circle, hsl(var(--accent) / 0.6) 2%, transparent 10%),
+          radial-gradient(circle, hsl(var(--primary) / 0.5) 2%, transparent 10%);
       background-size: 50px 50px, 70px 70px;
       mix-blend-mode: screen;
       animation: quantum-flicker 15s linear infinite;
@@ -283,8 +279,8 @@
     inset: 0;
     z-index: 0;
     background-image:
-      radial-gradient(hsl(var(--primary) / 0.35) 0.5px, transparent 0.5px),
-      radial-gradient(hsl(var(--primary) / 0.35) 0.5px, transparent 0.5px);
+      radial-gradient(hsl(var(--primary) / 0.55) 0.5px, transparent 0.5px),
+      radial-gradient(hsl(var(--primary) / 0.55) 0.5px, transparent 0.5px);
     background-size: 25px 25px;
     background-position: 0 0, 12.5px 12.5px;
     animation: bg-scroll 5s linear infinite;
@@ -329,32 +325,25 @@
     animation: border-glow-pulse 4s ease-in-out infinite;
   }
 
-  .card-hover-glow {
-    position: relative;
-    overflow: hidden;
-    z-index: 10;
+  @keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-  
-  .card-hover-glow::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: -1px; right: -1px; bottom: -1px;
-    border-radius: inherit;
-    background: conic-gradient(from 180deg at 50% 50%, hsl(var(--accent) / 0.8), hsl(var(--primary) / 0.8), hsl(var(--accent) / 0.8));
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-    z-index: -1;
-    animation: spin 5s linear infinite paused;
+
+  @keyframes multicolor-glow-pulse {
+    0%, 100% { box-shadow: 0 0 8px hsl(var(--primary) / 0.6); }
+    33% { box-shadow: 0 0 14px hsl(var(--accent) / 0.8); }
+    66% { box-shadow: 0 0 14px hsl(var(--chart-2) / 0.8); }
   }
-  
-  .card-hover-glow:hover::before {
-    opacity: 1;
-    animation-play-state: running;
-  }
-  
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+
+  .card-animated-border {
+    border: 2px solid transparent;
+    background-image: linear-gradient(hsl(var(--card)), hsl(var(--card))), linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--chart-2)), hsl(var(--primary)));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-size: 200% 100%;
+    animation: gradient-rotate 4s ease infinite, multicolor-glow-pulse 3s ease-in-out infinite;
   }
 
   /* --- CTA Button Shine --- */

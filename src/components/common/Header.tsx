@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect } from 'react';
@@ -77,7 +78,7 @@ const Header = ({ scaleX }: HeaderProps) => {
                 transition={{ duration: 0.5 }}
             >
                 <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-                    <Link href="/" className="flex items-center gap-2">
+                    <Link href="/" className="flex items-center gap-2 p-2 rounded-lg animate-border-glow">
                         <Bot className="w-8 h-8 text-primary glow" />
                         <span className="text-xl font-bold text-primary glow hidden sm:inline">SHADOW</span>
                     </Link>
@@ -99,7 +100,7 @@ const Header = ({ scaleX }: HeaderProps) => {
                                             variant="ghost"
                                             size="icon"
                                             onClick={handleThemeChange}
-                                            className="h-10 w-10"
+                                            className="h-10 w-10 animate-border-glow"
                                             aria-label="Switch Theme"
                                         >
                                             <CurrentThemeIcon className="w-5 h-5" />

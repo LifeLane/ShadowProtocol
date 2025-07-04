@@ -24,6 +24,17 @@ function getMockPrice(ticker: string): number {
   }
 }
 
+const coinGeckoIds: { [key: string]: string } = {
+  BTC: 'bitcoin',
+  ETH: 'ethereum',
+  SOL: 'solana',
+  ADA: 'cardano',
+  DOGE: 'dogecoin',
+  XRP: 'ripple',
+  DOT: 'polkadot',
+  MATIC: 'matic-network',
+};
+
 const getCryptoPrice = ai.defineTool(
   {
     name: 'getCryptoPrice',
@@ -34,9 +45,29 @@ const getCryptoPrice = ai.defineTool(
     outputSchema: z.number(),
   },
   async (input) => {
-    // In a real application, you would make an API call to a service like CoinDesk or Binance here.
-    // For this example, we'll return a mock price.
-    return getMockPrice(input.ticker);
+    const ticker = input.ticker.toUpperCase();
+    const coinId = coinGeckoIds[ticker];
+
+    if (coinId) {
+      try {
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
+        if (response.ok) {
+            const data = await response.json();
+            const price = data[coinId]?.usd;
+            if (price) {
+                return price;
+            }
+        } else {
+             console.error(`CoinGecko API error for ${ticker}: ${response.status} ${response.statusText}`);
+        }
+      } catch (error) {
+        console.error(`Failed to fetch price for ${ticker} from CoinGecko:`, error);
+      }
+    }
+    
+    // Fallback for unknown tickers or API failure
+    console.log(`Falling back to mock price for ${ticker}`);
+    return getMockPrice(ticker);
   }
 );
 

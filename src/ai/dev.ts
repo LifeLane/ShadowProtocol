@@ -1,4 +1,4 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/generate-crypto-insight.ts';
+import '@/ai/flows/generate-btc-eth-insight.ts';

@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const SectionAISignal = () => {
     const [insight, setInsight] = useState("");
@@ -16,6 +17,10 @@ const SectionAISignal = () => {
     const [symbol, setSymbol] = useState("BTC");
 
     const handleGenerateInsight = async () => {
+        if (!symbol) {
+            setInsight("Please enter a token symbol.");
+            return;
+        }
         setIsLoading(true);
         setInsight("");
         try {
@@ -33,37 +38,42 @@ const SectionAISignal = () => {
         <AnimatedSection id="ai-signal" className="bg-pulse-grid-pattern">
             <div className="w-full max-w-6xl">
                  <Terminal title="AI Signal Feed" className="max-w-6xl bg-black/40 backdrop-blur-sm">
-                    <div className="flex flex-col items-start gap-6">
+                    <div className="flex flex-col items-center gap-6">
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="space-y-2"
+                            className="space-y-2 text-center"
                         >
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent glow-accent transition-colors hover:text-primary">Live Market Intelligence</h2>
-                            <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-4xl">
-                                Connect directly to the SHADOW neural core. Analyze real-time blockchain data and market sentiment to generate actionable insights. Select a symbol and initiate a scan to receive an AI-powered analysis of current market trends.
+                            <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-4xl mx-auto">
+                                Connect directly to the SHADOW neural core. Analyze real-time blockchain data and market sentiment to generate actionable insights. Enter a token symbol and initiate a scan to receive an AI-powered analysis.
                             </p>
                         </motion.div>
                         <div className="w-full border-t border-primary/20 pt-6">
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                                <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg" className="btn-shine">
+                            <div className="flex flex-col items-center gap-4 w-full max-w-xs mx-auto">
+                                 <div className="w-full space-y-2">
+                                    <Label htmlFor="symbol-input" className="text-primary/80 text-center block">Token Symbol</Label>
+                                    <Input
+                                        id="symbol-input"
+                                        value={symbol}
+                                        onChange={(e) => setSymbol(e.target.value.toUpperCase())}
+                                        placeholder="e.g. BTC, ETH, SOL"
+                                        className="bg-black/30 border-primary/30 h-12 text-center text-lg font-bold"
+                                        onKeyUp={(e) => e.key === 'Enter' && handleGenerateInsight()}
+                                        aria-label="Token Symbol"
+                                    />
+                                </div>
+                                <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg" className="btn-shine w-full">
                                     {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                                     Initiate Signal Scan
                                 </Button>
-                                 <Tabs value={symbol} onValueChange={setSymbol}>
-                                  <TabsList className="bg-black/30 border border-primary/20">
-                                    <TabsTrigger value="BTC">BTC</TabsTrigger>
-                                    <TabsTrigger value="ETH">ETH</TabsTrigger>
-                                    <TabsTrigger value="SOL">SOL</TabsTrigger>
-                                  </TabsList>
-                                </Tabs>
                             </div>
                              <div className="mt-4 min-h-[6rem]">
                                 {isLoading && <p className="text-accent animate-pulse">Scanning market signals...</p>}
                                 {insight && (
-                                    <div className="text-primary whitespace-pre-wrap text-sm sm:text-base md:text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20">
+                                    <div className="text-primary whitespace-pre-wrap text-sm sm:text-base md:text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20 max-w-2xl mx-auto">
                                         <Typewriter texts={[insight]} speed={10} pause={5000}/>
                                     </div>
                                 )}

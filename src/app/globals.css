@@ -171,7 +171,11 @@
   }
 
   /* Section 2: Pulse Grid Overlay */
-  .bg-pulse-grid-pattern {
+  .bg-pulse-grid-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     background-image:
       linear-gradient(to right, hsl(var(--primary) / 0.3) 1px, transparent 1px),
       linear-gradient(to bottom, hsl(var(--primary) / 0.3) 1px, transparent 1px);
@@ -182,11 +186,11 @@
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 0;
     background-image:
       radial-gradient(hsl(var(--primary) / 0.3) 2px, transparent 2px);
     background-size: 3rem 3rem;
     animation: pulse-grid-dots 5s linear infinite alternate;
-    z-index: 0;
   }
   @keyframes pulse-grid-glow {
     0%, 100% { opacity: 0.8; background-position: 0 0; }
@@ -202,21 +206,24 @@
       from {background-position:0 0;}
       to {background-position:-10000px 5000px;}
   }
-  .stars, .twinkling {
+  .bg-starfield::before {
+    content: '';
     position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    inset: 0;
     width:100%;
     height:100%;
     display:block;
     z-index: 0;
-  }
-  .stars {
     background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93irAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACgAAAAoACs3o2sAAADSSURBVEjH7daxCYAwGAbgvyUlhdi2HwtrYQeI6b0WwgZi2+B/eU9z3XwzIHD5VwAwf/8MAP5dAN4C8ALwCgC8ALwCvAIA7wDvAMALwCvACwC8ALwA3gGAVwBvAG8A4AvAG8AbwBvA+wLwCgC8ALwA/AIAvwC8AXwB+ALwCwA/gC8AbwBvgC/gLwB/gG8A7wBfAe8AXwD+AsBPAX8B5Av4C0B+AfwFkC/gzwDkBfAXYMmCXUDikA4BAPj7AT9yAbVRAQcnY/3AAAAAAElFTSuQmCC') repeat top center;
   }
-  .twinkling {
+  .bg-starfield::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width:100%;
+    height:100%;
+    display:block;
+    z-index: 0;
     background:transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93irAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACgAAAAoACs3o2sAAADRSURBVEjH7daxDcAwCARB2f+8tJoUR2gSg2AIi3/BwZFDYe/b948BAC8A/y4A/wHwAIATwBOAE8ATgA/AEYATwBOA/wHwBOAE8ARgA/gBMAJ4AnACGAE8AXwBGAE8AbwAjASeADwBfAG8AJwBPAE8AbwBnASeAZwAvgE8AZwB/gOcAZwBvACEALwBfAGMAF4AfgG8AbwBvAGMAF4A3gDeAN4AXgA+AF4AXgBeAM4AfgB+AAYAbwAXgB+AGMAK8AswAgA/T1wA3zYBpAAAAABJRU5ErkJggg==') repeat top center;
     animation:move-twink-back 200s linear infinite;
   }
@@ -226,13 +233,16 @@
       from { background-position-y: 0; }
       to   { background-position-y: -200px; }
   }
-  .bg-matrix-drift-pattern {
-      background:
-          linear-gradient(hsl(var(--background)/0.98), hsl(var(--background)/0.98)),
-          repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.35) 19px, hsl(var(--primary) / 0.35) 20px),
-          repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.35) 19px, hsl(var(--primary) / 0.35) 20px);
-      background-size: 100% 100%, 20px 20px, 20px 20px;
-      animation: matrix-drift 4s linear infinite;
+  .bg-matrix-drift-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--primary) / 0.35) 19px, hsl(var(--primary) / 0.35) 20px),
+        repeating-linear-gradient(-90deg, transparent, transparent 19px, hsl(var(--primary) / 0.35) 19px, hsl(var(--primary) / 0.35) 20px);
+    background-size: 20px 20px, 20px 20px;
+    animation: matrix-drift 4s linear infinite;
   }
 
   /* Section 5: Quantum Flicker Fields */

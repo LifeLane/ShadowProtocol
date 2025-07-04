@@ -39,9 +39,7 @@ const Section3Ecosystem = () => {
     ];
 
     return (
-        <AnimatedSection id="ecosystem" className="relative">
-            <div className="stars"></div>
-            <div className="twinkling"></div>
+        <AnimatedSection id="ecosystem" className="bg-starfield">
             <div className="z-10 text-center mb-12">
                 <Typewriter
                     texts={['> Shadow is not a protocol.', '> It’s a multi-intelligence infrastructure.']}

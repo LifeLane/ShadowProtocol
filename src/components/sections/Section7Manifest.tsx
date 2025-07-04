@@ -6,7 +6,7 @@ import Typewriter from "@/components/common/Typewriter";
 
 const Section7Manifest = () => {
   return (
-    <AnimatedSection id="manifest" className="bg-starfield">
+    <AnimatedSection id="manifest" className="bg-quantum-flicker-pattern">
       <div className="w-full max-w-6xl relative z-10">
         <Terminal title="MANIFEST.md" className="max-w-6xl">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary glow mb-8 text-center transition-colors hover:text-accent">The Shadow Manifest</h2>

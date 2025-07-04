@@ -1,12 +1,18 @@
 "use client"
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot } from 'lucide-react';
+import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Palette, Terminal, Sun, Scroll } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select"
 
 const navItems = [
     { name: 'Signal', href: '#ai-signal', icon: Cpu },
@@ -15,12 +21,36 @@ const navItems = [
     { name: 'Roadmap', href: '#roadmap', icon: GitMerge },
 ];
 
+const themes = [
+  { value: 'theme-cyberpunk', label: 'Cyberpunk', icon: Terminal },
+  { value: 'theme-solar-flare', label: 'Solar Flare', icon: Sun },
+  { value: 'theme-arcane-codex', label: 'Arcane Codex', icon: Scroll },
+];
+
 type HeaderProps = {
   scaleX: MotionValue<number>;
 };
 
 const Header = ({ scaleX }: HeaderProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [theme, setTheme] = useState('theme-cyberpunk');
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        const storedTheme = localStorage.getItem('theme') || 'theme-cyberpunk';
+        setTheme(storedTheme);
+    }, []);
+
+    useEffect(() => {
+        if (mounted) {
+            document.documentElement.classList.remove('theme-cyberpunk', 'theme-solar-flare', 'theme-arcane-codex');
+            document.documentElement.classList.add(theme);
+            localStorage.setItem('theme', theme);
+        }
+    }, [theme, mounted]);
+    
+    const SelectedIcon = (themes.find(t => t.value === theme) || themes[0]).icon;
 
     return (
         <>
@@ -30,7 +60,7 @@ const Header = ({ scaleX }: HeaderProps) => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+                <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
                     <Link href="/" className="flex items-center gap-2">
                         <Bot className="w-8 h-8 text-primary glow" />
                         <span className="text-xl font-bold text-primary glow hidden sm:inline">SHADOW</span>
@@ -45,6 +75,23 @@ const Header = ({ scaleX }: HeaderProps) => {
                     </nav>
 
                     <div className="flex items-center gap-4">
+                        {mounted && (
+                            <Select onValueChange={setTheme} value={theme}>
+                              <SelectTrigger className="w-auto bg-transparent border-primary/20 h-10 px-3">
+                                <SelectedIcon className="w-5 h-5" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {themes.map((t) => (
+                                  <SelectItem key={t.value} value={t.value}>
+                                    <div className="flex items-center gap-2">
+                                      <t.icon className="w-5 h-5" />
+                                      <span>{t.label}</span>
+                                    </div>
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                        )}
                          <Button asChild className="hidden sm:inline-flex btn-shine">
                             <Link href="#airdrop">
                                 <Send className="mr-2" />

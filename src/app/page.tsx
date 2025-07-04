@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <>
       <Header scaleX={scaleX} />
-      <main className="flex flex-col items-center text-foreground/80 pt-20 pb-20">
+      <main className="flex flex-col items-center text-foreground/80 pt-16 pb-16">
         <Section1Awakening />
         <SectionAISignal />
         <Section2Overview />

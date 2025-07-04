@@ -7,9 +7,10 @@ type TypewriterProps = {
   speed?: number;
   pause?: number;
   className?: string;
+  whitespaceClass?: string;
 };
 
-const Typewriter = ({ texts, speed = 50, pause = 1000, className }: TypewriterProps) => {
+const Typewriter = ({ texts, speed = 50, pause = 1000, className, whitespaceClass = 'whitespace-pre-wrap' }: TypewriterProps) => {
   const [currentText, setCurrentText] = useState('');
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -36,7 +37,7 @@ const Typewriter = ({ texts, speed = 50, pause = 1000, className }: TypewriterPr
   }, [charIndex, lineIndex, texts, speed, pause]);
 
   return (
-    <p className={`${className} whitespace-pre-wrap`}>
+    <p className={`${className} ${whitespaceClass}`}>
       {currentText}
       <span className="animate-flicker text-primary">|</span>
     </p>

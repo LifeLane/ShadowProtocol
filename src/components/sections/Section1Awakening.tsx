@@ -37,6 +37,7 @@ const Section1Awakening = () => {
                         '> intelligence confirmed.',
                     ]}
                     className="text-primary text-xl sm:text-4xl md:text-5xl font-bold"
+                    whitespaceClass="whitespace-pre"
                 />
                  <motion.div
                     className="text-center w-full mt-4"

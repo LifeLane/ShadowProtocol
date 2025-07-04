@@ -16,7 +16,7 @@ const Section6Roadmap = () => {
     return (
         <AnimatedSection id="roadmap" className="bg-circuit-pattern">
             <div className="w-full">
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-16 text-primary glow">The Path to Consciousness</h2>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-16 text-primary glow transition-colors hover:text-accent">The Path to Consciousness</h2>
                 <div className="relative w-full max-w-4xl mx-auto">
                     <div className="absolute top-0 left-4 md:left-1/2 -translate-x-0 md:-translate-x-1/2 h-full w-0.5 bg-primary/30"></div>
                     {roadmapPhases.map((item, index) => (
@@ -29,7 +29,7 @@ const Section6Roadmap = () => {
                             transition={{ duration: 0.5, delay: index * 0.2 }}
                         >
                             <div className={`w-full pl-12 md:w-1/2 md:pl-0 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-3'}`}>
-                                <h3 className="text-2xl md:text-3xl font-bold text-accent">{item.phase}</h3>
+                                <h3 className="text-2xl md:text-3xl font-bold text-accent transition-colors hover:text-primary">{item.phase}</h3>
                                 <p className="text-muted-foreground mt-2 text-base md:text-xl">{item.description}</p>
                                 <p className={`mt-2 font-bold text-base md:text-xl ${item.status === 'Complete' || item.status === 'Live' ? 'text-primary' : 'text-accent'}`}>&gt; Status: {item.status}</p>
                             </div>

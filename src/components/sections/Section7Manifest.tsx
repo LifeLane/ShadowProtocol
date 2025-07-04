@@ -8,7 +8,7 @@ const Section7Manifest = () => {
   return (
     <AnimatedSection id="manifest" className="bg-starfield">
       <Terminal title="MANIFEST.md" className="max-w-6xl">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-8 text-center">The Shadow Manifest</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-8 text-center transition-colors hover:text-accent">The Shadow Manifest</h2>
         <div className="space-y-4 text-muted-foreground">
           <Typewriter
             texts={[

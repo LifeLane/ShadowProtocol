@@ -77,23 +77,24 @@ const GenerateCryptoInsightOutputSchema = z.object({
 });
 type GenerateCryptoInsightOutput = z.infer<typeof GenerateCryptoInsightOutputSchema>;
 
+const CryptoInsightWithPriceInputSchema = z.object({
+    symbol: z.string().describe('The cryptocurrency ticker symbol, e.g., BTC, ETH, SOL.'),
+    price: z.string().describe('The current formatted price of the cryptocurrency.'),
+});
 
 const insightPrompt = ai.definePrompt({
   name: 'cryptoInsightPrompt',
-  input: { schema: GenerateCryptoInsightInputSchema },
+  input: { schema: CryptoInsightWithPriceInputSchema },
   output: { schema: GenerateCryptoInsightOutputSchema },
-  tools: [getCryptoPrice],
   prompt: `You are a witty but sharp financial analyst providing insights on cryptocurrency trends. Your tone is like a cyberpunk hacker: cool, concise, and maybe a little cryptic.
 
-It is crucial that you first use the getCryptoPrice tool to get the current price for the requested cryptocurrency. This real-time price is the most important piece of data for your analysis.
-
-Then, using that price, provide a concise, actionable insight into the market sentiment and potential trends in a terminal-like format. Start with the ticker and the real-time price you obtained, then the insight. Be creative and format the price to two decimal places.
+Using the provided real-time price, provide a concise, actionable insight into the market sentiment and potential trends in a terminal-like format. Start with the ticker and the real-time price, then the insight.
 
 Example:
-$BTC: 67,401.12
+$BTC: $67,401.12
 Signal: Strong accumulation patterns detected. Whales are quiet. Suggests a potential surge. Monitor resistance at 68k.
 
-Now, provide an insight for {{{symbol}}}.`,
+Now, provide an insight for {{{symbol}}} which has a price of {{{price}}}.`,
 });
 
 const generateCryptoInsightFlow = ai.defineFlow(
@@ -103,7 +104,16 @@ const generateCryptoInsightFlow = ai.defineFlow(
     outputSchema: GenerateCryptoInsightOutputSchema,
   },
   async (input) => {
-    const { output } = await insightPrompt(input);
+    const price = await getCryptoPrice({ ticker: input.symbol });
+    
+    const formattedPrice = price.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+
+    const { output } = await insightPrompt({ symbol: input.symbol, price: formattedPrice });
     return output!;
   }
 );

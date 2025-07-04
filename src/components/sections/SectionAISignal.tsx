@@ -64,7 +64,7 @@ const SectionAISignal = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="space-y-4 text-center md:text-left"
                         >
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent glow-accent transition-colors hover:text-primary">Tap the Neural Core</h2>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow transition-colors hover:text-accent">Tap the Neural Core</h2>
                             <p className="text-muted-foreground text-base sm:text-lg md:text-xl">
                                 The market never sleeps. Neither does Shadow. Connect to the neural core for live, AI-powered sentiment analysis. Select a token, initiate the scan, and receive actionable intelligence sourced directly from the chain's consciousness.
                             </p>

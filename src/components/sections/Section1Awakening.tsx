@@ -3,6 +3,9 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Typewriter from "@/components/common/Typewriter";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Link from 'next/link';
+import { Rocket, KeyRound } from 'lucide-react';
 
 const ShadowLogo = () => (
     <motion.pre
@@ -53,6 +56,26 @@ const Section1Awakening = () => {
                             pause={5000}
                         />
                      </motion.div>
+                </motion.div>
+
+                <motion.div
+                    className="mt-12 flex flex-col sm:flex-row items-center gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 4, duration: 0.8 }}
+                >
+                    <Button asChild size="lg" className="btn-shine glow">
+                        <Link href="#claim-key">
+                            <KeyRound />
+                            Join Public Offering
+                        </Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="glow">
+                         <Link href="#airdrop">
+                            <Rocket />
+                            Airdrop Console
+                        </Link>
+                    </Button>
                 </motion.div>
             </div>
         </AnimatedSection>

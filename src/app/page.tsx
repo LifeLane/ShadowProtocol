@@ -12,6 +12,7 @@ import Section6Roadmap from "@/components/sections/Section6Roadmap";
 import Section7Manifest from "@/components/sections/Section7Manifest";
 import Section8Airdrop from "@/components/sections/Section8Airdrop";
 import Footer from "@/components/common/Footer";
+import Header from "@/components/common/Header";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -40,8 +41,8 @@ export default function Home() {
 
   return (
     <>
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-50" style={{ scaleX }} />
-      <div className="flex flex-col items-center text-foreground/80">
+      <Header scaleX={scaleX} />
+      <main className="flex flex-col items-center text-foreground/80 pt-20 pb-20">
         <Section1Awakening />
         <SectionAISignal />
         <Section2Overview />
@@ -51,8 +52,8 @@ export default function Home() {
         <Section6Roadmap />
         <Section7Manifest />
         <Section8Airdrop />
-        <Footer />
-      </div>
+      </main>
+      <Footer className="sticky bottom-0 z-20" />
     </>
   );
 }

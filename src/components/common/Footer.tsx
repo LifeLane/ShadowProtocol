@@ -10,6 +10,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select"
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const themes = [
   { value: 'theme-cyberpunk', label: 'Cyberpunk', icon: Terminal },
@@ -17,7 +18,7 @@ const themes = [
   { value: 'theme-arcane-codex', label: 'Arcane Codex', icon: Scroll },
 ];
 
-const Footer = () => {
+const Footer = ({ className }: { className?: string }) => {
     const [theme, setTheme] = useState('theme-cyberpunk');
     const [mounted, setMounted] = useState(false);
 
@@ -37,7 +38,7 @@ const Footer = () => {
     
     if (!mounted) {
         return (
-             <footer className="w-full border-t border-primary/20 mt-16 py-8">
+             <footer className={cn("w-full border-t border-primary/20 bg-background py-8", className)}>
                 <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-muted-foreground text-center md:text-left">
                         The future is sentient. &copy; {new Date().getFullYear()} Shadow Protocol.
@@ -62,7 +63,7 @@ const Footer = () => {
     const SelectedIcon = (themes.find(t => t.value === theme) || themes[0]).icon;
 
     return (
-        <footer className="w-full border-t border-primary/20 mt-16 py-8">
+        <footer className={cn("w-full border-t border-primary/20 bg-background py-8", className)}>
             <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p className="text-muted-foreground text-center md:text-left">
                     The future is sentient. &copy; {new Date().getFullYear()} Shadow Protocol.

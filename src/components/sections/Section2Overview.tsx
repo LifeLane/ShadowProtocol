@@ -16,7 +16,7 @@ const Section2Overview = () => {
 
     return (
         <AnimatedSection id="token-overview" className="bg-pulse-grid-pattern">
-            <div className="z-10 w-full max-w-6xl">
+            <div className="w-full max-w-6xl">
                 <Terminal title="SHADOW_SPEC.md" className="max-w-6xl">
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}

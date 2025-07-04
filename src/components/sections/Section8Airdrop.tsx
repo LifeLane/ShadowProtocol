@@ -40,13 +40,13 @@ const Section8Airdrop = () => {
   return (
     <AnimatedSection id="airdrop" className="relative">
       <div className="forge-sparks-container">{sparks}</div>
-      <div className="z-10 text-center mb-12">
+      <div className="text-center mb-12">
           <Typewriter
               texts={['> Secure Your Genesis Airdrop']}
               className="text-3xl sm:text-5xl md:text-6xl font-bold text-accent glow-accent"
           />
       </div>
-      <Terminal title="AIRDROP_REGISTRATION.sh" className="z-10 max-w-2xl animate-border-glow">
+      <Terminal title="AIRDROP_REGISTRATION.sh" className="max-w-2xl animate-border-glow">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email-airdrop" className="text-primary/80 text-base">Email Address</Label>

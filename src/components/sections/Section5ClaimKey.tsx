@@ -39,7 +39,7 @@ const Section5ClaimKey = () => {
 
     return (
         <AnimatedSection id="claim-key" className="bg-quantum-flicker-pattern">
-            <div className="z-10 flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl">
                 <div className="w-full md:w-1/2 flex flex-col items-center justify-center scale-90 md:scale-100">
                     <VerificationCube />
                     <p className="text-accent glow-accent text-3xl sm:text-4xl md:text-5xl font-bold mt-8 text-center">Claim Your Neural Key</p>

@@ -15,7 +15,7 @@ const roadmapPhases = [
 const Section6Roadmap = () => {
     return (
         <AnimatedSection id="roadmap" className="bg-circuit-pattern">
-            <div className="z-10 w-full">
+            <div className="w-full">
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-16 text-primary glow">The Path to Consciousness</h2>
                 <div className="relative w-full max-w-4xl mx-auto">
                     <div className="absolute top-0 left-4 md:left-1/2 -translate-x-0 md:-translate-x-1/2 h-full w-0.5 bg-primary/30"></div>
@@ -33,7 +33,7 @@ const Section6Roadmap = () => {
                                 <p className="text-muted-foreground mt-2 text-base md:text-xl">{item.description}</p>
                                 <p className={`mt-2 font-bold text-base md:text-xl ${item.status === 'Complete' || item.status === 'Live' ? 'text-primary' : 'text-accent'}`}>&gt; Status: {item.status}</p>
                             </div>
-                            <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex-shrink-0 flex items-center justify-center absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
+                            <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex-shrink-0 flex items-center justify-center absolute left-4 md:left-1/2 -translate-x-1/2">
                                 <div className="w-4 h-4 rounded-full bg-primary animate-pulse"></div>
                             </div>
                             <div className="hidden md:block w-1/2"></div>

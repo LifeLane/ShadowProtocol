@@ -1,41 +1,20 @@
 
 "use client";
 
-import { useState } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
-import Terminal from "@/components/common/Terminal";
 import Typewriter from "@/components/common/Typewriter";
-import { Button } from "@/components/ui/button";
-import { generateBtcEthInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2, BrainCircuit, ShieldCheck, Code, Globe, FlaskConical, Box, Lock } from "lucide-react";
+import { BrainCircuit, ShieldCheck, Code, Globe, FlaskConical, Box, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Section3Ecosystem = () => {
-    const [insight, setInsight] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleGenerateInsight = async () => {
-        setIsLoading(true);
-        setInsight("");
-        try {
-            const result = await generateBtcEthInsight({ btcPrice: 65000, ethPrice: 3500 });
-            setInsight(result.insight);
-        } catch (error) {
-            console.error(error);
-            setInsight("Error: Could not fetch insight from the neural core.");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     const modules = [
-        { icon: BrainCircuit, title: "AI Signal Terminal", description: "Live BTC/ETH analysis powered by our on-chain intelligence core.", status: 'early-access' },
-        { icon: Code, title: "AI Solidity Console", description: "Generate, test, and audit smart contracts with AI-powered assistance.", status: 'early-access' },
-        { icon: ShieldCheck, title: "Self-Custody Chain", description: "A dedicated, high-security side-chain for ultra-safe asset management.", status: 'coming-soon' },
+        { icon: Code, title: "AI Solidity Console", description: "Generate, test, and audit smart contracts using AI-powered assistance.", status: 'early-access' },
+        { icon: ShieldCheck, title: "Self-Custody Chain", description: "A high-security side-chain for ultra-safe asset and data management.", status: 'coming-soon' },
         { icon: Globe, title: "DeFi & DAO Layers", description: "A full suite of tools for decentralized finance and autonomous governance.", status: 'coming-soon' },
         { icon: FlaskConical, title: "Token Creation Factory", description: "Easily create and launch new tokens within the Shadow ecosystem.", status: 'coming-soon' },
-        { icon: Box, title: "Governance Module", description: "Vote on protocol upgrades and manage treasury with your SHADOW.", status: 'coming-soon' },
+        { icon: Box, title: "Governance Module", description: "Vote on protocol upgrades and manage the treasury with your SHADOW.", status: 'coming-soon' },
+        { icon: BrainCircuit, title: "AI Oracle Network", description: "Connect smart contracts to external AI models and data sources securely.", status: 'coming-soon' },
     ];
 
     return (
@@ -53,7 +32,7 @@ const Section3Ecosystem = () => {
                         <motion.div
                             key={module.title}
                             className={cn(
-                                "group card-animated-border p-6 rounded-lg bg-black/40 border border-primary/20 backdrop-blur-sm flex flex-col items-start transition-all relative overflow-hidden",
+                                "group card-animated-border p-6 rounded-lg bg-black/40 border border-primary/20 backdrop-blur-sm flex flex-col items-start transition-all relative overflow-hidden h-full",
                                 module.status === 'early-access' ? "" : "grayscale opacity-70 hover:grayscale-0 hover:opacity-100"
                             )}
                             initial={{ opacity: 0, y: 50 }}
@@ -81,36 +60,9 @@ const Section3Ecosystem = () => {
                                     </div>
                                 )}
                             </div>
-                            <p className="text-muted-foreground text-sm sm:text-base flex-grow group-hover:text-primary-foreground transition-colors">{module.description}</p>
+                            <p className="text-muted-foreground text-sm sm:text-base flex-grow transition-colors group-hover:text-primary-foreground">{module.description}</p>
                         </motion.div>
                     ))}
-                    
-                    <div className="md:col-span-2 lg:col-span-3 rounded-lg mt-8">
-                        <Terminal title="AI Signal Feed" className="max-w-none w-full h-full bg-black/40 backdrop-blur-sm">
-                            <div className="flex flex-col items-start gap-6">
-                                <div className="space-y-2">
-                                    <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-accent glow-accent transition-colors hover:text-primary">Activate On-Chain Intelligence</h4>
-                                    <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-                                    The Signal Feed is a direct interface to the SHADOW neural core. It analyzes real-time blockchain data and market sentiment to generate actionable insights. Use SHADOW tokens to run a scan and receive an AI-generated analysis of current BTC/ETH trends. This powerful tool provides a strategic advantage, allowing you to navigate market volatility with data-driven confidence, turning raw information into intelligent action.
-                                    </p>
-                                </div>
-                                <div className="w-full border-t border-primary/20 pt-6">
-                                    <div className="flex flex-col items-start gap-4">
-                                        <Button onClick={handleGenerateInsight} disabled={isLoading} size="lg" className="btn-shine">
-                                            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                                            Initiate Signal Scan
-                                        </Button>
-                                        {isLoading && <p className="text-accent animate-pulse">Scanning market signals...</p>}
-                                        {insight && (
-                                            <div className="text-primary whitespace-pre-wrap text-sm sm:text-base md:text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20 mt-4">
-                                                <Typewriter texts={[insight]} speed={10} />
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </Terminal>
-                    </div>
                 </div>
             </div>
         </AnimatedSection>

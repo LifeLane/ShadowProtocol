@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Section1Awakening from "@/components/sections/Section1Awakening";
+import SectionAISignal from "@/components/sections/SectionAISignal";
 import Section2Overview from "@/components/sections/Section2Overview";
 import Section3Ecosystem from "@/components/sections/Section3Ecosystem";
 import Section4Tokenomics from "@/components/sections/Section4Tokenomics";
@@ -42,6 +43,7 @@ export default function Home() {
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-50" style={{ scaleX }} />
       <div className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
+        <SectionAISignal />
         <Section2Overview />
         <Section3Ecosystem />
         <Section4Tokenomics />

@@ -27,7 +27,7 @@ const Section2Overview = () => {
                     >
                         <div className="border border-dashed border-primary/50 p-4 md:p-6 rounded-lg max-w-lg mx-auto">
                             <pre className="text-left font-code text-base md:text-lg whitespace-pre-wrap">
-                                <span className="text-primary glow font-bold text-lg md:text-xl">SHADOW COIN</span>
+                                <span className="text-primary glow font-bold text-lg md:text-xl transition-colors hover:text-accent">SHADOW COIN</span>
                                 {`
 Ticker:    SHADOW
 Supply:    1,000,000,000
@@ -46,13 +46,13 @@ Utility:   Fuel for On-Chain Mind`}
                         {features.map((item, index) => (
                             <motion.div
                                 key={index}
-                                className="p-4 rounded-md bg-card transition-all text-left card-animated-border"
+                                className="group p-4 rounded-md bg-card transition-all text-left card-animated-border"
                                 variants={{
                                     hidden: { opacity: 0, y: 20 },
                                     visible: { opacity: 1, y: 0 }
                                 }}
                             >
-                                <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors whitespace-pre-wrap hover:text-accent">{item.title}</h3>
+                                <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors whitespace-pre-wrap group-hover:text-accent">{item.title}</h3>
                                 <p className="text-muted-foreground mt-2 text-base md:text-lg whitespace-pre-wrap">{item.description}</p>
                             </motion.div>
                         ))}

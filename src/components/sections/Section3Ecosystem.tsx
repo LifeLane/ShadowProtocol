@@ -73,7 +73,7 @@ const Section3Ecosystem = () => {
                             <div className="flex items-center justify-between w-full mb-4">
                                 <div className="flex items-center gap-4">
                                     <module.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-                                    <h3 className="text-2xl md:text-3xl font-bold text-primary glow transition-colors hover:text-accent">{module.title}</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-primary glow transition-colors group-hover:text-accent">{module.title}</h3>
                                 </div>
                                 {module.status === 'early-access' && (
                                     <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">

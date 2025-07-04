@@ -2,12 +2,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Loader2, TrendingUp, TrendingDown, Minus, Gamepad2 } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -164,6 +165,18 @@ const SectionAISignal = () => {
                                             <p className="text-muted-foreground whitespace-pre-wrap text-lg">{insight.insight}</p>
                                         </CardContent>
                                     </Card>
+                                     <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.3 }}
+                                    >
+                                        <Button asChild size="lg" className="btn-shine glow animate-border-glow">
+                                            <Link href="https://www.socialnot.com" target="_blank" rel="noopener noreferrer">
+                                                <Gamepad2 className="mr-2" />
+                                                Play the Genesis Game
+                                            </Link>
+                                        </Button>
+                                    </motion.div>
                                 </motion.div>
                             )}
                         </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll } from 'lucide-react';
+import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
@@ -26,6 +26,8 @@ const themes = [
   { value: 'theme-cyberpunk', label: 'Cyberpunk', icon: Terminal },
   { value: 'theme-solar-flare', label: 'Solar Flare', icon: Sun },
   { value: 'theme-arcane-codex', label: 'Arcane Codex', icon: Scroll },
+  { value: 'theme-neon-noir', label: 'Neon Noir', icon: Palette },
+  { value: 'theme-glacial-circuit', label: 'Glacial Circuit', icon: SunSnow },
 ];
 
 type HeaderProps = {
@@ -45,9 +47,14 @@ const Header = ({ scaleX }: HeaderProps) => {
 
     useEffect(() => {
         if (mounted) {
-            document.documentElement.classList.remove('theme-cyberpunk', 'theme-solar-flare', 'theme-arcane-codex');
+            document.documentElement.classList.remove('theme-cyberpunk', 'theme-solar-flare', 'theme-arcane-codex', 'theme-neon-noir', 'theme-glacial-circuit');
             document.documentElement.classList.add(theme);
             localStorage.setItem('theme', theme);
+            if (theme === 'theme-glacial-circuit') {
+              document.documentElement.classList.remove('dark');
+            } else {
+              document.documentElement.classList.add('dark');
+            }
         }
     }, [theme, mounted]);
     

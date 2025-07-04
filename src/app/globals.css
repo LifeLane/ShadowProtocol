@@ -175,6 +175,60 @@
     --chart-4: 160 70% 40%;
     --chart-5: 240 60% 65%;
   }
+
+  .theme-crimson-cypher {
+    --background: 350 30% 8%;
+    --foreground: 350 10% 95%;
+    --card: 350 30% 8%;
+    --card-foreground: 350 10% 95%;
+    --popover: 350 30% 8%;
+    --popover-foreground: 350 10% 95%;
+    --primary: 350 80% 55%;
+    --primary-foreground: 350 80% 10%;
+    --secondary: 350 15% 15%;
+    --secondary-foreground: 350 10% 95%;
+    --muted: 350 15% 25%;
+    --muted-foreground: 350 10% 75%;
+    --accent: 240 10% 70%;
+    --accent-foreground: 240 10% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 350 80% 25%;
+    --input: 350 80% 25%;
+    --ring: 350 80% 55%;
+    --chart-1: 350 80% 55%;
+    --chart-2: 0 90% 60%;
+    --chart-3: 240 10% 70%;
+    --chart-4: 350 60% 45%;
+    --chart-5: 0 0% 80%;
+  }
+
+  .theme-bio-forge {
+    --background: 90 20% 8%;
+    --foreground: 90 10% 90%;
+    --card: 90 20% 8%;
+    --card-foreground: 90 10% 90%;
+    --popover: 90 20% 8%;
+    --popover-foreground: 90 10% 90%;
+    --primary: 100 70% 50%;
+    --primary-foreground: 100 70% 10%;
+    --secondary: 80 15% 15%;
+    --secondary-foreground: 90 10% 90%;
+    --muted: 80 15% 25%;
+    --muted-foreground: 90 10% 70%;
+    --accent: 40 90% 60%;
+    --accent-foreground: 40 90% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 100 70% 25%;
+    --input: 100 70% 25%;
+    --ring: 100 70% 50%;
+    --chart-1: 100 70% 50%;
+    --chart-2: 40 90% 60%;
+    --chart-3: 80 50% 40%;
+    --chart-4: 110 60% 60%;
+    --chart-5: 50 70% 50%;
+  }
 }
 
 @layer base {

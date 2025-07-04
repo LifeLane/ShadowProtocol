@@ -204,7 +204,7 @@
   /* Section 3 & 7: Neural Particle Web / ASCII Constellation (Stars) */
   @keyframes move-twink-back {
       from {background-position:0 0;}
-      to {background-position:-10000px 5000px;}
+      to {background-position:-1000px 500px;}
   }
 
   .bg-starfield::before {
@@ -225,7 +225,7 @@
     height:100%;
     display:block;
     background:transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93irAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAACgAAAAoACs3o2sAAADRSURBVEjH7daxDcAwCARB2f+8tJoUR2gSg2AIi3/BwZFDYe/b948BAC8A/y4A/wHwAIATwBOAE8ATgA/AEYATwBOA/wHwBOAE8ARgA/gBMAJ4AnACGAE8AXwBGAE8AbwAjASeADwBfAG8AJwBPAE8AbwBnASeAZwAvgE8AZwB/gOcAZwBvACEALwBfAGMAF4AfgG8AbwBvAGMAF4A3gDeAN4AXgA+AF4AXgBeAM4AfgB+AAYAbwAXgB+AGMAK8AswAgA/T1wA3zYBpAAAAABJRU5ErkJggg==') repeat top center;
-    animation:move-twink-back 200s linear infinite;
+    animation:move-twink-back 150s linear infinite;
     z-index: -1;
   }
 

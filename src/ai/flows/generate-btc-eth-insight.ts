@@ -38,7 +38,7 @@ const getCryptoPrice = ai.defineTool(
     try {
       const polygonApiKey = process.env.POLYGON_API_KEY;
       if (!polygonApiKey) {
-        throw new Error('Polygon API key is not configured in .env file.');
+        throw new Error('Price data source is temporarily unavailable. Please try again later.');
       }
       const polygonSymbol = `X:${ticker}USD`;
       const response = await fetch(`https://api.polygon.io/v2/aggs/ticker/${polygonSymbol}/prev?adjusted=true&apiKey=${polygonApiKey}`);

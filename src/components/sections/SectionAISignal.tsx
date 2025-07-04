@@ -2,13 +2,12 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Gamepad2, Loader2, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Loader2, TrendingUp, TrendingDown, Minus } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -165,19 +164,6 @@ const SectionAISignal = () => {
                                             <p className="text-muted-foreground whitespace-pre-wrap text-lg">{insight.insight}</p>
                                         </CardContent>
                                     </Card>
-
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, delay: 0.3 }}
-                                    >
-                                        <Button asChild size="lg" className="btn-shine glow">
-                                            <Link href="#genesis-game">
-                                                <Gamepad2 className="mr-2" />
-                                                Play the Genesis Game
-                                            </Link>
-                                        </Button>
-                                    </motion.div>
                                 </motion.div>
                             )}
                         </div>

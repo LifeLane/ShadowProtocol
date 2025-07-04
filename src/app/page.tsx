@@ -53,7 +53,7 @@ export default function Home() {
         <Section7Manifest />
         <Section8Airdrop />
       </main>
-      <Footer className="sticky bottom-0 z-20" />
+      <Footer />
     </>
   );
 }

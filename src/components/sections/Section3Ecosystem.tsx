@@ -53,8 +53,8 @@ const Section3Ecosystem = () => {
                         <motion.div
                             key={module.title}
                             className={cn(
-                                "p-6 rounded-lg bg-card flex flex-col items-start transition-all relative overflow-hidden card-animated-border",
-                                module.status === 'early-access' ? "" : "grayscale opacity-70"
+                                "group p-6 rounded-lg bg-card flex flex-col items-start transition-all relative overflow-hidden card-animated-border",
+                                module.status === 'early-access' ? "" : "grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100"
                             )}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ const Section3Ecosystem = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             {module.status === 'coming-soon' && (
-                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20">
+                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20 transition-opacity duration-300 group-hover:opacity-0">
                                     <div className="text-center">
                                         <Lock className="w-12 h-12 text-accent mx-auto mb-2" />
                                         <p className="text-xl font-bold text-accent glow-accent">COMING SOON</p>

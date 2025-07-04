@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useState } from 'react';
@@ -40,7 +41,7 @@ const Section8Airdrop = () => {
   return (
     <AnimatedSection id="airdrop" className="relative">
       <div className="forge-sparks-container">{sparks}</div>
-      <div className="text-center mb-8 md:mb-12">
+      <div className="text-center mb-12 md:mb-16">
           <Typewriter
               texts={['> Secure Your Genesis Airdrop']}
               className="text-3xl sm:text-4xl md:text-6xl font-bold text-accent glow-accent"

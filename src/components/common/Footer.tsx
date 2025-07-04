@@ -1,15 +1,21 @@
+
 "use client"
 
-import { Youtube, Twitter, Send, Palette } from 'lucide-react';
+import { Youtube, Twitter, Send, Palette, Terminal, Sun, Scroll } from 'lucide-react';
 import Link from 'next/link';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select"
 import { useEffect, useState } from 'react';
+
+const themes = [
+  { value: 'theme-cyberpunk', label: 'Cyberpunk', icon: Terminal },
+  { value: 'theme-solar-flare', label: 'Solar Flare', icon: Sun },
+  { value: 'theme-arcane-codex', label: 'Arcane Codex', icon: Scroll },
+];
 
 const Footer = () => {
     const [theme, setTheme] = useState('theme-cyberpunk');
@@ -52,6 +58,8 @@ const Footer = () => {
             </footer>
         );
     }
+    
+    const SelectedIcon = (themes.find(t => t.value === theme) || themes[0]).icon;
 
     return (
         <footer className="w-full border-t border-primary/20 mt-16 py-8">
@@ -62,14 +70,19 @@ const Footer = () => {
                 <div className="flex items-center gap-6">
                      <div className="flex items-center gap-2 text-muted-foreground">
                         <Palette className="w-5 h-5" />
-                        <Select onValueChange={setTheme} defaultValue={theme}>
-                          <SelectTrigger className="w-[180px] bg-transparent border-primary/20">
-                            <SelectValue placeholder="Select Theme" />
+                        <Select onValueChange={setTheme} value={theme}>
+                          <SelectTrigger className="w-auto bg-transparent border-primary/20">
+                            <SelectedIcon className="w-5 h-5" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="theme-cyberpunk">Cyberpunk</SelectItem>
-                            <SelectItem value="theme-solar-flare">Solar Flare</SelectItem>
-                            <SelectItem value="theme-arcane-codex">Arcane Codex</SelectItem>
+                            {themes.map((t) => (
+                              <SelectItem key={t.value} value={t.value}>
+                                <div className="flex items-center gap-2">
+                                  <t.icon className="w-5 h-5" />
+                                  <span>{t.label}</span>
+                                </div>
+                              </SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                     </div>

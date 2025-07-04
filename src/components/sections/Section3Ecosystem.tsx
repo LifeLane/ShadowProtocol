@@ -53,7 +53,7 @@ const Section3Ecosystem = () => {
                         key={module.title}
                         className={cn(
                             "border border-primary/20 p-6 rounded-lg bg-black/20 flex flex-col items-start transition-all relative overflow-hidden",
-                            module.status === 'early-access' ? "card-hover-glow hover:border-primary/50 hover:bg-primary/10" : "grayscale opacity-70"
+                            module.status === 'early-access' ? "" : "grayscale opacity-70"
                         )}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ const Section3Ecosystem = () => {
                     </motion.div>
                 ))}
                 
-                <div className="md:col-span-2 lg:col-span-3 rounded-lg card-hover-glow">
+                <div className="md:col-span-2 lg:col-span-3 rounded-lg">
                     <Terminal title="AI Signal Feed" className="max-w-none w-full h-full">
                         <div className="flex flex-col items-start gap-6">
                             <div>

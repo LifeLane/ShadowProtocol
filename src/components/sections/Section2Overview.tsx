@@ -45,7 +45,7 @@ Utility:   Fuel for On-Chain Mind`}
                     {features.map((item, index) => (
                         <motion.div
                             key={index}
-                            className="p-4 border border-primary/20 rounded-md bg-black/20 hover:bg-primary/10 transition-all cursor-pointer group text-left card-hover-glow"
+                            className="p-4 border border-primary/20 rounded-md bg-black/20 transition-all cursor-pointer group text-left"
                             variants={{
                                 hidden: { opacity: 0, y: 20 },
                                 visible: { opacity: 1, y: 0 }

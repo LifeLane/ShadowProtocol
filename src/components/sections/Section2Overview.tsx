@@ -46,7 +46,7 @@ Utility:   Fuel for On-Chain Mind`}
                         {features.map((item, index) => (
                             <motion.div
                                 key={index}
-                                className="group p-4 rounded-md bg-card transition-all text-left card-animated-border"
+                                className="group p-4 rounded-md bg-primary/5 border border-primary/10 transition-all text-left"
                                 variants={{
                                     hidden: { opacity: 0, y: 20 },
                                     visible: { opacity: 1, y: 0 }

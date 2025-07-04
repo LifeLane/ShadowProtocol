@@ -3,11 +3,10 @@
 import { useState } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
-import Typewriter from "@/components/common/Typewriter";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import { Loader2, TrendingUp, TrendingDown, Minus } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -15,6 +14,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useToast } from "@/hooks/use-toast";
+
+
+type InsightResult = {
+    keyFinding: string;
+    insight: string;
+    sentiment: 'BULLISH' | 'BEARISH' | 'NEUTRAL';
+    shadowScore: number;
+};
 
 const cryptoOptions = [
     { value: "BTC", label: "Bitcoin (BTC)" },
@@ -29,26 +39,47 @@ const cryptoOptions = [
 
 
 const SectionAISignal = () => {
-    const [insight, setInsight] = useState("");
+    const [insight, setInsight] = useState<InsightResult | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [symbol, setSymbol] = useState("BTC");
+    const { toast } = useToast();
 
     const handleGenerateInsight = async () => {
         if (!symbol) {
-            setInsight("Please select a token symbol.");
+            toast({
+                variant: 'destructive',
+                title: "Selection Required",
+                description: "Please select a token symbol.",
+            })
             return;
         }
         setIsLoading(true);
-        setInsight("");
+        setInsight(null);
+        setError(null);
         try {
             const result = await generateCryptoInsight({ symbol });
-            setInsight(result.insight);
-        } catch (error) {
-            console.error(error);
-            const errorMessage = error instanceof Error ? error.message.replace(/^Error: /i, '') : "Could not fetch insight from the neural core.";
-            setInsight(`Error: ${errorMessage}`);
+            setInsight(result);
+        } catch (e) {
+            const errorMessage = e instanceof Error ? e.message.replace(/^Error: /i, '') : "Could not fetch insight from the neural core.";
+            setError(errorMessage);
+            console.error(e);
         } finally {
             setIsLoading(false);
+        }
+    };
+    
+    const getScoreColor = (score: number) => {
+        if (score > 30) return 'text-primary';
+        if (score < -30) return 'text-destructive';
+        return 'text-accent';
+    };
+
+    const getSentimentInfo = (sentiment: InsightResult['sentiment']) => {
+        switch (sentiment) {
+            case 'BULLISH': return { icon: <TrendingUp className="w-6 h-6 mr-3 text-primary" /> };
+            case 'BEARISH': return { icon: <TrendingDown className="w-6 h-6 mr-3 text-destructive" /> };
+            default: return { icon: <Minus className="w-6 h-6 mr-3 text-accent" /> };
         }
     };
 
@@ -96,12 +127,42 @@ const SectionAISignal = () => {
                         </motion.div>
                     </div>
 
-                    <div className="mt-8 min-h-[8rem] w-full border-t border-primary/20 pt-8">
-                        {isLoading && <p className="text-accent animate-pulse text-center">Scanning market signals...</p>}
+                    <div className="mt-8 min-h-[14rem] w-full border-t border-primary/20 pt-8 flex items-center justify-center">
+                        {isLoading && <p className="text-accent animate-pulse text-center text-xl">Scanning market signals...</p>}
+                        {error && (
+                            <Alert variant="destructive" className="max-w-2xl bg-destructive/10 border-destructive/30">
+                                <AlertTitle>Signal Interrupted</AlertTitle>
+                                <AlertDescription>{error}</AlertDescription>
+                            </Alert>
+                        )}
                         {insight && (
-                            <div className="text-primary whitespace-pre-wrap text-sm sm:text-base md:text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20 max-w-3xl mx-auto">
-                                <Typewriter texts={[insight]} speed={10} pause={5000}/>
-                            </div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full max-w-3xl"
+                            >
+                                <Card className="bg-black/20 border-primary/30 card-animated-border">
+                                    <CardHeader>
+                                        <CardTitle className="text-accent glow-accent flex items-center text-2xl">
+                                            {getSentimentInfo(insight.sentiment).icon}
+                                            {insight.keyFinding}
+                                        </CardTitle>
+                                        <div className="flex flex-col gap-2 pt-4">
+                                            <div className="flex justify-between items-center">
+                                                <span className="text-muted-foreground font-bold">Shadow Score</span>
+                                                <span className={`font-bold text-2xl ${getScoreColor(insight.shadowScore)}`}>{insight.shadowScore}</span>
+                                            </div>
+                                            <div className="w-full h-2 rounded-full bg-gradient-to-r from-destructive via-accent to-primary relative">
+                                                <div className="absolute top-0 h-full w-1 bg-white/80 rounded-full shadow-lg" style={{ left: `calc(${((insight.shadowScore + 100) / 200) * 100}% - 2px)` }}></div>
+                                            </div>
+                                        </div>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-muted-foreground whitespace-pre-wrap text-lg">{insight.insight}</p>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
                         )}
                     </div>
                 </Terminal>

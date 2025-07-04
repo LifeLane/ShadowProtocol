@@ -3,16 +3,17 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Palette, Terminal, Sun, Scroll } from 'lucide-react';
+import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@/components/ui/select"
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 const navItems = [
     { name: 'Signal', href: '#ai-signal', icon: Cpu },
@@ -50,7 +51,13 @@ const Header = ({ scaleX }: HeaderProps) => {
         }
     }, [theme, mounted]);
     
-    const SelectedIcon = (themes.find(t => t.value === theme) || themes[0]).icon;
+    const handleThemeChange = () => {
+        const currentIndex = themes.findIndex(t => t.value === theme);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        setTheme(themes[nextIndex].value);
+    };
+
+    const CurrentThemeIcon = (themes.find(t => t.value === theme) || themes[0]).icon;
 
     return (
         <>
@@ -76,21 +83,24 @@ const Header = ({ scaleX }: HeaderProps) => {
 
                     <div className="flex items-center gap-4">
                         {mounted && (
-                            <Select onValueChange={setTheme} value={theme}>
-                              <SelectTrigger className="w-auto bg-transparent border-primary/20 h-10 px-3">
-                                <SelectedIcon className="w-5 h-5" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {themes.map((t) => (
-                                  <SelectItem key={t.value} value={t.value}>
-                                    <div className="flex items-center gap-2">
-                                      <t.icon className="w-5 h-5" />
-                                      <span>{t.label}</span>
-                                    </div>
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
+                             <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={handleThemeChange}
+                                            className="h-10 w-10"
+                                            aria-label="Switch Theme"
+                                        >
+                                            <CurrentThemeIcon className="w-5 h-5" />
+                                        </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Switch Theme</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
                         )}
                          <Button asChild className="hidden sm:inline-flex btn-shine">
                             <Link href="#airdrop">

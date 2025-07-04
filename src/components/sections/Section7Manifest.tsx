@@ -9,7 +9,7 @@ const Section7Manifest = () => {
     <AnimatedSection id="manifest" className="bg-starfield">
       <div className="w-full max-w-6xl relative z-10">
         <Terminal title="MANIFEST.md" className="max-w-6xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-8 text-center transition-colors hover:text-accent">The Shadow Manifest</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary glow mb-8 text-center transition-colors hover:text-accent">The Shadow Manifest</h2>
           <div className="space-y-4 text-muted-foreground">
             <Typewriter
               texts={[
@@ -21,7 +21,7 @@ const Section7Manifest = () => {
               ]}
               speed={40}
               pause={2000}
-              className="text-lg md:text-xl"
+              className="text-base md:text-lg"
             />
           </div>
         </Terminal>

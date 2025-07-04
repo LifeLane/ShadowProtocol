@@ -43,8 +43,8 @@ const Section3Ecosystem = () => {
             <div className="w-full max-w-6xl relative z-10">
                 <div className="text-center mb-12">
                     <Typewriter
-                        texts={['> Shadow is not a protocol.', '> It’s a multi-intelligence infrastructure.']}
-                        className="text-3xl sm:text-5xl md:text-6xl font-bold transition-colors text-accent glow-accent hover:text-primary"
+                        texts={['> Shadow is not just a protocol.', '> It’s a multi-intelligence', '> infrastructure.']}
+                        className="text-3xl sm:text-4xl md:text-6xl font-bold transition-colors text-accent glow-accent hover:text-primary"
                     />
                 </div>
 
@@ -63,17 +63,17 @@ const Section3Ecosystem = () => {
                         >
                             {module.status === 'coming-soon' && (
                                 <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20 transition-opacity duration-300 opacity-100 group-hover:opacity-0">
-                                    <div className="text-center">
-                                        <Lock className="w-12 h-12 text-accent mx-auto mb-2" />
-                                        <p className="text-xl font-bold text-accent glow-accent">COMING SOON</p>
+                                    <div className="text-center p-4">
+                                        <Lock className="w-8 h-8 sm:w-12 sm:h-12 text-accent mx-auto mb-2" />
+                                        <p className="text-lg sm:text-xl font-bold text-accent glow-accent">COMING SOON</p>
                                     </div>
                                 </div>
                             )}
 
                             <div className="flex items-center justify-between w-full mb-4">
                                 <div className="flex items-center gap-4">
-                                    <module.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-                                    <h3 className="text-2xl md:text-3xl font-bold text-primary glow transition-colors group-hover:text-primary-foreground">{module.title}</h3>
+                                    <module.icon className="w-8 h-8 sm:w-10 md:w-12 text-primary flex-shrink-0" />
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary glow transition-colors group-hover:text-primary-foreground">{module.title}</h3>
                                 </div>
                                 {module.status === 'early-access' && (
                                     <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
@@ -81,16 +81,16 @@ const Section3Ecosystem = () => {
                                     </div>
                                 )}
                             </div>
-                            <p className="text-muted-foreground text-base md:text-lg flex-grow group-hover:text-primary-foreground transition-colors">{module.description}</p>
+                            <p className="text-muted-foreground text-sm sm:text-base flex-grow group-hover:text-primary-foreground transition-colors">{module.description}</p>
                         </motion.div>
                     ))}
                     
                     <div className="md:col-span-2 lg:col-span-3 rounded-lg mt-8">
-                        <Terminal title="AI Signal Feed" className="max-w-none w-full h-full bg-card/80 backdrop-blur-sm">
+                        <Terminal title="AI Signal Feed" className="max-w-none w-full h-full bg-black/40 backdrop-blur-sm">
                             <div className="flex flex-col items-start gap-6">
-                                <div>
-                                    <h4 className="text-xl md:text-2xl font-bold text-accent glow-accent mb-2 transition-colors hover:text-primary">Activate On-Chain Intelligence</h4>
-                                    <p className="text-muted-foreground text-base md:text-lg">
+                                <div className="space-y-2">
+                                    <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-accent glow-accent transition-colors hover:text-primary">Activate On-Chain Intelligence</h4>
+                                    <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
                                     The Signal Feed is a direct interface to the SHADOW neural core. It analyzes real-time blockchain data and market sentiment to generate actionable insights. Use SHADOW tokens to run a scan and receive an AI-generated analysis of current BTC/ETH trends. This powerful tool provides a strategic advantage, allowing you to navigate market volatility with data-driven confidence, turning raw information into intelligent action.
                                     </p>
                                 </div>
@@ -102,7 +102,7 @@ const Section3Ecosystem = () => {
                                         </Button>
                                         {isLoading && <p className="text-accent animate-pulse">Scanning market signals...</p>}
                                         {insight && (
-                                            <div className="text-primary whitespace-pre-wrap text-base md:text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20 mt-4">
+                                            <div className="text-primary whitespace-pre-wrap text-sm sm:text-base md:text-lg w-full bg-black/20 p-4 rounded-md border border-primary/20 mt-4">
                                                 <Typewriter texts={[insight]} speed={10} />
                                             </div>
                                         )}

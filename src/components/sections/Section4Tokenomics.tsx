@@ -37,7 +37,7 @@ const Section4Tokenomics = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 font-code text-base md:text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 font-code text-sm sm:text-base">
                     {allocations.map((item, index) => (
                          <motion.div
                             key={index}

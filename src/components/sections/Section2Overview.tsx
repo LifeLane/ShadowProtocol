@@ -17,7 +17,7 @@ const Section2Overview = () => {
     return (
         <AnimatedSection id="token-overview" className="bg-pulse-grid-pattern">
             <div className="w-full max-w-6xl">
-                <Terminal title="SHADOW_SPEC.md" className="max-w-6xl bg-card/80 backdrop-blur-sm">
+                <Terminal title="SHADOW_SPEC.md" className="max-w-6xl bg-black/40 backdrop-blur-sm">
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
@@ -25,8 +25,8 @@ const Section2Overview = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="mb-8"
                     >
-                        <div className="border border-dashed border-primary/50 p-4 md:p-6 rounded-lg max-w-lg mx-auto">
-                            <pre className="text-left font-code text-base md:text-lg whitespace-pre-wrap">
+                        <div className="border border-dashed border-primary/50 p-4 rounded-lg max-w-lg mx-auto">
+                            <pre className="text-left font-code text-sm md:text-base whitespace-pre-wrap">
                                 <span className="text-primary glow font-bold text-lg md:text-xl transition-colors hover:text-accent">SHADOW COIN</span>
                                 {`
 Ticker:    SHADOW
@@ -52,8 +52,8 @@ Utility:   Fuel for On-Chain Mind`}
                                     visible: { opacity: 1, y: 0 }
                                 }}
                             >
-                                <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors group-hover:text-primary-foreground">{item.title}</h3>
-                                <p className="text-muted-foreground mt-2 text-base md:text-lg group-hover:text-primary-foreground transition-colors">{item.description}</p>
+                                <h3 className="font-bold text-lg md:text-xl text-primary glow transition-colors group-hover:text-primary-foreground">{item.title}</h3>
+                                <p className="text-muted-foreground mt-2 text-sm md:text-base group-hover:text-primary-foreground transition-colors">{item.description}</p>
                             </motion.div>
                         ))}
                     </motion.div>

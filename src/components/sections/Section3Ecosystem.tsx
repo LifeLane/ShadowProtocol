@@ -44,7 +44,7 @@ const Section3Ecosystem = () => {
                 <div className="text-center mb-12">
                     <Typewriter
                         texts={['> Shadow is not a protocol.', '> It’s a multi-intelligence infrastructure.']}
-                        className="text-3xl sm:text-5xl md:text-6xl font-bold text-accent glow-accent"
+                        className="text-3xl sm:text-5xl md:text-6xl font-bold transition-colors text-accent glow-accent hover:text-primary"
                     />
                 </div>
 
@@ -53,7 +53,7 @@ const Section3Ecosystem = () => {
                         <motion.div
                             key={module.title}
                             className={cn(
-                                "group p-6 rounded-lg bg-black/30 border border-primary/20 backdrop-blur-sm flex flex-col items-start transition-all relative overflow-hidden",
+                                "group card-animated-border p-6 rounded-lg bg-black/40 border border-primary/20 backdrop-blur-sm flex flex-col items-start transition-all relative overflow-hidden",
                                 module.status === 'early-access' ? "" : "grayscale opacity-70 hover:grayscale-0 hover:opacity-100"
                             )}
                             initial={{ opacity: 0, y: 50 }}
@@ -86,7 +86,7 @@ const Section3Ecosystem = () => {
                     ))}
                     
                     <div className="md:col-span-2 lg:col-span-3 rounded-lg mt-8">
-                        <Terminal title="AI Signal Feed" className="max-w-none w-full h-full">
+                        <Terminal title="AI Signal Feed" className="max-w-none w-full h-full bg-card/80 backdrop-blur-sm">
                             <div className="flex flex-col items-start gap-6">
                                 <div>
                                     <h4 className="text-xl md:text-2xl font-bold text-accent glow-accent mb-2 transition-colors hover:text-primary">Activate On-Chain Intelligence</h4>

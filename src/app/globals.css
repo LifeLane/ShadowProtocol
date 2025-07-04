@@ -343,19 +343,31 @@
   }
 
   .card-animated-border {
-    border: 1px solid hsl(var(--border));
-    background-color: hsl(var(--card));
-    transition: border-color 0.3s ease;
+    position: relative;
+    z-index: 0;
   }
 
   .card-animated-border:hover {
-    border: 1px solid transparent;
-    background-image: linear-gradient(hsl(var(--card)), hsl(var(--card))), linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--chart-2)), hsl(var(--primary)));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border-color: transparent;
+  }
+  
+  .card-animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: var(--radius);
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--chart-2)), hsl(var(--primary)));
     background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card-animated-border:hover::before {
+    opacity: 1;
     animation: gradient-rotate 4s ease infinite, multicolor-glow-pulse 3s ease-in-out infinite;
   }
+
 
   /* --- CTA Button Shine --- */
   .btn-shine {

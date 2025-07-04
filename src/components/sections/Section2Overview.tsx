@@ -17,7 +17,7 @@ const Section2Overview = () => {
     return (
         <AnimatedSection id="token-overview" className="bg-pulse-grid-pattern">
             <div className="w-full max-w-6xl">
-                <Terminal title="SHADOW_SPEC.md" className="max-w-6xl">
+                <Terminal title="SHADOW_SPEC.md" className="max-w-6xl bg-card/80 backdrop-blur-sm">
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
@@ -46,7 +46,7 @@ Utility:   Fuel for On-Chain Mind`}
                         {features.map((item, index) => (
                             <motion.div
                                 key={index}
-                                className="group p-4 rounded-md bg-primary/5 border border-primary/10 transition-all text-left"
+                                className="group card-animated-border p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-left"
                                 variants={{
                                     hidden: { opacity: 0, y: 20 },
                                     visible: { opacity: 1, y: 0 }

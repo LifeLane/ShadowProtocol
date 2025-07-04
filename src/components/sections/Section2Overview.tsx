@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 
 const Section2Overview = () => {
     const features = [
-        { title: "AI-Powered", description: "Self-optimizing\ntokenomics driven by\non-chain events." },
-        { title: "Decentralized\nGovernance", description: "SHADOW holders form a\ndistributed cognitive\nentity." },
-        { title: "Immutable Logic", description: "Core contract logic\nis non-upgradable,\nensuring trust." },
-        { title: "Utility First", description: "Designed as fuel for\na suite of\ndecentralized AI\ntools." },
-        { title: "Fair Launch", description: "No VC allocation.\nGenesis distribution\nis community-focused." },
-        { title: "Infinite\nScalability", description: "Built on a modular\nframework for future\nexpansion." }
+        { title: "AI-Powered Engine", description: "Self-optimizing tokenomics driven by real-time on-chain events." },
+        { title: "Cognitive Governance", description: "SHADOW holders form a distributed cognitive entity for decisions." },
+        { title: "Immutable Core Logic", description: "Core contract is non-upgradable, permanently ensuring security." },
+        { title: "Utility-First Fuel", description: "SHADOW is designed as fuel for a growing suite of decentralized AI tools." },
+        { title: "Community-Focused Launch", description: "No VC allocation. Genesis distribution is entirely community-focused." },
+        { title: "Infinite Scalability", description: "Built on a modular framework designed for limitless future expansion." }
     ];
 
     return (
@@ -52,8 +52,8 @@ Utility:   Fuel for On-Chain Mind`}
                                     visible: { opacity: 1, y: 0 }
                                 }}
                             >
-                                <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors whitespace-pre-wrap group-hover:text-accent">{item.title}</h3>
-                                <p className="text-muted-foreground mt-2 text-base md:text-lg whitespace-pre-wrap">{item.description}</p>
+                                <h3 className="font-bold text-xl md:text-2xl text-primary glow transition-colors group-hover:text-primary-foreground">{item.title}</h3>
+                                <p className="text-muted-foreground mt-2 text-base md:text-lg group-hover:text-primary-foreground transition-colors">{item.description}</p>
                             </motion.div>
                         ))}
                     </motion.div>

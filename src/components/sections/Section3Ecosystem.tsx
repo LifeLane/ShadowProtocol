@@ -30,12 +30,12 @@ const Section3Ecosystem = () => {
     };
 
     const modules = [
-        { icon: BrainCircuit, title: "Signal Terminal", description: "Live BTC/ETH market analysis powered by on-chain intelligence.", status: 'early-access' },
-        { icon: Code, title: "Solidity Console", description: "Generate and audit smart contracts with AI assistance.", status: 'early-access' },
-        { icon: ShieldCheck, title: "Self-Custody Chain", description: "A dedicated side-chain for ultra-secure asset management.", status: 'coming-soon' },
-        { icon: Globe, title: "DeFi/DAO Layer", description: "Tools for decentralized finance and autonomous governance.", status: 'coming-soon' },
-        { icon: FlaskConical, title: "Token Factory", description: "Create and launch new tokens within the Shadow ecosystem.", status: 'coming-soon' },
-        { icon: Box, title: "Governance Module", description: "Vote on protocol upgrades and treasury allocations with SHADOW.", status: 'coming-soon' },
+        { icon: BrainCircuit, title: "AI Signal Terminal", description: "Live BTC/ETH analysis powered by our on-chain intelligence core.", status: 'early-access' },
+        { icon: Code, title: "AI Solidity Console", description: "Generate, test, and audit smart contracts with AI-powered assistance.", status: 'early-access' },
+        { icon: ShieldCheck, title: "Self-Custody Chain", description: "A dedicated, high-security side-chain for ultra-safe asset management.", status: 'coming-soon' },
+        { icon: Globe, title: "DeFi & DAO Layers", description: "A full suite of tools for decentralized finance and autonomous governance.", status: 'coming-soon' },
+        { icon: FlaskConical, title: "Token Creation Factory", description: "Easily create and launch new tokens within the Shadow ecosystem.", status: 'coming-soon' },
+        { icon: Box, title: "Governance Module", description: "Vote on protocol upgrades and manage treasury with your SHADOW.", status: 'coming-soon' },
     ];
 
     return (
@@ -73,7 +73,7 @@ const Section3Ecosystem = () => {
                             <div className="flex items-center justify-between w-full mb-4">
                                 <div className="flex items-center gap-4">
                                     <module.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-                                    <h3 className="text-2xl md:text-3xl font-bold text-primary glow transition-colors group-hover:text-accent">{module.title}</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-primary glow transition-colors group-hover:text-primary-foreground">{module.title}</h3>
                                 </div>
                                 {module.status === 'early-access' && (
                                     <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
@@ -81,7 +81,7 @@ const Section3Ecosystem = () => {
                                     </div>
                                 )}
                             </div>
-                            <p className="text-muted-foreground text-base md:text-lg flex-grow">{module.description}</p>
+                            <p className="text-muted-foreground text-base md:text-lg flex-grow group-hover:text-primary-foreground transition-colors">{module.description}</p>
                         </motion.div>
                     ))}
                     

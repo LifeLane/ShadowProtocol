@@ -8,27 +8,10 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
-const coinGeckoIds: { [key: string]: string } = {
-  BTC: 'bitcoin',
-  ETH: 'ethereum',
-  SOL: 'solana',
-  ADA: 'cardano',
-  DOGE: 'dogecoin',
-  XRP: 'ripple',
-  DOT: 'polkadot',
-  MATIC: 'matic-network',
-  LINK: 'chainlink',
-  LTC: 'litecoin',
-  BCH: 'bitcoin-cash',
-  XLM: 'stellar',
-  AAVE: 'aave',
-  UNI: 'uniswap',
-};
-
 const getCryptoPrice = ai.defineTool(
   {
     name: 'getCryptoPrice',
-    description: 'Returns the current market price of a cryptocurrency.',
+    description: 'Returns the current market price of a cryptocurrency using Binance and Polygon APIs.',
     inputSchema: z.object({
       ticker: z.string().describe('The ticker symbol of the cryptocurrency, e.g., BTC, ETH.'),
     }),
@@ -36,28 +19,46 @@ const getCryptoPrice = ai.defineTool(
   },
   async (input) => {
     const ticker = input.ticker.toUpperCase();
-    const coinId = coinGeckoIds[ticker];
-
-    if (!coinId) {
-      throw new Error(`Unsupported token symbol: ${ticker}.`);
-    }
     
+    // 1. Try Binance API
     try {
-      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
-      if (!response.ok) {
-          const errorBody = await response.text();
-          console.error(`CoinGecko API error for ${ticker}: ${response.status} ${response.statusText}`, errorBody);
-          throw new Error(`Failed to fetch price from market data provider. Status: ${response.status}`);
-      }
-      const data = await response.json();
-      const price = data[coinId]?.usd;
-      if (price) {
-          return price;
-      } else {
-          throw new Error(`Price data not found for ${ticker} in API response.`);
+      const binanceSymbol = `${ticker}USDT`;
+      const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${binanceSymbol}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.price) {
+          return parseFloat(data.price);
+        }
       }
     } catch (error) {
-      console.error(`Failed to fetch price for ${ticker}:`, error);
+      console.warn(`Binance API failed for ${ticker}, trying Polygon.`, error);
+    }
+
+    // 2. Fallback to Polygon API
+    try {
+      const polygonApiKey = process.env.POLYGON_API_KEY;
+      if (!polygonApiKey) {
+        throw new Error('Polygon API key is not configured in .env file.');
+      }
+      const polygonSymbol = `X:${ticker}USD`;
+      const response = await fetch(`https://api.polygon.io/v2/aggs/ticker/${polygonSymbol}/prev?adjusted=true&apiKey=${polygonApiKey}`);
+      
+      if (!response.ok) {
+        const errorBody = await response.text();
+        console.error(`Polygon API error for ${ticker}: ${response.status} ${response.statusText}`, errorBody);
+        throw new Error(`Failed to fetch price from Polygon. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const price = data.results?.[0]?.c;
+
+      if (price) {
+        return price;
+      } else {
+        throw new Error(`Price data not found for ${ticker} in Polygon API response.`);
+      }
+    } catch (error) {
+      console.error(`Failed to fetch price for ${ticker} from all sources:`, error);
       if (error instanceof Error) {
         throw new Error(`Could not fetch price for ${ticker}: ${error.message}`);
       }

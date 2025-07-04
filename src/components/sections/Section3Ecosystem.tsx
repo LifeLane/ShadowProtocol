@@ -52,7 +52,7 @@ const Section3Ecosystem = () => {
                     <motion.div
                         key={module.title}
                         className={cn(
-                            "border border-primary/20 p-6 rounded-lg bg-black/20 flex flex-col items-start transition-all relative overflow-hidden card-hover-glow",
+                            "border border-primary/20 p-6 rounded-lg bg-card flex flex-col items-start transition-all relative overflow-hidden card-hover-glow",
                             module.status === 'early-access' ? "" : "grayscale opacity-70"
                         )}
                         initial={{ opacity: 0, y: 50 }}

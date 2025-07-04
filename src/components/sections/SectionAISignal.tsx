@@ -127,44 +127,46 @@ const SectionAISignal = () => {
                         </motion.div>
                     </div>
 
-                    <div className="mt-8 min-h-[14rem] w-full border-t border-primary/20 pt-8 flex items-center justify-center">
-                        {isLoading && <p className="text-accent animate-pulse text-center text-xl">Scanning market signals...</p>}
-                        {error && (
-                            <Alert variant="destructive" className="max-w-2xl bg-destructive/10 border-destructive/30">
-                                <AlertTitle>Signal Interrupted</AlertTitle>
-                                <AlertDescription>{error}</AlertDescription>
-                            </Alert>
-                        )}
-                        {insight && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="w-full max-w-3xl"
-                            >
-                                <Card className="bg-black/20 border-primary/30 card-animated-border">
-                                    <CardHeader>
-                                        <CardTitle className="text-accent glow-accent flex items-center text-2xl">
-                                            {getSentimentInfo(insight.sentiment).icon}
-                                            {insight.keyFinding}
-                                        </CardTitle>
-                                        <div className="flex flex-col gap-2 pt-4">
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-muted-foreground font-bold">Shadow Score</span>
-                                                <span className={`font-bold text-2xl ${getScoreColor(insight.shadowScore)}`}>{insight.shadowScore}</span>
+                    {(isLoading || error || insight) && (
+                        <div className="mt-8 min-h-[14rem] w-full border-t border-primary/20 pt-8 flex items-center justify-center">
+                            {isLoading && <p className="text-accent animate-pulse text-center text-xl">Scanning market signals...</p>}
+                            {error && (
+                                <Alert variant="destructive" className="max-w-2xl bg-destructive/10 border-destructive/30">
+                                    <AlertTitle>Signal Interrupted</AlertTitle>
+                                    <AlertDescription>{error}</AlertDescription>
+                                </Alert>
+                            )}
+                            {insight && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="w-full max-w-3xl"
+                                >
+                                    <Card className="bg-black/20 border-primary/30 card-animated-border">
+                                        <CardHeader>
+                                            <CardTitle className="text-accent glow-accent flex items-center text-2xl">
+                                                {getSentimentInfo(insight.sentiment).icon}
+                                                {insight.keyFinding}
+                                            </CardTitle>
+                                            <div className="flex flex-col gap-2 pt-4">
+                                                <div className="flex justify-between items-center">
+                                                    <span className="text-muted-foreground font-bold">Shadow Score</span>
+                                                    <span className={`font-bold text-2xl ${getScoreColor(insight.shadowScore)}`}>{insight.shadowScore}</span>
+                                                </div>
+                                                <div className="w-full h-2 rounded-full bg-gradient-to-r from-destructive via-accent to-primary relative">
+                                                    <div className="absolute top-0 h-full w-1 bg-white/80 rounded-full shadow-lg" style={{ left: `calc(${((insight.shadowScore + 100) / 200) * 100}% - 2px)` }}></div>
+                                                </div>
                                             </div>
-                                            <div className="w-full h-2 rounded-full bg-gradient-to-r from-destructive via-accent to-primary relative">
-                                                <div className="absolute top-0 h-full w-1 bg-white/80 rounded-full shadow-lg" style={{ left: `calc(${((insight.shadowScore + 100) / 200) * 100}% - 2px)` }}></div>
-                                            </div>
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-muted-foreground whitespace-pre-wrap text-lg">{insight.insight}</p>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-                        )}
-                    </div>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-muted-foreground whitespace-pre-wrap text-lg">{insight.insight}</p>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+                            )}
+                        </div>
+                    )}
                 </Terminal>
             </div>
         </AnimatedSection>

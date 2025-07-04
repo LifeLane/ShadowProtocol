@@ -277,7 +277,7 @@
       left: 50%;
       width: 200%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.8), transparent);
+      background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.8), transparent);
       animation: scan-eye 6s linear infinite;
       transform-origin: center;
       z-index: -1;
@@ -509,5 +509,11 @@
     background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.3), transparent);
     animation: shine 4s ease-in-out infinite;
     z-index: -1;
+  }
+}
+
+@keyframes shine {
+  100% {
+    transform: translateX(100%);
   }
 }

@@ -28,10 +28,12 @@ const Section6Roadmap = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
                         >
-                            <div className={`w-full pl-8 sm:pl-12 md:w-1/2 md:pl-0 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-3'}`}>
-                                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-accent transition-colors hover:text-primary">{item.phase}</h3>
-                                <p className="text-muted-foreground mt-2 text-sm sm:text-base md:text-xl">{item.description}</p>
-                                <p className={`mt-2 font-bold text-sm sm:text-base md:text-xl ${item.status === 'Complete' || item.status === 'Live' ? 'text-primary' : 'text-accent'}`}>&gt; Status: {item.status}</p>
+                            <div className={`w-full pl-8 sm:pl-12 md:w-1/2 md:pl-0 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8 md:order-3'}`}>
+                                <div className={`bg-background/50 backdrop-blur-sm p-4 rounded-lg border border-primary/20 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-accent transition-colors hover:text-primary">{item.phase}</h3>
+                                    <p className="text-muted-foreground mt-2 text-sm sm:text-base md:text-xl">{item.description}</p>
+                                    <p className={`mt-2 font-bold text-sm sm:text-base md:text-xl ${item.status === 'Complete' || item.status === 'Live' ? 'text-primary' : 'text-accent'}`}>&gt; Status: {item.status}</p>
+                                </div>
                             </div>
                             <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex-shrink-0 flex items-center justify-center absolute left-2 sm:left-4 md:left-1/2 -translate-x-1/2">
                                 <div className="w-4 h-4 rounded-full bg-primary animate-pulse"></div>

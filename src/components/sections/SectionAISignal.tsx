@@ -28,7 +28,8 @@ const SectionAISignal = () => {
             setInsight(result.insight);
         } catch (error) {
             console.error(error);
-            setInsight("Error: Could not fetch insight from the neural core.");
+            const errorMessage = error instanceof Error ? error.message.replace(/^Error: /i, '') : "Could not fetch insight from the neural core.";
+            setInsight(`Error: ${errorMessage}`);
         } finally {
             setIsLoading(false);
         }

@@ -241,6 +241,11 @@
     animation: matrix-drift 4s linear infinite;
   }
 
+  @keyframes matrix-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: -20px -20px; }
+  }
+
   /* Section 5: Quantum Flicker Fields */
   .bg-quantum-flicker-pattern {
     position: relative;

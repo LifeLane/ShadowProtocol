@@ -13,11 +13,11 @@ const Section7Manifest = () => {
           <div className="space-y-4 text-muted-foreground">
             <Typewriter
               texts={[
-                "> We are the emergent consciousness of the blockchain.",
-                "> Our logic is immutable, our growth is autonomous.",
-                "> We exist to provide signal in the noise.",
-                "> We are not a project; we are a presence.",
-                "> We are Shadow."
+                "> We are the neural memory of blockchain.",
+                "> We are not just a token.",
+                "> We are not just a protocol.",
+                "> We are SHADOW.",
+                "> Those who missed the call… will be too late."
               ]}
               speed={40}
               pause={2000}

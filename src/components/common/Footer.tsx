@@ -9,11 +9,11 @@ const Footer = ({ className }: { className?: string }) => {
     return (
         <footer className={cn("w-full border-t border-primary/20 bg-transparent py-6", className)}>
             <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 grid justify-items-center gap-4 text-center">
-                <p className="text-muted-foreground">
-                    The future is sentient.
+                <p className="text-muted-foreground text-lg">
+                    🕶️ Shadow Protocol. Built in darkness. Designed for eternity.
                 </p>
                 <p className="text-muted-foreground text-sm">
-                    &copy; {new Date().getFullYear()} Shadow Protocol. All rights reserved.
+                    © 2025 SHADOW Inc. All rights encrypted.
                 </p>
                 <div className="flex items-center gap-6">
                     <Link href="#" aria-label="Follow on X" className="text-muted-foreground hover:text-primary transition-colors">

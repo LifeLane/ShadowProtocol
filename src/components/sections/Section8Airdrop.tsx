@@ -1,71 +1,42 @@
-
 "use client"
 
-import { useEffect, useState } from 'react';
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { AtSign } from "lucide-react";
-import Typewriter from '../common/Typewriter';
-
-const Spark = ({ style }: { style: React.CSSProperties }) => <div className="spark" style={style}></div>;
+import { Eye, Skull, Plug, Gift } from "lucide-react";
 
 const Section8Airdrop = () => {
-  const [status, setStatus] = useState("idle");
-  const [sparks, setSparks] = useState<JSX.Element[]>([]);
-
-  useEffect(() => {
-    const generatedSparks = Array.from({ length: 30 }).map((_, i) => {
-      const style = {
-        left: `${Math.random() * 100}%`,
-        width: `${1 + Math.random() * 2}px`,
-        height: `${1 + Math.random() * 2}px`,
-        animationDelay: `${Math.random() * 5}s`,
-        animationDuration: `${3 + Math.random() * 3}s`,
-      };
-      return <Spark key={i} style={style} />;
-    });
-    setSparks(generatedSparks);
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("pending");
-    setTimeout(() => {
-      setStatus("success");
-    }, 2000);
-  };
 
   return (
     <AnimatedSection id="airdrop" className="relative">
-      <div className="forge-sparks-container">{sparks}</div>
       <div className="text-center mb-12 md:mb-16">
-          <Typewriter
-              texts={['> Secure Your Genesis Airdrop']}
-              className="text-3xl sm:text-4xl md:text-6xl font-bold text-accent glow-accent"
-          />
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-accent glow-accent">
+            CONNECT &amp; CLAIM BEFORE IT CLOSES
+          </h2>
       </div>
-      <Terminal title="AIRDROP_REGISTRATION.sh" className="max-w-2xl animate-border-glow">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="email-airdrop" className="text-primary/80 text-base">Email Address</Label>
-            <div className="relative">
-              <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
-              <Input id="email-airdrop" type="email" placeholder="agent@protocol.xyz" className="pl-10 bg-black/30 border-primary/30 h-12" />
+      <Terminal title="UPLINK.sh" className="max-w-4xl animate-border-glow">
+        <div className="flex flex-col items-center justify-center text-center p-6 space-y-8">
+            <div className="space-y-4">
+                <div className="flex items-center justify-center gap-3 text-lg md:text-2xl font-bold text-destructive">
+                    <Skull className="w-6 h-6 md:w-8 md:h-8" />
+                    <p>The Genesis Airdrop Window is Closing Fast.</p>
+                </div>
+                <div className="flex items-center justify-center gap-3 text-lg md:text-2xl font-bold text-primary">
+                    <Eye className="w-6 h-6 md:w-8 md:h-8" />
+                    <p>Limited to first 10,000 qualified addresses.</p>
+                </div>
             </div>
-          </div>
-          <Button type="submit" size="lg" className="w-full text-base btn-shine glow" disabled={status === 'pending' || status === 'success'}>
-            {status === 'idle' && '-> register --airdrop'}
-            {status === 'pending' && '> verifying credentials...'}
-            {status === 'success' && ':: registration confirmed.'}
-            {status === 'error' && '> Error. Try again.'}
-          </Button>
-          <p className="text-center text-muted-foreground text-sm">
-            Genesis holders receive priority. Your data is secure with the Shadow Core.
-          </p>
-        </form>
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+                 <Button size="lg" className="btn-shine glow w-full sm:w-auto">
+                    <Plug className="mr-2" />
+                    Connect Wallet
+                </Button>
+                 <Button size="lg" variant="outline" className="glow w-full sm:w-auto">
+                    <Gift className="mr-2" />
+                    Begin My Upload
+                </Button>
+            </div>
+        </div>
       </Terminal>
     </AnimatedSection>
   );

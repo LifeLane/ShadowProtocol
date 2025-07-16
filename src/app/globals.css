@@ -325,7 +325,7 @@
   /* Section 3 & 7: Neural Particle Web / ASCII Constellation (Stars) */
   @keyframes move-twink-back {
       from {background-position:0 0;}
-      to {background-position:-1000px 500px;}
+      to {background-position:-10000px 5000px;}
   }
 
   .bg-starfield::before {
@@ -490,6 +490,33 @@
   .card-animated-border:hover::before {
     opacity: 1;
     animation: gradient-rotate 4s ease infinite, multicolor-glow-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes glitch-hover {
+    0% {
+      text-shadow: 0.05em 0 0 hsl(var(--accent) / 0.75), -0.05em 0 0 hsl(var(--destructive) / 0.75);
+      transform: translate(0, 0);
+    }
+    25% {
+      text-shadow: -0.05em 0 0 hsl(var(--accent) / 0.75), 0.05em 0 0 hsl(var(--destructive) / 0.75);
+      transform: translate(1px, -1px);
+    }
+    50% {
+      text-shadow: 0.05em 0 0 hsl(var(--accent) / 0.75), -0.05em 0 0 hsl(var(--destructive) / 0.75);
+      transform: translate(-1px, 1px);
+    }
+    75% {
+      text-shadow: -0.05em 0 0 hsl(var(--accent) / 0.75), 0.05em 0 0 hsl(var(--destructive) / 0.75);
+      transform: translate(1px, 1px);
+    }
+    100% {
+      text-shadow: 0.05em 0 0 hsl(var(--accent) / 0.75), -0.05em 0 0 hsl(var(--destructive) / 0.75);
+      transform: translate(0, 0);
+    }
+  }
+
+  .card-glitch-hover:hover h3 {
+    animation: glitch-hover 0.2s linear;
   }
 
 

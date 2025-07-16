@@ -5,24 +5,16 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
+import { Swords, Ghost, Atom, Crown } from "lucide-react";
 
 const stakingTiers = [
-    { tier: "Ninja", apr: 8, lockTime: "30 Days", bonusPowers: "Weekly draws" },
-    { tier: "Ghost", apr: 15, lockTime: "90 Days", bonusPowers: "Early DApp access" },
-    { tier: "Phantom", apr: 24, lockTime: "180 Days", bonusPowers: "Voting power unlocked" },
-    { tier: "Shadow Lord", apr: 36, lockTime: "365 Days", bonusPowers: "Identity NFT + Neural Key issuance" },
+    { tier: "Ninja", apr: 8, lockTime: "30 Days", bonusPowers: "Weekly draws", icon: Swords },
+    { tier: "Ghost", apr: 15, lockTime: "90 Days", bonusPowers: "Early DApp access", icon: Ghost },
+    { tier: "Phantom", apr: 24, lockTime: "180 Days", bonusPowers: "Voting power unlocked", icon: Atom },
+    { tier: "Shadow Lord", apr: 36, lockTime: "365 Days", bonusPowers: "Identity NFT + Neural Key issuance", icon: Crown },
 ];
 
 const SectionStaking = () => {
-    // Max APR to scale progress bars
-    const maxApr = Math.max(...stakingTiers.map(t => t.apr));
-
-    const getColor = (apr: number) => {
-        if (apr > 20) return "bg-primary";
-        if (apr > 10) return "bg-accent";
-        return "bg-muted";
-    };
-
     return (
         <AnimatedSection id="staking" className="bg-pulse-grid-pattern">
             <Terminal title="STAKING_LOYALTY_PROGRAM.md" className="w-full max-w-6xl">
@@ -42,10 +34,13 @@ const SectionStaking = () => {
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                     >
                       <div className="flex justify-between items-baseline">
-                          <h3 className="text-xl font-bold text-primary">{item.tier}</h3>
+                          <h3 className="text-xl font-bold text-primary flex items-center gap-2">
+                            <item.icon className="w-5 h-5" />
+                            {item.tier}
+                          </h3>
                           <p className="font-bold text-accent text-2xl">{item.apr}% APR</p>
                       </div>
-                       <Progress value={(item.apr / maxApr) * 100} indicatorClassName={getColor(item.apr)} />
+                       <Progress value={item.apr} indicatorClassName="bg-primary" />
                       <div className="flex justify-between items-center text-sm pt-2">
                         <p className="text-muted-foreground">{item.bonusPowers}</p>
                         <p className="font-bold text-foreground/80">{item.lockTime}</p>

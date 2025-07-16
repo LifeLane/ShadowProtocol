@@ -64,7 +64,7 @@ const Section2Overview = () => {
                             {whyShadow.map((item, index) => (
                                 <motion.div
                                     key={index}
-                                    className="group card-animated-border p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-center"
+                                    className="group card-animated-border card-glitch-hover p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-center"
                                     variants={{
                                         hidden: { opacity: 0, y: 20 },
                                         visible: { opacity: 1, y: 0 }

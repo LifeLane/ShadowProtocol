@@ -1,17 +1,28 @@
+
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { motion } from "framer-motion";
+import { BrainCircuit, ShieldCheck, Cpu, Bot, GitBranch, Target } from 'lucide-react';
 
 const Section2Overview = () => {
-    const features = [
-        { title: "AI-Powered Engine", description: "Self-optimizing tokenomics driven by real-time on-chain events." },
-        { title: "Cognitive Governance", description: "SHADOW holders form a distributed cognitive entity for decisions." },
-        { title: "Immutable Core Logic", description: "Core contract is non-upgradable, permanently ensuring security." },
-        { title: "Utility-First Fuel", description: "SHADOW is designed as fuel for a growing suite of decentralized AI tools." },
-        { title: "Community-Focused Launch", description: "No VC allocation. Genesis distribution is entirely community-focused." },
-        { title: "Infinite Scalability", description: "Built on a modular framework designed for limitless future expansion." }
+    const tokenCore = [
+        { label: "Token", value: "SHADOW" },
+        { label: "Chain", value: "Solana (Ethereum, TON, USDT/USDC launching soon)" },
+        { label: "Supply", value: "10,000,000,000 SHADOW" },
+        { label: "Launch Pool", value: "1,000,000 SHADOW paired with 1 SOL" },
+        { label: "Target", value: "1 Billion SHADOW in Liquidity Pools" },
+        { label: "Vision", value: "A multi-chain, AI-governed, reward-layered ecosystem." },
+    ];
+
+    const whyShadow = [
+        { icon: BrainCircuit, title: "Self-Evolving Logic" },
+        { icon: Cpu, title: "AI-Powered Reward Structures" },
+        { icon: ShieldCheck, title: "Bot-Proof Airdrops" },
+        { icon: GitBranch, title: "Multichain Infrastructure" },
+        { icon: Bot, title: "Intelligence-Based DAO Voting" },
+        { icon: Target, title: "On-Chain Behavioral Triggers" },
     ];
 
     return (
@@ -25,37 +36,48 @@ const Section2Overview = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="mb-8"
                     >
-                        <div className="border border-dashed border-primary/50 p-4 rounded-lg max-w-lg mx-auto">
-                            <pre className="text-left font-code text-sm md:text-base whitespace-pre-wrap">
-                                <span className="text-primary glow font-bold text-lg md:text-xl transition-colors hover:text-accent">SHADOW COIN</span>
-                                {`
-Ticker:    SHADOW
-Supply:    1,000,000,000
-Utility:   Fuel for On-Chain Mind`}
-                            </pre>
-                        </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-primary glow text-center mb-6">SHADOW TOKEN CORE</h2>
+                         <dl className="border border-dashed border-primary/50 p-4 rounded-lg max-w-3xl mx-auto text-left space-y-2 font-code text-sm md:text-base">
+                            {tokenCore.map((item) => (
+                                <div key={item.label} className="grid grid-cols-1 md:grid-cols-[120px_1fr] md:gap-x-4">
+                                    <dt className="text-primary font-bold whitespace-nowrap">{item.label}:</dt>
+                                    <dd className="text-muted-foreground break-words">{item.value}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                        <p className="text-center text-accent glow-accent mt-6 font-bold text-base md:text-lg">
+                           🛠️ Tech is easy. Intelligence is hard. SHADOW is both.
+                        </p>
                     </motion.div>
 
                     <motion.div
-                        className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        className="mt-12"
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ staggerChildren: 0.2 }}
                     >
-                        {features.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                className="group card-animated-border p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-left"
-                                variants={{
-                                    hidden: { opacity: 0, y: 20 },
-                                    visible: { opacity: 1, y: 0 }
-                                }}
-                            >
-                                <h3 className="font-bold text-lg md:text-xl text-primary glow transition-colors group-hover:text-primary-foreground">{item.title}</h3>
-                                <p className="text-muted-foreground mt-2 text-sm md:text-base group-hover:text-primary-foreground transition-colors">{item.description}</p>
-                            </motion.div>
-                        ))}
+                        <h2 className="text-2xl sm:text-3xl font-bold text-primary glow text-center mb-6">WHY SHADOW?</h2>
+                        <p className="text-center text-muted-foreground mb-8 text-lg md:text-xl">Because protocols are dead. It’s time to build something alive.</p>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {whyShadow.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="group card-animated-border p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-center"
+                                    variants={{
+                                        hidden: { opacity: 0, y: 20 },
+                                        visible: { opacity: 1, y: 0 }
+                                    }}
+                                >
+                                    <item.icon className="w-10 h-10 text-primary mx-auto mb-3" />
+                                    <h3 className="font-bold text-lg md:text-xl text-primary glow transition-colors group-hover:text-primary-foreground">{item.title}</h3>
+                                </motion.div>
+                            ))}
+                        </div>
+                        <p className="text-center text-accent glow-accent mt-8 font-bold text-base md:text-lg">
+                            Miss SHADOW now, and you’ll spend years catching up.
+                        </p>
                     </motion.div>
                 </Terminal>
             </div>

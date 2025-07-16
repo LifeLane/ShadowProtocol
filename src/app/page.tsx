@@ -13,6 +13,8 @@ import Section7Manifest from "@/components/sections/Section7Manifest";
 import Section8Airdrop from "@/components/sections/Section8Airdrop";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
+import SectionGenesisAirdrop from "@/components/sections/SectionGenesisAirdrop";
+import SectionStaking from "@/components/sections/SectionStaking";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -48,6 +50,8 @@ export default function Home() {
         <Section2Overview />
         <Section3Ecosystem />
         <Section4Tokenomics />
+        <SectionGenesisAirdrop />
+        <SectionStaking />
         <Section5ClaimKey />
         <Section6Roadmap />
         <Section7Manifest />

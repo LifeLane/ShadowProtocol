@@ -9,42 +9,52 @@ import { motion } from "framer-motion";
 const tokenomicsData = [
   {
     name: "Community & Ecosystem",
-    value: 40,
+    value: 35,
     color: "bg-primary",
+    description: "DApp funding, protocol growth, dev grants"
   },
   {
-    name: "Staking Rewards",
+    name: "Genesis Airdrop (Limited)",
     value: 20,
     color: "bg-primary",
+    description: "ONLY active wallets. No bots. No freeloaders"
+  },
+   {
+    name: "Staking Rewards (Loyalty Locked)",
+    value: 20,
+    color: "bg-primary",
+    description: "Earn. Upgrade. Access protocol privileges"
   },
   {
-    name: "Treasury & Foundation",
-    value: 15,
-    color: "bg-muted",
-  },
-  {
-    name: "Team & Advisors",
-    value: 15,
-    color: "bg-primary/80",
-  },
-  {
-    name: "Public Sale & Liquidity",
+    name: "Core Team & Advisors",
     value: 10,
     color: "bg-muted",
+    description: "Built by shadow architects & AI ops experts"
+  },
+    {
+    name: "Treasury Reserve",
+    value: 5,
+    color: "bg-muted",
+    description: "Emergency, buyback, market stabilizer"
+  },
+  {
+    name: "Multichain Liquidity",
+    value: 10,
+    color: "bg-accent",
+    description: "Solana, Ethereum, TON, USDT/USDC pairs"
   },
 ];
 
 const Section4Tokenomics = () => {
   return (
     <AnimatedSection id="tokenomics" className="bg-circuit-pattern">
-      <Terminal title="SHADOW TOKEN ALLOCATION" className="w-full max-w-5xl">
+      <Terminal title="TOKENOMICS.json" className="w-full max-w-5xl">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground/80 mb-2">
-            Forged in precision. Controlled by design.
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary glow mb-2">
+            🔥 TOKENOMICS THAT BURN LIKE CODE
           </h2>
         </div>
 
-        {/* Segmented Master Progress Bar */}
         <motion.div
           className="flex w-full h-6 rounded-full overflow-hidden mb-12"
           initial={{ opacity: 0 }}
@@ -63,7 +73,6 @@ const Section4Tokenomics = () => {
           ))}
         </motion.div>
 
-        {/* Individual Allocation Bars */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
           {tokenomicsData.map((item, index) => (
             <motion.div
@@ -79,6 +88,7 @@ const Section4Tokenomics = () => {
                 <p className="font-bold text-primary">{item.value}%</p>
               </div>
               <Progress value={item.value} indicatorClassName={item.color} />
+              <p className="text-sm text-muted-foreground">{item.description}</p>
             </motion.div>
           ))}
         </div>

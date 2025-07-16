@@ -7,6 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { BrainCircuit, Ban } from "lucide-react";
 
 const qualificationData = [
     { name: "OG Snapshot (Early Supporters)", value: 30, color: "bg-primary" },
@@ -65,11 +66,20 @@ const SectionGenesisAirdrop = () => {
                 </div>
 
 
-                <div className="text-center space-y-4 border-t border-dashed border-primary/30 pt-8 mt-8">
-                    <p className="font-bold text-muted-foreground">🧠 Vesting: 6–12 months</p>
-                    <p className="font-bold text-destructive">🚫 No tasks = No tokens.</p>
-                    <p className="font-bold text-accent">🧠 Every claim is smart-verified by SHADOW.</p>
-                    <Button asChild size="lg" className="btn-shine glow animate-border-glow mt-4">
+                <div className="text-center space-y-6 border-t border-dashed border-primary/30 pt-8 mt-8 flex flex-col items-center">
+                    <div className="flex items-center gap-3 text-base md:text-xl font-bold text-muted-foreground">
+                        <BrainCircuit className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                        <p>Vesting: 6–12 months</p>
+                    </div>
+                    <div className="flex items-center gap-3 text-base md:text-xl font-bold text-destructive">
+                        <Ban className="w-5 h-5 md:w-6 md:h-6" />
+                        <p>No tasks = No tokens.</p>
+                    </div>
+                     <div className="flex items-center gap-3 text-base md:text-xl font-bold text-accent">
+                        <BrainCircuit className="w-5 h-5 md:w-6 md:h-6" />
+                        <p>Every claim is smart-verified by SHADOW.</p>
+                    </div>
+                    <Button asChild size="lg" className="btn-shine glow animate-border-glow mt-6">
                         <Link href="#claim-key">
                             Join Genesis Console
                         </Link>

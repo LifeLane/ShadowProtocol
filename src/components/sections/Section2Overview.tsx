@@ -52,10 +52,11 @@ const Section2Overview = () => {
                             {whyShadow.map((item, index) => (
                                 <motion.div
                                     key={index}
-                                    className="group card-animated-border card-glitch-hover p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-center"
+                                    className="group card-animated-border card-glitch-hover p-4 rounded-lg bg-primary/5 border border-primary/20 transition-all text-center h-full flex flex-col justify-center"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, amount: 0.3, delay: index * 0.1 }}
+                                    viewport={{ once: true, amount: 0.3 }}
+                                    transition={{ delay: index * 0.1 }}
                                 >
                                     <item.icon className="w-10 h-10 text-primary mx-auto mb-3" />
                                     <h3 className="font-bold text-lg md:text-xl text-primary glow transition-colors group-hover:text-primary-foreground">{item.title}</h3>
@@ -73,3 +74,5 @@ const Section2Overview = () => {
 };
 
 export default Section2Overview;
+
+    

@@ -4,7 +4,7 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { motion } from "framer-motion";
-import { Swords, Ghost, Atom, Crown } from "lucide-react";
+import { Atom, Crown } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 
@@ -67,3 +67,5 @@ const SectionStaking = () => {
 };
 
 export default SectionStaking;
+
+    

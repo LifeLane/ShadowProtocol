@@ -18,7 +18,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { motion } from "framer-motion";
 import { Lock, Cpu, ShieldCheck, Telescope, ExternalLink, BarChartHorizontalBig } from "lucide-react";
 
 const vaultPhases = [

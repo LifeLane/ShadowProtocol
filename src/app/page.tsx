@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ import Header from "@/components/common/Header";
 import SectionGenesisAirdrop from "@/components/sections/SectionGenesisAirdrop";
 import SectionStaking from "@/components/sections/SectionStaking";
 import LinkMarquee from "@/components/common/LinkMarquee";
+import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -45,8 +47,10 @@ export default function Home() {
   return (
     <>
       <Header scaleX={scaleX} />
-      <main className="flex flex-col items-center text-foreground/80 pt-16 pb-16">
+      <div className="sticky top-16 z-30">
         <LinkMarquee />
+      </div>
+      <main className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
         <SectionAISignal />
         <Section2Overview />
@@ -60,6 +64,7 @@ export default function Home() {
         <Section8Airdrop />
       </main>
       <Footer />
+      <ScrollToTopButton />
     </>
   );
 }

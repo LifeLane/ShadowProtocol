@@ -165,5 +165,3 @@ const Section5ClaimKey = () => {
 };
 
 export default Section5ClaimKey;
-
-    

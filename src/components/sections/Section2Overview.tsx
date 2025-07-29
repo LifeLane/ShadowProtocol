@@ -74,5 +74,3 @@ const Section2Overview = () => {
 };
 
 export default Section2Overview;
-
-    

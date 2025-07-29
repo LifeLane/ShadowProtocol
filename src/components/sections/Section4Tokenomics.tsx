@@ -37,24 +37,6 @@ const allVaults = [
 
 
 const Section4Tokenomics = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
     <AnimatedSection id="tokenomics" className="bg-circuit-pattern">
       <Terminal title="VAULT_OF_SHADOWS.vpr" className="w-full max-w-7xl mx-auto">
@@ -69,13 +51,30 @@ const Section4Tokenomics = () => {
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.05,
+              },
+            },
+          }}
         >
           {allVaults.map((vault) => (
-            <motion.div key={vault.title} variants={itemVariants}>
+            <motion.div 
+              key={vault.title}
+              variants={{
+                hidden: { y: 20, opacity: 0 },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                },
+              }}
+            >
               <Card className="bg-black/20 border-primary/30 card-animated-border h-full flex flex-col">
                 <CardHeader>
                   <CardTitle className="text-lg text-accent glow-accent flex items-center gap-3">
@@ -118,5 +117,3 @@ const Section4Tokenomics = () => {
 };
 
 export default Section4Tokenomics;
-
-    

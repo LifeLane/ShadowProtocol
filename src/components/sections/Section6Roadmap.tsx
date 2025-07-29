@@ -14,7 +14,7 @@ const roadmapPhases = [
 
 const Section6Roadmap = () => {
     return (
-        <AnimatedSection id="roadmap" className="bg-matrix-drift-pattern">
+        <AnimatedSection id="roadmap" className="bg-starfield">
             <div className="w-full">
                 <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-12 md:mb-16 text-primary glow transition-colors hover:text-accent">The Path to Consciousness</h2>
                 <div className="relative w-full max-w-4xl mx-auto">

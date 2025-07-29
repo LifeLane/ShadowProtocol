@@ -30,7 +30,7 @@ const vaultPhases = [
       { id: 2, title: "Airdrop Vault Beta", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Public missions, quests" },
       { id: 3, title: "Staking Vault Dawn", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Early staking pool XP reward multipliers" },
       { id: 4, title: "Staking Vault Zenith", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Live from TGE" },
-      { id: 5, title: "Liquidity Live Pool", amount: "100,000,000", duration: "No lock (live)", schedule: "CEX/DEX liquidity provisioning", purpose: "" }
+      { id: 5, title: "Liquidity Live Pool", amount: "100,000,000", duration: "No lock (live)", schedule: "CEX/DEX liquidity provisioning", purpose: "Unlocked at TGE" }
     ],
   },
   {
@@ -118,7 +118,7 @@ const Section4Tokenomics = () => {
                             {phase.vaults.map((vault) => (
                             <TableRow key={vault.id} className="text-muted-foreground">
                                 <TableCell className="font-medium text-foreground/90">{vault.title}</TableCell>
-                                <TableCell className="text-right font-mono">{vault.amount}</TableCell>
+                                <TableCell className="text-right font-mono">{vault.amount.toLocaleString()}</TableCell>
                                 <TableCell>{vault.duration}</TableCell>
                                 <TableCell>{vault.schedule}</TableCell>
                                 <TableCell>{vault.purpose}</TableCell>
@@ -175,5 +175,3 @@ const Section4Tokenomics = () => {
 };
 
 export default Section4Tokenomics;
-
-    

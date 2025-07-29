@@ -10,9 +10,9 @@ const Section2Overview = () => {
     const tokenCore = [
         { label: "Token", value: "SHADOW" },
         { label: "Chain", value: "Solana (Ethereum, TON, USDT/USDC launching soon)" },
-        { label: "Supply", value: "10,000,000,000 SHADOW" },
-        { label: "Launch Pool", value: "1,000,000 SHADOW paired with 1 SOL" },
-        { label: "Target", value: "1 Billion SHADOW in Liquidity Pools" },
+        { label: "Supply", value: "1,000,000,000 SHADOW" },
+        { label: "TGE Liquidity", value: "100,000,000 SHADOW" },
+        { label: "Locked Supply", value: "900,000,000 SHADOW (90%)" },
         { label: "Vision", value: "A multi-chain, AI-governed, reward-layered ecosystem." },
     ];
 
@@ -39,7 +39,7 @@ const Section2Overview = () => {
                         <h2 className="text-2xl sm:text-3xl font-bold text-primary glow text-center mb-6">SHADOW TOKEN CORE</h2>
                          <dl className="border border-dashed border-primary/50 p-4 rounded-lg max-w-3xl mx-auto text-left space-y-2 font-code text-sm md:text-base">
                             {tokenCore.map((item) => (
-                                <div key={item.label} className="grid grid-cols-1 md:grid-cols-[120px_1fr] md:gap-x-4">
+                                <div key={item.label} className="grid grid-cols-1 md:grid-cols-[150px_1fr] md:gap-x-4">
                                     <dt className="text-primary font-bold whitespace-nowrap">{item.label}:</dt>
                                     <dd className="text-muted-foreground break-words">{item.value}</dd>
                                 </div>

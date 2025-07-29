@@ -3,15 +3,14 @@
 
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
-import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
 import { Swords, Ghost, Atom, Crown } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+
 
 const stakingTiers = [
-    { tier: "Ninja", apr: 8, lockTime: "30 Days", bonusPowers: "Weekly draws", icon: Swords },
-    { tier: "Ghost", apr: 15, lockTime: "90 Days", bonusPowers: "Early DApp access", icon: Ghost },
-    { tier: "Phantom", apr: 24, lockTime: "180 Days", bonusPowers: "Voting power unlocked", icon: Atom },
-    { tier: "Shadow Lord", apr: 36, lockTime: "365 Days", bonusPowers: "Identity NFT + Neural Key issuance", icon: Crown },
+    { tier: "Staking Vault Dawn", apr: "Dynamic", lockTime: "12 month cliff", bonusPowers: "Early staking pool XP reward multipliers", icon: Atom, vesting: "Monthly over 12 mo" },
+    { tier: "Staking Vault Zenith", apr: "Dynamic", lockTime: "12 month cliff", bonusPowers: "Standard staking rewards, live from TGE", icon: Crown, vesting: "Monthly over 12 mo" },
 ];
 
 const SectionStaking = () => {
@@ -23,35 +22,44 @@ const SectionStaking = () => {
                     <p className="text-accent glow-accent text-lg">Your stake isn’t just earning… It’s teaching the protocol your loyalty.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   {stakingTiers.map((item, index) => (
                     <motion.div
                       key={item.tier}
-                      className="space-y-2 card-animated-border bg-black/20 p-4 rounded-lg"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                     >
-                      <div className="flex justify-between items-baseline">
-                          <h3 className="text-xl font-bold text-primary flex items-center gap-2">
-                            <item.icon className="w-5 h-5" />
-                            {item.tier}
-                          </h3>
-                          <p className="font-bold text-accent text-2xl">{item.apr}% APR</p>
-                      </div>
-                       <Progress value={item.apr} indicatorClassName="bg-primary" />
-                      <div className="flex justify-between items-center text-sm pt-2">
-                        <p className="text-muted-foreground">{item.bonusPowers}</p>
-                        <p className="font-bold text-foreground/80">{item.lockTime}</p>
-                      </div>
+                      <Card className="bg-black/20 border-primary/30 card-animated-border h-full">
+                        <CardHeader>
+                            <CardTitle className="text-accent glow-accent flex items-center gap-3 text-2xl">
+                                <item.icon className="w-6 h-6"/>
+                                {item.tier}
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            <div>
+                                <p className="text-sm text-muted-foreground">APR</p>
+                                <p className="text-2xl font-bold text-primary">{item.apr}</p>
+                            </div>
+                            <div>
+                                <p className="text-sm text-muted-foreground">Lock Details</p>
+                                <p className="text-lg text-foreground/90">{item.lockTime}, then {item.vesting}.</p>
+                            </div>
+                            <div>
+                                <p className="text-sm text-muted-foreground">Special Access</p>
+                                <p className="text-lg text-foreground/90">{item.bonusPowers}</p>
+                            </div>
+                        </CardContent>
+                      </Card>
                     </motion.div>
                   ))}
                 </div>
 
                  <div className="text-center space-y-2 border-t border-dashed border-primary/30 pt-8 mt-8">
-                    <p className="font-bold text-primary">🔁 Compounded rewards.</p>
-                    <p className="font-bold text-destructive">⚠️ Early exit = 15% burn. Disloyalty isn’t cheap.</p>
+                    <p className="font-bold text-primary">🔁 Rewards are compounded based on network participation and loyalty score.</p>
+                    <p className="font-bold text-destructive">⚠️ Early exit from vesting = 15% burn penalty. Disloyalty isn’t cheap.</p>
                 </div>
             </Terminal>
         </AnimatedSection>

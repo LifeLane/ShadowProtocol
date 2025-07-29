@@ -100,11 +100,9 @@ const Section4Tokenomics = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                    <Button variant="outline" size="sm" asChild className="w-full">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="mr-2" />
-                            Verify Lock
-                        </a>
+                    <Button variant="outline" size="sm" className="w-full" disabled>
+                        <ExternalLink className="mr-2" />
+                        Verify Lock
                     </Button>
                 </CardFooter>
               </Card>

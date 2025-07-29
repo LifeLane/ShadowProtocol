@@ -2,7 +2,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { useScroll, useSpring } from "framer-motion";
 import Section1Awakening from "@/components/sections/Section1Awakening";
 import SectionAISignal from "@/components/sections/SectionAISignal";
 import Section2Overview from "@/components/sections/Section2Overview";
@@ -68,5 +68,3 @@ export default function Home() {
     </>
   );
 }
-
-    

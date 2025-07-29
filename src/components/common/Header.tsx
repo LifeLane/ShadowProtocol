@@ -14,6 +14,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import LinkMarquee from './LinkMarquee';
 
 
 const navItems = [
@@ -128,6 +129,7 @@ const Header = ({ scaleX }: HeaderProps) => {
                     </div>
                 </div>
                  <motion.div className="h-1 bg-primary origin-left" style={{ scaleX }} />
+                 <LinkMarquee />
             </motion.header>
 
             {/* Mobile Menu Overlay */}

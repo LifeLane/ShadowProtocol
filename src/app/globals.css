@@ -260,7 +260,7 @@
   }
   
   /* --- BACKGROUND ANIMATIONS --- */
-  .bg-ai-eye-pulse, .bg-pulse-grid-pattern, .bg-starfield, .bg-matrix-drift-pattern, .bg-quantum-flicker-pattern, .bg-circuit-pattern {
+  .bg-ai-eye-pulse, .bg-pulse-grid-pattern, .bg-starfield, .bg-matrix-drift-pattern, .bg-quantum-flicker-pattern, .bg-circuit-pattern, .forge-sparks-container {
     isolation: isolate;
   }
 
@@ -432,7 +432,6 @@
       height: 100%;
       overflow: hidden;
       z-index: -1;
-      isolation: isolate;
   }
   .spark {
       position: absolute;

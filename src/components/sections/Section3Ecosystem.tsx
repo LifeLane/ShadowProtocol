@@ -18,7 +18,7 @@ const Section3Ecosystem = () => {
     ];
 
     return (
-        <AnimatedSection id="ecosystem" className="bg-quantum-flicker-pattern">
+        <AnimatedSection id="ecosystem" className="bg-starfield">
             <div className="w-full max-w-6xl relative z-10">
                 <div className="text-center mb-12">
                     <Typewriter

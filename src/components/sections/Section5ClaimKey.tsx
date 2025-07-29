@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 
 const claimSchema = z.object({
-  telegram: z.string().startsWith("@", { message: "Must start with @" }).min(3, "Handle too short"),
+  telegram: z.string().startsWith("@", { message: "Must start with @" }).min(2, "Handle too short"),
   wallet: z.string().regex(/^[1-9A-HJ-NP-Za-km-z]{32,44}$/, { message: "Invalid Solana wallet address" }),
   email: z.string().email({ message: "Invalid email address" }),
 });
@@ -72,7 +72,7 @@ const Section5ClaimKey = () => {
     }
 
     return (
-        <AnimatedSection id="claim-key" className="bg-quantum-flicker-pattern">
+        <AnimatedSection id="claim-key" className="bg-matrix-drift-pattern">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full max-w-6xl">
                 <div className="w-full md:w-1/2 flex flex-col items-center justify-center scale-75 sm:scale-90 md:scale-100">
                     <VerificationCube />
@@ -165,5 +165,3 @@ const Section5ClaimKey = () => {
 };
 
 export default Section5ClaimKey;
-
-    

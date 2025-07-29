@@ -432,6 +432,7 @@
       height: 100%;
       overflow: hidden;
       z-index: -1;
+      isolation: isolate;
   }
   .spark {
       position: absolute;
@@ -441,6 +442,7 @@
       animation: rise 5s ease-out infinite;
       box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary));
       opacity: 0;
+      z-index: -1;
   }
   @keyframes rise {
       to {
@@ -557,5 +559,3 @@
     transform: translateX(100%);
   }
 }
-
-    

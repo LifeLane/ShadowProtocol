@@ -6,12 +6,12 @@ import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Lock, Cpu, ShieldCheck, Telescope, ExternalLink, GitBranch, HandCoins, Building, FlaskConical, Target, BrainCircuit, Bot } from "lucide-react";
+import { Lock, Cpu, ShieldCheck, Telescope, ExternalLink, GitBranch, HandCoins, Building, FlaskConical, Target, BrainCircuit, Bot, Users, Crown } from "lucide-react";
 
 const allVaults = [
   // Phase 1
-  { phase: "Phase 1", icon: Telescope, title: "Airdrop Vault Alpha", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Early adopters, core testers" },
-  { phase: "Phase 1", icon: Users, title: "Airdrop Vault Beta", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Public missions, quests" },
+  { phase: "Phase 1", icon: Users, title: "Airdrop Vault Alpha", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Early adopters, core testers" },
+  { phase: "Phase 1", icon: Telescope, title: "Airdrop Vault Beta", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Public missions, quests" },
   { phase: "Phase 1", icon: HandCoins, title: "Staking Vault Dawn", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Early staking pool XP reward multipliers" },
   { phase: "Phase 1", icon: Crown, title: "Staking Vault Zenith", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Live from TGE" },
   { phase: "Phase 1", icon: Building, title: "Liquidity Live Pool", amount: "100,000,000", duration: "No lock (live)", schedule: "CEX/DEX liquidity provisioning", purpose: "Unlocked at TGE" },
@@ -35,7 +35,6 @@ const allVaults = [
   { phase: "Phase 4", icon: Lock, title: "AI Reward Vault Core", amount: "25,000,000", duration: "18 mo lock", schedule: "Usage-based unlock", purpose: "AI task rewards, compute fees" },
 ];
 
-import { Users, Crown } from 'lucide-react';
 
 const Section4Tokenomics = () => {
   const containerVariants = {
@@ -119,5 +118,3 @@ const Section4Tokenomics = () => {
 };
 
 export default Section4Tokenomics;
-
-    

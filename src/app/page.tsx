@@ -15,6 +15,7 @@ import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import SectionGenesisAirdrop from "@/components/sections/SectionGenesisAirdrop";
 import SectionStaking from "@/components/sections/SectionStaking";
+import LinkMarquee from "@/components/common/LinkMarquee";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -46,6 +47,7 @@ export default function Home() {
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80 pt-16 pb-16">
         <Section1Awakening />
+        <LinkMarquee />
         <SectionAISignal />
         <Section2Overview />
         <Section3Ecosystem />

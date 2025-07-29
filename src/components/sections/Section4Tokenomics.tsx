@@ -6,25 +6,25 @@ import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Lock, Cpu, ShieldCheck, Telescope, ExternalLink, BarChartHorizontalBig } from "lucide-react";
+import { Lock, Cpu, ShieldCheck, Telescope, ExternalLink, GitBranch, HandCoins, Building, FlaskConical, Target, BrainCircuit, Bot } from "lucide-react";
 
 const allVaults = [
   // Phase 1
   { phase: "Phase 1", icon: Telescope, title: "Airdrop Vault Alpha", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Early adopters, core testers" },
-  { phase: "Phase 1", icon: Telescope, title: "Airdrop Vault Beta", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Public missions, quests" },
-  { phase: "Phase 1", icon: Telescope, title: "Staking Vault Dawn", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Early staking pool XP reward multipliers" },
-  { phase: "Phase 1", icon: Telescope, title: "Staking Vault Zenith", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Live from TGE" },
-  { phase: "Phase 1", icon: Telescope, title: "Liquidity Live Pool", amount: "100,000,000", duration: "No lock (live)", schedule: "CEX/DEX liquidity provisioning", purpose: "Unlocked at TGE" },
+  { phase: "Phase 1", icon: Users, title: "Airdrop Vault Beta", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 6 mo", purpose: "Public missions, quests" },
+  { phase: "Phase 1", icon: HandCoins, title: "Staking Vault Dawn", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Early staking pool XP reward multipliers" },
+  { phase: "Phase 1", icon: Crown, title: "Staking Vault Zenith", amount: "50,000,000", duration: "12 mo cliff", schedule: "Monthly over 12 mo", purpose: "Live from TGE" },
+  { phase: "Phase 1", icon: Building, title: "Liquidity Live Pool", amount: "100,000,000", duration: "No lock (live)", schedule: "CEX/DEX liquidity provisioning", purpose: "Unlocked at TGE" },
   // Phase 2
   { phase: "Phase 2", icon: Cpu, title: "Core Dev Vault", amount: "75,000,000", duration: "18 mo cliff", schedule: "Quarterly over 24 mo", purpose: "ShadowConsole core development" },
-  { phase: "Phase 2", icon: Cpu, title: "Infra Vault Forge", amount: "75,000,000", duration: "18 mo cliff", schedule: "Quarterly over 24 mo", purpose: "Backend infra, tools, audits" },
-  { phase: "Phase 2", icon: Cpu, title: "R&D Vault Nexus", amount: "50,000,000", duration: "18 mo cliff", schedule: "Biannual over 24 mo", purpose: "AI, future module innovation" },
-  { phase: "Phase 2", icon: Cpu, title: "Ecosystem Vault Rise", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 12 mo", purpose: "Grants, hackathons, collabs" },
-  { phase: "Phase 2", icon: Cpu, title: "Growth Vault Horizon", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 12 mo", purpose: "Partner DApps, rewards" },
+  { phase: "Phase 2", icon: GitBranch, title: "Infra Vault Forge", amount: "75,000,000", duration: "18 mo cliff", schedule: "Quarterly over 24 mo", purpose: "Backend infra, tools, audits" },
+  { phase: "Phase 2", icon: FlaskConical, title: "R&D Vault Nexus", amount: "50,000,000", duration: "18 mo cliff", schedule: "Biannual over 24 mo", purpose: "AI, future module innovation" },
+  { phase: "Phase 2", icon: Bot, title: "Ecosystem Vault Rise", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 12 mo", purpose: "Grants, hackathons, collabs" },
+  { phase: "Phase 2", icon: Target, title: "Growth Vault Horizon", amount: "50,000,000", duration: "12 mo cliff", schedule: "Linear over 12 mo", purpose: "Partner DApps, rewards" },
   // Phase 3
   { phase: "Phase 3", icon: ShieldCheck, title: "Reserve Vault Iron", amount: "75,000,000", duration: "24 mo lock", schedule: "Vesting over 12 mo", purpose: "Expansion, fund reserves" },
   { phase: "Phase 3", icon: ShieldCheck, title: "Reserve Vault Echo", amount: "50,000,000", duration: "24 mo lock", schedule: "Vesting over 12 mo", purpose: "Emergency liquidity vault" },
-  { phase: "Phase 3", icon: ShieldCheck, title: "Governance Vault Sigil", amount: "25,000,000", duration: "24 mo lock", schedule: "DAO-triggered unlock", purpose: "Governance rewards pool" },
+  { phase: "Phase 3", icon: BrainCircuit, title: "Governance Vault Sigil", amount: "25,000,000", duration: "24 mo lock", schedule: "DAO-triggered unlock", purpose: "Governance rewards pool" },
   { phase: "Phase 3", icon: ShieldCheck, title: "Treasury Buffer Aegis", amount: "25,000,000", duration: "18 mo cliff", schedule: "Biannual over 18 mo", purpose: "L2 bridges, gas, fees" },
   { phase: "Phase 3", icon: ShieldCheck, title: "Treasury Buffer Shade", amount: "25,000,000", duration: "18 mo cliff", schedule: "Biannual over 18 mo", purpose: "DAO-controlled treasury ops" },
   // Phase 4
@@ -34,6 +34,8 @@ const allVaults = [
   { phase: "Phase 4", icon: Lock, title: "Expansion Vault Pulse", amount: "25,000,000", duration: "24 mo lock", schedule: "Linear over 12 mo", purpose: "Ecosystem scale-up support" },
   { phase: "Phase 4", icon: Lock, title: "AI Reward Vault Core", amount: "25,000,000", duration: "18 mo lock", schedule: "Usage-based unlock", purpose: "AI task rewards, compute fees" },
 ];
+
+import { Users, Crown } from 'lucide-react';
 
 const Section4Tokenomics = () => {
   const containerVariants = {
@@ -117,3 +119,5 @@ const Section4Tokenomics = () => {
 };
 
 export default Section4Tokenomics;
+
+    

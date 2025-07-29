@@ -42,20 +42,23 @@ const Section8Airdrop = () => {
 
   const handleConnectWallet = async () => {
     setError(null);
-    if (typeof window.ethereum !== 'undefined') {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setAccount(accounts[0]);
-      } catch (err) {
-        if (err instanceof Error) {
-            setError("User rejected connection request.");
-        } else {
-            setError("An unknown error occurred.");
+    if ('solana' in window) {
+      const solana = (window as any).solana;
+      if (solana.isPhantom) {
+        try {
+          const response = await solana.connect();
+          setAccount(response.publicKey.toString());
+        } catch (err) {
+            if (err instanceof Error && 'message' in err) {
+              setError((err as any).message);
+            } else {
+              setError("User rejected connection request.");
+            }
+            console.error(err);
         }
-        console.error(err);
       }
     } else {
-      setError("MetaMask is not installed. Please install it to connect.");
+      setError("Solana wallet not found. Please install a wallet like Phantom.");
     }
   };
 
@@ -112,3 +115,5 @@ const Section8Airdrop = () => {
 };
 
 export default Section8Airdrop;
+
+    

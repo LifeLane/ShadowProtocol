@@ -17,7 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const claimSchema = z.object({
   telegram: z.string().startsWith("@", { message: "Must start with @" }).min(3, "Handle too short"),
-  wallet: z.string().regex(/^0x[a-fA-F0-9]{40}$/, { message: "Invalid wallet address" }),
+  wallet: z.string().regex(/^[1-9A-HJ-NP-Za-km-z]{32,44}$/, { message: "Invalid Solana wallet address" }),
   email: z.string().email({ message: "Invalid email address" }),
 });
 
@@ -107,7 +107,7 @@ const Section5ClaimKey = () => {
                                     <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
                                     <Input 
                                       id="wallet" 
-                                      placeholder="0x..." 
+                                      placeholder="Solana Wallet Address" 
                                       {...register("wallet")} 
                                       className={cn(
                                         "pl-10 bg-black/30 border-primary/30 h-12",
@@ -165,3 +165,5 @@ const Section5ClaimKey = () => {
 };
 
 export default Section5ClaimKey;
+
+    

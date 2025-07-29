@@ -9,7 +9,7 @@ import { Rocket, KeyRound } from 'lucide-react';
 
 const ShadowLogo = () => (
     <motion.pre
-        className="text-primary glow font-bold text-center text-[clamp(4px,2.4vw,22px)] leading-tight tracking-tighter sm:tracking-[0.2em] md:tracking-[0.3em] w-full overflow-hidden"
+        className="text-primary glow font-bold text-center text-[clamp(2px,2.5vw,22px)] leading-tight tracking-tighter sm:tracking-[0.2em] md:tracking-[0.3em] w-full overflow-x-auto"
         initial={{ opacity: 0, scale: 0.5, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.8 }}

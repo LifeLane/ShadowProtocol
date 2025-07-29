@@ -18,11 +18,11 @@ const links = [
 
 const LinkMarquee = () => {
     return (
-        <div className="relative w-full overflow-hidden bg-background/50 py-2 border-y border-primary/20 backdrop-blur-sm">
+        <div className="w-full overflow-hidden bg-background/50 py-2 border-y border-primary/20 backdrop-blur-sm">
             <div className="flex animate-marquee-infinite">
                 {links.concat(links).map((link, index) => (
                     <Link href={link.href} key={index} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 mx-6 flex-shrink-0 text-muted-foreground hover:text-primary transition-colors duration-300">
-                        <img src={link.imgSrc} alt={`${link.name} logo`} className="w-5 h-5 rounded-full" />
+                        <Image src={link.imgSrc} alt={`${link.name} logo`} className="rounded-full" width={20} height={20} unoptimized />
                         <span className="font-bold text-sm">{link.name}</span>
                     </Link>
                 ))}

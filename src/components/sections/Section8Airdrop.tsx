@@ -1,10 +1,11 @@
+
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Eye, Skull, Plug, Gift } from "lucide-react";
-import { useEffect } from 'react';
+import { Eye, Skull, Plug, Gift, CheckCircle, AlertTriangle } from "lucide-react";
+import { useEffect, useState } from 'react';
 
 const ForgeSparks = () => {
   useEffect(() => {
@@ -36,6 +37,28 @@ const ForgeSparks = () => {
 
 
 const Section8Airdrop = () => {
+  const [account, setAccount] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleConnectWallet = async () => {
+    setError(null);
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        setAccount(accounts[0]);
+      } catch (err) {
+        if (err instanceof Error) {
+            setError("User rejected connection request.");
+        } else {
+            setError("An unknown error occurred.");
+        }
+        console.error(err);
+      }
+    } else {
+      setError("MetaMask is not installed. Please install it to connect.");
+    }
+  };
+
 
   return (
     <AnimatedSection id="airdrop" className="relative">
@@ -57,16 +80,31 @@ const Section8Airdrop = () => {
                     <p>Limited to first 10,000 qualified addresses.</p>
                 </div>
             </div>
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-                 <Button size="lg" className="btn-shine glow w-full sm:w-auto">
-                    <Plug className="mr-2" />
-                    Connect Wallet
-                </Button>
-                 <Button size="lg" variant="outline" className="glow w-full sm:w-auto">
-                    <Gift className="mr-2" />
-                    Begin My Upload
-                </Button>
-            </div>
+             {account ? (
+                <div className="text-center space-y-4">
+                    <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-bold text-primary">
+                        <CheckCircle className="w-6 h-6 md:w-8 md:h-8" />
+                        <p>Wallet Connected: {`${account.substring(0, 6)}...${account.substring(account.length - 4)}`}</p>
+                    </div>
+                    <Button size="lg" variant="outline" className="glow w-full sm:w-auto">
+                        <Gift className="mr-2" />
+                        Begin My Upload
+                    </Button>
+                </div>
+            ) : (
+                <div className="flex flex-col items-center gap-4 w-full">
+                    <Button size="lg" className="btn-shine glow w-full sm:w-auto max-w-xs" onClick={handleConnectWallet}>
+                        <Plug className="mr-2" />
+                        Connect Wallet
+                    </Button>
+                    {error && (
+                         <div className="flex items-center justify-center gap-2 text-sm font-bold text-destructive mt-2">
+                            <AlertTriangle className="w-4 h-4" />
+                            <p>{error}</p>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
       </Terminal>
     </AnimatedSection>

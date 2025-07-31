@@ -35,7 +35,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-background">
-        <div className="text-primary glow text-xl font-bold animate-pulse">
+        <div className="text-primary glow text-lg font-bold animate-pulse">
           &gt; boot --shadow-core
         </div>
       </div>
@@ -44,9 +44,6 @@ export default function Home() {
 
   return (
     <>
-      <div className="sticky top-0 z-50">
-        <TrustMarquee />
-      </div>
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
@@ -58,9 +55,7 @@ export default function Home() {
         <Section6Roadmap />
         <Section7Claim />
       </main>
-      <div className="sticky bottom-0 z-30">
-        <LinkMarquee />
-      </div>
+      <LinkMarquee />
       <Footer />
       <ScrollToTopButton />
     </>

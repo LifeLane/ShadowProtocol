@@ -18,7 +18,7 @@ const links = [
 
 const LinkMarquee = () => {
     return (
-        <div className="w-full overflow-hidden bg-background/50 backdrop-blur-sm border-t border-b border-primary/20">
+        <div className="w-full overflow-hidden bg-secondary/50 backdrop-blur-sm border-t border-b border-secondary/20">
             <div className="py-2">
                 <div className="flex animate-marquee-infinite">
                     {links.concat(links).map((link, index) => (
@@ -29,7 +29,7 @@ const LinkMarquee = () => {
                     ))}
                 </div>
             </div>
-            <div className="py-2 border-t border-primary/20">
+            <div className="py-2 border-t border-secondary/20">
                 <div className="flex animate-marquee-infinite-reverse">
                     {links.concat(links).map((link, index) => (
                         <Link href={link.href} key={`bottom-${index}`} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 mx-6 flex-shrink-0 text-muted-foreground hover:text-primary transition-colors duration-300">

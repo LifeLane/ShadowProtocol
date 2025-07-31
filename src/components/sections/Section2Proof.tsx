@@ -49,10 +49,10 @@ const AnimatedCounter = ({ to, isCurrency = false }: { to: number; isCurrency?: 
 
 const Section2Proof = () => {
     const stats = [
-        { label: "Total SHADOW", value: 10000000000, icon: BarChart, isCurrency: false },
-        { label: "Locked in 20 Vaults", value: 9900000000, icon: Lock, isCurrency: false },
-        { label: "Mint Authority", value: 0, icon: ShieldOff, isCurrency: false },
-        { label: "On-Chain Transparency", value: 100, icon: Globe, suffix: "%" },
+        { label: "Total SHADOW", value: "10 Billion", icon: BarChart, isCounter: false },
+        { label: "Locked in 20 Vaults", value: "9.9 Billion", icon: Lock, isCounter: false },
+        { label: "Mint Authority", value: 0, icon: ShieldOff, isCounter: true },
+        { label: "On-Chain Transparency", value: 100, icon: Globe, suffix: "%", isCounter: true },
     ];
 
     const trustPoints = [
@@ -83,7 +83,8 @@ const Section2Proof = () => {
                         >
                             <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mx-auto mb-3" />
                             <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary glow">
-                                <AnimatedCounter to={stat.value} isCurrency={stat.isCurrency} />{stat.suffix}
+                                {stat.isCounter ? <AnimatedCounter to={stat.value as number} /> : stat.value}
+                                {stat.suffix}
                             </p>
                             <p className="text-muted-foreground text-sm md:text-base mt-2">{stat.label}</p>
                         </motion.div>

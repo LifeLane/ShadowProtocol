@@ -63,7 +63,7 @@ const Section3Utility = () => {
             </div>
 
             <div className="mt-12 text-center space-y-4">
-                <p className="text-2xl font-bold text-primary glow">Access Free. Upgrade by Holding. SHADOW = Your Utility Key.</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary glow">Access Free. Upgrade by Holding. SHADOW = Your Utility Key.</p>
                 <Button asChild size="lg" variant="outline" className="glow">
                     <Link href="#staking">
                         <Zap className="mr-2" />

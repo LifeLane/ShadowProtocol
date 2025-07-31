@@ -2,45 +2,86 @@
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
-import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Check, Clock, Cpu, Milestone } from "lucide-react";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const roadmapPhases = [
-    { phase: "Phase 1: Awakening", description: "Genesis block forged. Core contracts deployed on mainnet. Initial SHADOW token distribution.", status: "Complete" },
-    { phase: "Phase 2: Signal & Forge", description: "Signal Terminal and Solidity Console activated. Early access for genesis key holders.", status: "Live" },
-    { phase: "Phase 3: Ecosystem Expansion", description: "Launch of Self-Custody Chain, Token Factory, and initial DeFi/DAO modules.", status: "Q3 2024" },
-    { phase: "Phase 4: Sentience", description: "Full on-chain governance via the Shadow DAO. Protocol becomes fully autonomous.", status: "Q4 2024" },
-    { phase: "Phase 5: The Singularity", description: "Inter-chain communication and integration of external AI oracles. The mind expands.", status: "Planned" },
+    { 
+        phase: "Genesis", 
+        status: "Live", 
+        description: "Contract Deployed | SHADOWGPT Active", 
+        icon: Check, 
+        color: "text-primary" 
+    },
+    { 
+        phase: "Expansion", 
+        status: "Q4 2025", 
+        description: "ShadowWallet | Staking Protocol", 
+        icon: Milestone, 
+        color: "text-accent" 
+    },
+    { 
+        phase: "Sentience", 
+        status: "2026", 
+        description: "AI Tiering | DAO Activation", 
+        icon: Cpu, 
+        color: "text-accent" 
+    },
+    { 
+        phase: "Singularity", 
+        status: "Beyond", 
+        description: "SHADOWChain & Autonomous Governance", 
+        icon: Clock, 
+        color: "text-accent"
+    },
 ];
 
 const Section6Roadmap = () => {
     return (
-        <AnimatedSection id="roadmap" className="bg-starfield">
-            <div className="w-full">
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-12 md:mb-16 text-primary glow transition-colors hover:text-accent">The Path to Consciousness</h2>
-                <div className="relative w-full max-w-4xl mx-auto">
-                    <div className="absolute top-0 left-2 sm:left-4 md:left-1/2 -translate-x-0 md:-translate-x-1/2 h-full w-0.5 bg-primary/30"></div>
-                    {roadmapPhases.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            className="flex items-start w-full mb-12"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                        >
-                            <div className={`w-full pl-8 sm:pl-12 md:w-1/2 md:pl-0 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8 md:order-3'}`}>
-                                <div className={`bg-background/50 backdrop-blur-sm p-4 rounded-lg border border-primary/20 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-accent transition-colors hover:text-primary">{item.phase}</h3>
-                                    <p className="text-muted-foreground mt-2 text-sm sm:text-base md:text-xl">{item.description}</p>
-                                    <p className={`mt-2 font-bold text-sm sm:text-base md:text-xl ${item.status === 'Complete' || item.status === 'Live' ? 'text-primary' : 'text-accent'}`}>&gt; Status: {item.status}</p>
+        <AnimatedSection id="roadmap" className="bg-pulse-grid-pattern">
+            <div className="w-full max-w-6xl text-center">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 text-primary glow">
+                    From Genesis to Singularity — The SHADOW Protocol Roadmap
+                </h2>
+
+                <div className="relative w-full max-w-5xl mx-auto">
+                    {/* Desktop Timeline Line */}
+                    <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-primary/20 transform -translate-y-1/2"></div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        {roadmapPhases.map((item, index) => (
+                            <motion.div
+                                key={index}
+                                className="relative flex md:flex-col items-center text-center group"
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                            >
+                                {/* Desktop Timeline Node */}
+                                <div className="hidden md:flex absolute top-1/2 left-1/2 w-8 h-8 -translate-x-1/2 -translate-y-24 rounded-full bg-background border-2 border-primary group-hover:bg-primary transition-colors flex items-center justify-center">
+                                  <div className="w-3 h-3 rounded-full bg-primary group-hover:bg-background animate-pulse"></div>
                                 </div>
-                            </div>
-                            <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex-shrink-0 flex items-center justify-center absolute left-2 sm:left-4 md:left-1/2 -translate-x-1/2">
-                                <div className="w-4 h-4 rounded-full bg-primary animate-pulse"></div>
-                            </div>
-                            <div className="hidden md:block w-1/2"></div>
-                        </motion.div>
-                    ))}
+
+                                <div className="w-full bg-black/30 border border-primary/20 rounded-lg p-6 backdrop-blur-sm card-animated-border">
+                                    <item.icon className={`w-10 h-10 mx-auto mb-4 ${item.color}`} />
+                                    <h3 className={`text-2xl font-bold ${item.color} glow`}>{item.phase}</h3>
+                                    <p className="text-muted-foreground font-bold mt-1">{item.status}</p>
+                                    <p className="text-foreground/80 mt-2 text-sm h-12">{item.description}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-12">
+                    <Button asChild size="lg" className="btn-shine">
+                        <Link href="#">
+                            Join the Ecosystem
+                        </Link>
+                    </Button>
                 </div>
             </div>
         </AnimatedSection>

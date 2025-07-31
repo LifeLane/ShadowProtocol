@@ -5,19 +5,17 @@ import { useEffect, useState } from "react";
 import { useScroll, useSpring } from "framer-motion";
 import Section1Awakening from "@/components/sections/Section1Awakening";
 import SectionAISignal from "@/components/sections/SectionAISignal";
-import Section2Overview from "@/components/sections/Section2Overview";
-import Section3Ecosystem from "@/components/sections/Section3Ecosystem";
-import Section4Tokenomics from "@/components/sections/Section4Tokenomics";
-import Section5ClaimKey from "@/components/sections/Section5ClaimKey";
+import Section2Proof from "@/components/sections/Section2Proof";
+import Section3Utility from "@/components/sections/Section3Utility";
+import Section4BurnServe from "@/components/sections/Section4BurnServe";
+import Section5VaultProof from "@/components/sections/Section5VaultProof";
 import Section6Roadmap from "@/components/sections/Section6Roadmap";
-import Section7Manifest from "@/components/sections/Section7Manifest";
-import Section8Airdrop from "@/components/sections/Section8Airdrop";
+import Section7Claim from "@/components/sections/Section7Claim";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
-import SectionGenesisAirdrop from "@/components/sections/SectionGenesisAirdrop";
-import SectionStaking from "@/components/sections/SectionStaking";
 import LinkMarquee from "@/components/common/LinkMarquee";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
+import TrustMarquee from "@/components/common/TrustMarquee";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -53,16 +51,14 @@ export default function Home() {
       <main className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
         <SectionAISignal />
-        <Section2Overview />
-        <Section3Ecosystem />
-        <Section4Tokenomics />
-        <SectionGenesisAirdrop />
-        <SectionStaking />
-        <Section5ClaimKey />
+        <Section2Proof />
+        <Section3Utility />
+        <Section4BurnServe />
+        <Section5VaultProof />
         <Section6Roadmap />
-        <Section7Manifest />
-        <Section8Airdrop />
+        <Section7Claim />
       </main>
+      <TrustMarquee />
       <Footer />
       <ScrollToTopButton />
     </>

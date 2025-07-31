@@ -1,51 +1,48 @@
 
 "use client"
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Lock, ShieldOff, BarChart, Search } from 'lucide-react';
+import { Lock, ShieldOff, Search, BarChart } from 'lucide-react';
 import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 
-const AnimatedCounter = ({ to, isCurrency = false }: { to: number; isCurrency?: boolean }) => {
+const AnimatedCounter = ({ to }: { to: number }) => {
     const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true, amount: 0.5 });
+    const isInView = useInView(ref, { once: true });
     const [count, setCount] = useState(0);
-
+  
     useEffect(() => {
-        if (isInView) {
-            const duration = 2000; // ms
-            const frameRate = 1000 / 60; // 60fps
-            const totalFrames = Math.round(duration / frameRate);
-            let frame = 0;
-
-            const counter = setInterval(() => {
-                frame++;
-                const progress = frame / totalFrames;
-                const currentCount = Math.round(to * progress);
-                setCount(currentCount);
-
-                if (frame === totalFrames) {
-                    clearInterval(counter);
-                    setCount(to); // Ensure final value is exact
-                }
-            }, frameRate);
-
-            return () => clearInterval(counter);
-        }
+      if (isInView) {
+        const controls = {
+          stop: () => {},
+        };
+        const animate = (timestamp: number) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / 2000, 1);
+          setCount(Math.floor(progress * to));
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+        let start: number | null = null;
+        requestAnimationFrame(animate);
+  
+        return () => controls.stop();
+      }
     }, [isInView, to]);
-
-    return <span ref={ref}>{isCurrency ? `$${count.toLocaleString()}` : count.toLocaleString()}</span>;
-};
-
+  
+    return <span ref={ref}>{count.toLocaleString()}</span>;
+  };
 
 const Section2Proof = () => {
     const stats = [
-        { label: "Total SHADOW", value: 10000000000, icon: BarChart, isCurrency: false },
-        { label: "Locked in 20 Vaults", value: 9900000000, icon: Lock, isCurrency: false },
-        { label: "Mint Authority", value: 0, icon: ShieldOff, isCurrency: false },
+        { label: "Total SHADOW", value: 10000000000, icon: BarChart },
+        { label: "Locked in 20 Vaults", value: 9900000000, icon: Lock },
+        { label: "Mint Authority", value: 0, icon: ShieldOff },
     ];
 
     return (
@@ -69,7 +66,7 @@ const Section2Proof = () => {
                         >
                             <stat.icon className="w-10 h-10 text-primary mx-auto mb-3" />
                             <p className="text-4xl font-bold text-primary glow">
-                                <AnimatedCounter to={stat.value} isCurrency={stat.isCurrency} />
+                                <AnimatedCounter to={stat.value} />
                             </p>
                             <p className="text-muted-foreground text-lg">{stat.label}</p>
                         </motion.div>

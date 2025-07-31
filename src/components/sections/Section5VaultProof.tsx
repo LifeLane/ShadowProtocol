@@ -5,7 +5,7 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { Lock, Users, HandCoins, Cpu, FlaskConical, ShieldCheck, Search } from "lucide-react";
+import { Lock, Users, HandCoins, Cpu, FlaskConical, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const vaultCategories = [
@@ -60,8 +60,7 @@ const Section5VaultProof = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">
                             <Link href="#tokenomics">
-                                <Search className="mr-2" />
-                                Explore Vaults
+                                Explore All Vaults
                             </Link>
                         </Button>
                          <Button asChild size="lg" variant="outline" className="glow">

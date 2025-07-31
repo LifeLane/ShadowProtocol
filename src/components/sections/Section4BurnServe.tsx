@@ -21,6 +21,7 @@ const Section4BurnServe = () => {
     }, []);
 
     useEffect(() => {
+      // Animate progress bar on view
       const progressTimer = setTimeout(() => setProgress(34.21), 500);
       return () => clearTimeout(progressTimer);
     }, []);

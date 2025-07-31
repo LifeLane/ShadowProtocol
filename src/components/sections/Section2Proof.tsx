@@ -1,13 +1,11 @@
-
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Lock, ShieldOff, Search, BarChart } from 'lucide-react';
+import { Lock, ShieldOff, BarChart, Search } from 'lucide-react';
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import Link from "next/link";
 
 const AnimatedCounter = ({ to }: { to: number }) => {
@@ -36,7 +34,8 @@ const AnimatedCounter = ({ to }: { to: number }) => {
     }, [isInView, to]);
   
     return <span ref={ref}>{count.toLocaleString()}</span>;
-  };
+};
+
 
 const Section2Proof = () => {
     const stats = [

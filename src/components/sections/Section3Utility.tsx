@@ -44,7 +44,7 @@ const Section3Utility = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
                     >
-                        <Card className="bg-black/40 border-primary/30 card-animated-border h-full flex flex-col text-center">
+                        <Card className="bg-black/40 card-animated-border-hover h-full flex flex-col text-center">
                             <CardHeader className="items-center">
                                 <feature.icon className="w-16 h-16 text-primary mb-4" />
                                 <CardTitle className="text-3xl text-accent glow-accent">{feature.title}</CardTitle>

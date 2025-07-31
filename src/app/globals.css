@@ -478,32 +478,16 @@
     66% { box-shadow: 0 0 14px hsl(var(--chart-2) / 0.8); }
   }
 
-  .card-animated-border {
+  .card-animated-border-hover {
     position: relative;
     z-index: 0;
     border-width: 1px;
     border-color: hsl(var(--primary) / 0.2);
+    transition: box-shadow 0.3s ease-in-out;
   }
 
-  .card-animated-border:hover {
-    border-color: transparent;
-  }
-  
-  .card-animated-border::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    z-index: -1;
-    border-radius: var(--radius);
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--chart-2)), hsl(var(--primary)));
-    background-size: 200% 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .card-animated-border:hover::before {
-    opacity: 1;
-    animation: gradient-rotate 4s ease infinite, multicolor-glow-pulse 3s ease-in-out infinite;
+  .card-animated-border-hover:hover {
+    animation: multicolor-glow-pulse 3s ease-in-out infinite;
   }
   
   @keyframes glitch-hover {

@@ -101,7 +101,7 @@ const VaultCard = ({ vault, index }: { vault: { name: string, amount: string, ur
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
         >
-            <Card className="bg-black/40 border-primary/30 h-full flex flex-col text-center card-animated-border group">
+            <Card className="bg-black/40 h-full flex flex-col text-center card-animated-border-hover group">
                 <CardHeader>
                     <CardTitle className="text-lg text-accent glow-accent group-hover:text-primary transition-colors">{vault.name}</CardTitle>
                 </CardHeader>

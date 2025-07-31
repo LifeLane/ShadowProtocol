@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Lock, ShieldOff, BarChart, Search, Globe } from 'lucide-react';
+import { Lock, ShieldOff, BarChart, Search, Globe, Ban, KeyRound, Eye } from 'lucide-react';
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
@@ -55,27 +55,27 @@ const Section2Proof = () => {
         { label: "On-Chain Transparency", value: 100, icon: Globe, suffix: "%" },
     ];
 
+    const trustPoints = [
+        { text: "No Dev Access", icon: KeyRound },
+        { text: "No Hidden Wallets", icon: Eye },
+        { text: "No Mint Switch", icon: Ban },
+    ];
+
     return (
         <AnimatedSection id="neural-core" animationClassName="bg-pulse-grid-pattern">
             <Terminal title="NEURAL_CORE_INTEGRITY_CHECK.md" className="w-full max-w-7xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-8 text-center">
-                    <div className="md:border-r md:border-primary/30 md:pr-6 flex items-center justify-center">
-                         <h2 className="text-2xl sm:text-3xl font-bold text-accent glow-accent">
-                            SHADOW Is Immutable. 10 Billion Forged.
-                        </h2>
-                    </div>
-                    <div className="flex items-center justify-center">
-                         <h2 className="text-2xl sm:text-3xl font-bold text-accent glow-accent">
-                            99% Locked. Zero Mint Authority.
-                        </h2>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 text-center md:text-left text-2xl sm:text-3xl font-bold text-accent glow-accent mb-8">
+                    <div className="p-2 md:border-r md:border-primary/30">SHADOW Is Immutable.</div>
+                    <div className="p-2">10 Billion Forged.</div>
+                    <div className="p-2 md:border-r md:border-t md:border-primary/30">99% Locked.</div>
+                    <div className="p-2 md:border-t md:border-primary/30">Zero Mint Authority.</div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 text-center">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
-                            className="bg-black/20 border border-primary/20 p-4 rounded-lg flex flex-col justify-between h-full"
+                            className="bg-black/20 border border-primary/20 p-4 rounded-lg flex flex-col justify-between h-full card-glitch-hover"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -89,9 +89,24 @@ const Section2Proof = () => {
                         </motion.div>
                     ))}
                 </div>
-                 <div className="text-center border-t border-dashed border-primary/30 pt-6">
+                 <div className="border-t border-dashed border-primary/30 pt-6 text-center">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        {trustPoints.map((point, index) => (
+                             <motion.div
+                                key={index}
+                                className="flex items-center justify-center gap-2 text-primary glow"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4 + index * 0.1 }}
+                            >
+                                <point.icon className="w-5 h-5"/>
+                                <span className="font-bold">{point.text}</span>
+                            </motion.div>
+                        ))}
+                    </div>
                     <p className="text-lg sm:text-xl font-bold text-primary glow mb-6">
-                        No Dev Access. No Hidden Wallets. No Mint Switch. SHADOW is the First Token That Can’t Rug.
+                        SHADOW is the First Token That Can’t Rug.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">

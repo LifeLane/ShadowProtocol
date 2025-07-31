@@ -44,6 +44,9 @@ export default function Home() {
 
   return (
     <>
+      <div className="sticky top-0 z-50">
+        <TrustMarquee />
+      </div>
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
@@ -58,7 +61,6 @@ export default function Home() {
       <div className="sticky bottom-0 z-30">
         <LinkMarquee />
       </div>
-      <TrustMarquee />
       <Footer />
       <ScrollToTopButton />
     </>

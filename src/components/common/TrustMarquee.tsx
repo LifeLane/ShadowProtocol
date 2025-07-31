@@ -14,12 +14,12 @@ const trustItems = [
 
 const TrustMarquee = () => {
     return (
-        <div className="w-full overflow-hidden bg-background/50 py-3 border-y-2 border-primary/40 backdrop-blur-sm">
+        <div className="w-full overflow-hidden bg-destructive/80 py-2 md:py-1 border-b-2 border-destructive/40 backdrop-blur-sm">
             <div className="flex animate-marquee-infinite">
                 {trustItems.concat(trustItems).map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3 mx-8 flex-shrink-0 text-primary glow">
+                    <div key={index} className="flex items-center space-x-3 mx-8 flex-shrink-0 text-destructive-foreground">
                         <item.icon className="w-5 h-5" />
-                        <span className="font-bold text-lg tracking-wider">{item.text}</span>
+                        <span className="font-bold text-base md:text-lg tracking-wider">{item.text}</span>
                     </div>
                 ))}
             </div>

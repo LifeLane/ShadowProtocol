@@ -64,7 +64,7 @@ const Section2Proof = () => {
     return (
         <AnimatedSection id="neural-core" animationClassName="bg-pulse-grid-pattern">
             <Terminal title="NEURAL_CORE_INTEGRITY_CHECK.md" className="w-full max-w-7xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 text-center md:text-left text-2xl sm:text-3xl font-bold text-accent glow-accent mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 text-center text-2xl sm:text-3xl font-bold text-accent glow-accent mb-8">
                     <div className="p-2 md:border-r md:border-primary/30">SHADOW Is Immutable.</div>
                     <div className="p-2">10 Billion Forged.</div>
                     <div className="p-2 md:border-r md:border-t md:border-primary/30">99% Supply Locked.</div>

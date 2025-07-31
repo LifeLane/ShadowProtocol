@@ -82,7 +82,7 @@ const Section2Proof = () => {
                             transition={{ delay: index * 0.2 }}
                         >
                             <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mx-auto mb-3" />
-                            <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary glow">
+                            <p className="text-2xl md:text-3xl font-bold text-primary glow">
                                 {stat.isCounter ? <AnimatedCounter to={stat.value as number} /> : stat.value}
                                 {stat.suffix}
                             </p>

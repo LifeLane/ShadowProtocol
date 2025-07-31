@@ -49,6 +49,16 @@ const Section1Awakening = () => {
                     transition={{ delay: 2.5 }}
                 >
                     <ShadowLogo />
+                     {isMobile && (
+                        <motion.p
+                            className="text-accent mt-4 text-base"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 3.5 }}
+                        >
+                            SHADOW Is Not a Meme. SHADOW Is Protocol.
+                        </motion.p>
+                     )}
                      {!isMobile && (
                         <motion.div 
                             initial={{ opacity: 0 }}

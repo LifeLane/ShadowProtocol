@@ -32,9 +32,9 @@ const Section1Awakening = () => {
             <div className="text-center flex flex-col items-center justify-center h-full w-full">
                 <Typewriter
                     texts={[
-                        '> boot --shadow-core',
-                        '> syncing . . .',
-                        '> intelligence confirmed.',
+                        '> forging SHADOW_PROTOCOL...',
+                        '> >rug-proof protocol confirmed.....',
+                        '> > >Every Token Must Serve or Burn 🔥'
                     ]}
                     className="text-primary text-lg sm:text-3xl md:text-5xl font-bold"
                     whitespaceClass="whitespace-pre"

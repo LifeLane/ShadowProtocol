@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { Rocket, KeyRound } from 'lucide-react';
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ShadowLogo = () => (
     <motion.pre
@@ -28,6 +29,8 @@ const ShadowLogo = () => (
 );
 
 const Section1Awakening = () => {
+    const isMobile = useIsMobile();
+
     return (
         <AnimatedSection id="init-core" className="h-screen !py-0" animationClassName="bg-ai-eye-pulse">
             <div className="text-center flex flex-col items-center justify-center h-full w-full">
@@ -37,7 +40,7 @@ const Section1Awakening = () => {
                         '> >rug-proof protocol confirmed.....',
                         '> > >Every Token Must Serve or Burn 🔥'
                     ]}
-                    className="text-primary text-lg sm:text-3xl md:text-5xl font-bold"
+                    className="text-primary text-lg sm:text-2xl md:text-4xl font-bold"
                 />
                  <motion.div
                     className="text-center w-full mt-4"
@@ -46,25 +49,27 @@ const Section1Awakening = () => {
                     transition={{ delay: 2.5 }}
                 >
                     <ShadowLogo />
-                     <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 3.5 }}>
-                        <Typewriter
-                            texts={[
-                                "SHADOW Is Not a Meme. SHADOW Is Protocol.",
-                                "Rug-Proof by Design | Powered by AI | Locked Forever.",
-                                "99% Supply Locked | Zero Mint Authority | Full Transparency."
-                            ]}
-                            className="text-accent mt-4 md:mt-8 text-sm sm:text-lg md:text-xl"
-                            speed={30}
-                            pause={2000}
-                        />
-                     </motion.div>
+                     {!isMobile && (
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 3.5 }}>
+                            <Typewriter
+                                texts={[
+                                    "SHADOW Is Not a Meme. SHADOW Is Protocol.",
+                                    "Rug-Proof by Design | Powered by AI | Locked Forever.",
+                                    "99% Supply Locked | Zero Mint Authority | Full Transparency."
+                                ]}
+                                className="text-accent mt-4 md:mt-8 text-sm sm:text-lg md:text-xl"
+                                speed={30}
+                                pause={2000}
+                            />
+                        </motion.div>
+                     )}
                 </motion.div>
 
                 <motion.div
-                    className="mt-12 flex flex-col sm:flex-row items-center gap-4"
+                    className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center gap-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 4, duration: 0.8 }}

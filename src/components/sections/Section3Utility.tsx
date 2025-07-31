@@ -35,7 +35,7 @@ const Section3Utility = () => {
                 </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
                 {features.map((feature, index) => (
                     <motion.div
                         key={index}

@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from 'react';
@@ -65,9 +64,11 @@ const Section7Claim = () => {
                     <div className="mb-8">
                         <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3">Claim Meter</h3>
                         <Progress value={progress} className="h-4" />
-                        <p className="text-primary glow font-mono mt-2 text-lg">
-                            {claimedKeys.toLocaleString()} / {totalKeys.toLocaleString()} SHADOW Keys Claimed
-                        </p>
+                        <div className="text-primary glow font-mono mt-2 text-lg flex flex-col sm:flex-row sm:justify-center sm:gap-2">
+                            <span>{claimedKeys.toLocaleString()}</span>
+                            <span className="hidden sm:inline">/</span>
+                            <span>{totalKeys.toLocaleString()} SHADOW Keys Claimed</span>
+                        </div>
                     </div>
                     
                     <div className="flex flex-col items-center gap-4">

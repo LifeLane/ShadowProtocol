@@ -4,9 +4,9 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { Lock, Search, ChevronDown, ShieldCheck } from "lucide-react";
+import { Lock } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 const phasesData = [
@@ -43,7 +43,7 @@ const phasesData = [
   },
   {
     phase: "Tactical Vaults",
-    totalLocked: "850,000,000",
+    totalLocked: "900,000,000",
     vaults: [
       { name: "Treasury Buffer Shade", amount: "400,000,000", url: "https://solscan.io/account/44dxXdzEpFMXqpQ9BHhDAzxCt6AY2XWuWAw24WNSSd8h" },
       { name: "Tactical Vault Ghost", amount: "150,000,000", url: "https://solscan.io/account/EJ5gs2NxKS1ACxXh9NCXqVdLGifrvGQzchGiYkL2Kr9C" },
@@ -51,6 +51,7 @@ const phasesData = [
       { name: "Expansion Vault Nova", amount: "75,000,000", url: "https://solscan.io/account/7axcsHsmfTR7mLPXcWryV6fosxyETi2BCVHKB2gAuFvp" },
       { name: "Expansion Vault Pulse", amount: "75,000,000", url: "https://solscan.io/account/HBxvs95QQ65EhDxXDJBd8RfzxpQJamwEx5Wnr4H5N2K9" },
       { name: "AI Reward Vault Core", amount: "50,000,000", url: "https://solscan.io/account/7d5qWRFwAjVgQb1tPBuFNZvW1CM3BG1yVVDsbg4u4mxj" },
+      { name: "Community Treasury", amount: "50,000,000", url: "https://solscan.io/account/BeqL8z1jVwkg7xrT1ZQYCzt9XgAiy2fz7f88CjUFcTxy" }
     ]
   }
 ];
@@ -73,11 +74,10 @@ const Section5VaultProof = () => {
                     {phasesData.map((phase, index) => (
                         <AccordionItem value={`item-${index}`} key={index} className="bg-black/20 border border-primary/20 rounded-lg">
                             <AccordionTrigger className="p-4 sm:p-6 text-left hover:no-underline">
-                                <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center text-left">
-                                    <h3 className="text-xl sm:text-2xl font-bold text-accent glow-accent">{phase.phase}</h3>
-                                    <p className="text-lg text-primary glow mt-2 sm:mt-0">Total Locked: {parseInt(phase.totalLocked, 10).toLocaleString()} SHADOW</p>
+                                <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center text-left gap-2 sm:gap-4">
+                                    <h3 className="text-lg sm:text-2xl font-bold text-accent glow-accent flex-1">{phase.phase}</h3>
+                                    <p className="text-base sm:text-lg text-primary glow whitespace-nowrap">Total Locked: {parseInt(phase.totalLocked, 10).toLocaleString()} SHADOW</p>
                                 </div>
-                                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 text-primary ml-4" />
                             </AccordionTrigger>
                             <AccordionContent className="p-4 sm:p-6 pt-0">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

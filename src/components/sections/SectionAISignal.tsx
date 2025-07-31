@@ -86,7 +86,7 @@ const SectionAISignal = () => {
     };
 
     return (
-        <AnimatedSection id="ai-signal" className="bg-pulse-grid-pattern">
+        <AnimatedSection id="ai-signal" animationClassName="bg-pulse-grid-pattern">
             <div className="w-full max-w-6xl">
                  <Terminal title="AI Signal Feed" className="max-w-6xl bg-black/40 backdrop-blur-sm">
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">

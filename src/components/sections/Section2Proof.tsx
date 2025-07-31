@@ -57,7 +57,7 @@ const Section2Proof = () => {
     ];
 
     return (
-        <AnimatedSection id="neural-core" className="bg-pulse-grid-pattern">
+        <AnimatedSection id="neural-core" animationClassName="bg-pulse-grid-pattern">
             <Terminal title="NEURAL_CORE_INTEGRITY_CHECK.md" className="w-full max-w-7xl">
                 <div className="text-center mb-8">
                     <h2 className="text-2xl sm:text-3xl font-bold text-accent glow-accent mb-2">

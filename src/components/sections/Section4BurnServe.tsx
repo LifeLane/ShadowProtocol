@@ -26,7 +26,7 @@ const Section4BurnServe = () => {
     }, []);
 
     return (
-        <AnimatedSection id="burn-serve" className="bg-circuit-pattern">
+        <AnimatedSection id="burn-serve" animationClassName="bg-circuit-pattern">
             <Terminal title="TOKENOMICS_PROTOCOL_v2.cfg" className="w-full max-w-6xl">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl sm:text-4xl font-bold text-accent glow-accent mb-2">

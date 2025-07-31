@@ -48,7 +48,7 @@ const Section7Claim = () => {
     const formatTime = (time: number) => time.toString().padStart(2, '0');
 
     return (
-        <AnimatedSection id="claim" className="bg-matrix-drift-pattern">
+        <AnimatedSection id="claim" animationClassName="bg-matrix-drift-pattern">
             <Terminal title="URGENT_CLAIM_PROTOCOL.exe" className="w-full max-w-4xl animate-border-glow">
                 <div className="text-center p-4 md:p-8">
                     <div className="mb-6">

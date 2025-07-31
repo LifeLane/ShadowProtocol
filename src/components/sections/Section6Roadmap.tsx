@@ -40,7 +40,7 @@ const roadmapPhases = [
 
 const Section6Roadmap = () => {
     return (
-        <AnimatedSection id="roadmap" className="bg-pulse-grid-pattern">
+        <AnimatedSection id="roadmap" animationClassName="bg-pulse-grid-pattern">
             <div className="w-full max-w-6xl text-center">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 text-primary glow">
                     From Genesis to Singularity — The SHADOW Protocol Roadmap

@@ -1,10 +1,7 @@
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
-import Terminal from "@/components/common/Terminal";
-import { Button } from "@/components/ui/button";
-import Link from 'next/link';
-import { Lock, Coins } from "lucide-react";
+import { Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
 const vaultsData = [
@@ -33,7 +30,7 @@ const vaultsData = [
 
 const Section5VaultProof = () => {
     return (
-        <AnimatedSection id="vault-proof" className="bg-quantum-flicker-pattern">
+        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern">
             <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
                     Vault of Shadows — 99% of SHADOW Locked. Forever.

@@ -28,7 +28,7 @@ const ShadowLogo = () => (
 
 const Section1Awakening = () => {
     return (
-        <AnimatedSection id="init-core" className="h-screen bg-ai-eye-pulse !py-0">
+        <AnimatedSection id="init-core" className="h-screen !py-0" animationClassName="bg-ai-eye-pulse">
             <div className="text-center flex flex-col items-center justify-center h-full w-full">
                 <Typewriter
                     texts={[

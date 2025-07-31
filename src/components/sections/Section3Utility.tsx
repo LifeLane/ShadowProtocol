@@ -28,7 +28,7 @@ const Section3Utility = () => {
     ];
 
     return (
-        <AnimatedSection id="utility" className="bg-starfield">
+        <AnimatedSection id="utility" animationClassName="bg-starfield">
             <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-6xl font-bold text-primary glow">
                     Real Use. Real Tools. Live Now.

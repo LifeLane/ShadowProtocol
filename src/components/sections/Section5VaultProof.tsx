@@ -1,45 +1,60 @@
 
 "use client"
 
-import { useState } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { Lock, Search } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Lock, Search, ChevronDown } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
-
-const vaultData = [
-  // Phase 1
-  { name: "Airdrop Vault Alpha", phase: "Phase 1", amount: "1,000,000,000", url: "https://solscan.io/account/BUuvTwwdjugFjuiBq2bwqxPQhAnLDF5S8mVMzPg7UWSW" },
-  { name: "Airdrop Vault Beta", phase: "Phase 1", amount: "1,000,000,000", url: "https://solscan.io/account/84c6ox6diCx1246ZLk6DQX2dvs7RNofsuAQq7jcztMzK" },
-  { name: "Staking Vault Dawn", phase: "Phase 1", amount: "1,000,000,000", url: "https://solscan.io/account/EcapQWX8P9M7uLtLkYt89SPFmA1GCSrZTdr7M48zVSG3" },
-  { name: "Staking Vault Zenith", phase: "Phase 1", amount: "1,000,000,000", url: "https://solscan.io/account/B4RzXtzrpkJ5VgaEPrwPp2hQiYCZb9YtzF2khHQU2c8w" },
-  // Phase 2
-  { name: "Core Dev Vault", phase: "Phase 2", amount: "900,000,000", url: "https://solscan.io/account/FRFW5VNevgATBzX9yNUBZcGoPa9A2YxbvDCiZJR66cb6" },
-  { name: "Infra Vault Forge", phase: "Phase 2", amount: "750,000,000", url: "https://solscan.io/account/6K5Z1ZVwLGdqiF8JcTUPDBSU7fUg4hg1MS5cmPiFHmgW" },
-  { name: "R&D Vault Nexus", phase: "Phase 2", amount: "750,000,000", url: "https://solscan.io/account/HT4K5HH8MmG2DD89kB5D9snyGBRUYhYByWf6qR4LvcZE" },
-  { name: "Ecosystem Vault Rise", phase: "Phase 2", amount: "500,000,000", url: "https://solscan.io/account/AwtpV9xB43eZ9FLFfU1SotB8SaPxdy478pvJZ5FnxLQ2" },
-  { name: "Growth Vault Horizon", phase: "Phase 2", amount: "500,000,000", url: "https://solscan.io/account/Bqswcxct2H1W51AVYedCMUUxF4kcZApDZwN2JEhX2r7r" },
-   // Phase 3
-  { name: "Reserve Vault Iron", phase: "Phase 3", amount: "500,000,000", url: "https://solscan.io/account/6LUYctYcNTfp1HUMqcw5L3vLuG5Gdti1SWkemPH85En1" },
-  { name: "Reserve Vault Echo", phase: "Phase 3", amount: "400,000,000", url: "https://solscan.io/account/AMpoZ7n4rQNh5gGHwCehVhRtHNgU3YRRPqaZL6jvKtcM" },
-  { name: "Governance Vault Sigil", phase: "Phase 3", amount: "400,000,000", url: "https://solscan.io/account/8bh5SsWtM7BU11n2vwJetm59o4M2Dd3W5e8hC3GmXeoA" },
-  { name: "Treasury Buffer Aegis", phase: "Phase 3", amount: "400,000,000", url: "https://solscan.io/account/44dxXdzEpFMXqpQ9BHhDAzxCt6AY2XWuWAw24WNSSd8h" },
-  { name: "Treasury Buffer Shade", phase: "Phase 3", amount: "300,000,000", url: "https://solscan.io/account/DeMJiqbaxNn71SP6ZgCbDuFtxmF1fLWgAt9RzPoSCpA8" },
-  // Phase 4
-  { name: "Tactical Vault Ghost", phase: "Phase 4", amount: "150,000,000", url: "https://solscan.io/account/EJ5gs2NxKS1ACxXh9NCXqVdLGifrvGQzchGiYkL2Kr9C" },
-  { name: "Tactical Vault Phantom", phase: "Phase 4", amount: "100,000,000", url: "https://solscan.io/account/4ePV3ZkQGK8qBPjGkcBPMCqmfoc9AR6miSJgqP42qF1L" },
-  { name: "Expansion Vault Nova", phase: "Phase 4", amount: "75,000,000", url: "https://solscan.io/account/7axcsHsmfTR7mLPXcWryV6fosxyETi2BCVHKB2gAuFvp" },
-  { name: "Expansion Vault Pulse", phase: "Phase 4", amount: "75,000,000", url: "https://solscan.io/account/HBxvs95QQ65EhDxXDJBd8RfzxpQJamwEx5Wnr4H5N2K9" },
-  { name: "AI Reward Vault Core", phase: "Phase 4", amount: "50,000,000", url: "https://solscan.io/account/7d5qWRFwAjVgQb1tPBuFNZvW1CM3BG1yVVDsbg4u4mxj" },
+const phasesData = [
+  {
+    phase: "Phase 1 — Genesis Locks",
+    totalLocked: "4,000,000,000",
+    vaults: [
+      { name: "Airdrop Vault Alpha", amount: "1,000,000,000", url: "https://solscan.io/account/BUuvTwwdjugFjuiBq2bwqxPQhAnLDF5S8mVMzPg7UWSW" },
+      { name: "Airdrop Vault Beta", amount: "1,000,000,000", url: "https://solscan.io/account/84c6ox6diCx1246ZLk6DQX2dvs7RNofsuAQq7jcztMzK" },
+      { name: "Staking Vault Dawn", amount: "1,000,000,000", url: "https://solscan.io/account/EcapQWX8P9M7uLtLkYt89SPFmA1GCSrZTdr7M48zVSG3" },
+      { name: "Staking Vault Zenith", amount: "1,000,000,000", url: "https://solscan.io/account/B4RzXtzrpkJ5VgaEPrwPp2hQiYCZb9YtzF2khHQU2c8w" },
+    ]
+  },
+  {
+    phase: "Phase 2 — Development Vaults",
+    totalLocked: "2,900,000,000",
+    vaults: [
+      { name: "Core Dev Vault", amount: "900,000,000", url: "https://solscan.io/account/FRFW5VNevgATBzX9yNUBZcGoPa9A2YxbvDCiZJR66cb6" },
+      { name: "Infra Vault Forge", amount: "750,000,000", url: "https://solscan.io/account/6K5Z1ZVwLGdqiF8JcTUPDBSU7fUg4hg1MS5cmPiFHmgW" },
+      { name: "R&D Vault Nexus", amount: "750,000,000", url: "https://solscan.io/account/HT4K5HH8MmG2DD89kB5D9snyGBRUYhYByWf6qR4LvcZE" },
+      { name: "Ecosystem Vault Rise", amount: "500,000,000", url: "https://solscan.io/account/AwtpV9xB43eZ9FLFfU1SotB8SaPxdy478pvJZ5FnxLQ2" },
+    ]
+  },
+  {
+    phase: "Phase 3 — Reserves & DAO",
+    totalLocked: "2,100,000,000",
+    vaults: [
+       { name: "Growth Vault Horizon", amount: "500,000,000", url: "https://solscan.io/account/Bqswcxct2H1W51AVYedCMUUxF4kcZApDZwN2JEhX2r7r" },
+       { name: "Reserve Vault Iron", amount: "500,000,000", url: "https://solscan.io/account/6LUYctYcNTfp1HUMqcw5L3vLuG5Gdti1SWkemPH85En1" },
+       { name: "Reserve Vault Echo", amount: "400,000,000", url: "https://solscan.io/account/AMpoZ7n4rQNh5gGHwCehVhRtHNgU3YRRPqaZL6jvKtcM" },
+       { name: "Governance Vault Sigil", amount: "400,000,000", url: "https://solscan.io/account/8bh5SsWtM7BU11n2vwJetm59o4M2Dd3W5e8hC3GmXeoA" },
+       { name: "Treasury Buffer Aegis", amount: "300,000,000", url: "https://solscan.io/account/DeMJiqbaxNn71SP6ZgCbDuFtxmF1fLWgAt9RzPoSCpA8" },
+    ]
+  },
+  {
+    phase: "Phase 4 — Tactical Vaults",
+    totalLocked: "850,000,000",
+    vaults: [
+      { name: "Treasury Buffer Shade", amount: "400,000,000", url: "https://solscan.io/account/44dxXdzEpFMXqpQ9BHhDAzxCt6AY2XWuWAw24WNSSd8h" },
+      { name: "Tactical Vault Ghost", amount: "150,000,000", url: "https://solscan.io/account/EJ5gs2NxKS1ACxXh9NCXqVdLGifrvGQzchGiYkL2Kr9C" },
+      { name: "Tactical Vault Phantom", amount: "100,000,000", url: "https://solscan.io/account/4ePV3ZkQGK8qBPjGkcBPMCqmfoc9AR6miSJgqP42qF1L" },
+      { name: "Expansion Vault Nova", amount: "75,000,000", url: "https://solscan.io/account/7axcsHsmfTR7mLPXcWryV6fosxyETi2BCVHKB2gAuFvp" },
+      { name: "Expansion Vault Pulse", amount: "75,000,000", url: "https://solscan.io/account/HBxvs95QQ65EhDxXDJBd8RfzxpQJamwEx5Wnr4H5N2K9" },
+      { name: "AI Reward Vault Core", amount: "50,000,000", url: "https://solscan.io/account/7d5qWRFwAjVgQb1tPBuFNZvW1CM3BG1yVVDsbg4u4mxj" },
+    ]
+  }
 ];
-
-const getPhaseVaults = (phase: string) => vaultData.filter(v => v.phase === phase);
-
 
 const Section5VaultProof = () => {
     return (
@@ -55,55 +70,41 @@ const Section5VaultProof = () => {
                     </p>
                 </div>
 
-                 <Tabs defaultValue="phase1" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
-                        <TabsTrigger value="phase1">Phase 1 - Genesis</TabsTrigger>
-                        <TabsTrigger value="phase2">Phase 2 - Development</TabsTrigger>
-                        <TabsTrigger value="phase3">Phase 3 - Reserves</TabsTrigger>
-                        <TabsTrigger value="phase4">Phase 4 - Tactical</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="phase1" className="mt-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {getPhaseVaults("Phase 1").map((vault, index) => (
-                                <VaultCard key={index} vault={vault} index={index} />
-                            ))}
-                        </div>
-                    </TabsContent>
-                    <TabsContent value="phase2" className="mt-6">
-                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                            {getPhaseVaults("Phase 2").map((vault, index) => (
-                                <VaultCard key={index} vault={vault} index={index} />
-                            ))}
-                        </div>
-                    </TabsContent>
-                    <TabsContent value="phase3" className="mt-6">
-                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                            {getPhaseVaults("Phase 3").map((vault, index) => (
-                                <VaultCard key={index} vault={vault} index={index} />
-                            ))}
-                        </div>
-                    </TabsContent>
-                    <TabsContent value="phase4" className="mt-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                            {getPhaseVaults("Phase 4").map((vault, index) => (
-                                <VaultCard key={index} vault={vault} index={index} />
-                            ))}
-                        </div>
-                    </TabsContent>
-                </Tabs>
+                <Accordion type="single" collapsible className="w-full space-y-4">
+                    {phasesData.map((phase, index) => (
+                        <AccordionItem value={`item-${index}`} key={index} className="bg-black/20 border border-primary/20 rounded-lg">
+                            <AccordionTrigger className="p-4 sm:p-6 text-left hover:no-underline">
+                                <div className="w-full flex justify-between items-center">
+                                    <div className="flex-grow">
+                                        <h3 className="text-xl sm:text-2xl font-bold text-accent glow-accent">{phase.phase}</h3>
+                                        <p className="text-lg text-primary glow">{parseInt(phase.totalLocked, 10).toLocaleString()} SHADOW</p>
+                                    </div>
+                                    <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 text-primary" />
+                                </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="p-4 sm:p-6 pt-0">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                    {phase.vaults.map((vault, vIndex) => (
+                                        <VaultCard key={vIndex} vault={vault} index={vIndex} />
+                                    ))}
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
 
                 <div className="text-center border-t border-dashed border-primary/30 pt-8 mt-8">
-                     <p className="text-2xl font-bold text-primary glow mb-6">20 Vaults. 0 Dev Access. 100% On-Chain Proof.</p>
+                    <p className="text-2xl font-bold text-primary glow mb-6">20 Vaults. 0 Dev Access. 100% On-Chain Proof.</p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">
-                            <Link href="#tokenomics">
+                            <Link href="https://solscan.io/" target="_blank">
                                 <Search className="mr-2" />
-                                Explore All Vaults
+                                Track All Wallets
                             </Link>
                         </Button>
                          <Button asChild size="lg" variant="outline" className="glow">
-                             <Link href="https://solscan.io/" target="_blank">
-                                Track Unlock Timeline
+                             <Link href="#roadmap">
+                                View Unlock Timeline
                             </Link>
                         </Button>
                     </div>
@@ -113,17 +114,16 @@ const Section5VaultProof = () => {
     );
 };
 
-const VaultCard = ({ vault, index }: { vault: typeof vaultData[0], index: number }) => {
+const VaultCard = ({ vault, index }: { vault: { name: string, amount: string, url: string }, index: number }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
         >
             <Card className="bg-black/40 border-primary/30 h-full flex flex-col text-center card-animated-border group">
                 <CardHeader>
                     <CardTitle className="text-lg text-accent glow-accent group-hover:text-primary transition-colors">{vault.name}</CardTitle>
-                    <CardDescription>{vault.phase}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-2">
                     <p className="text-2xl font-bold text-primary glow">{parseInt(vault.amount, 10).toLocaleString()}</p>
@@ -142,7 +142,4 @@ const VaultCard = ({ vault, index }: { vault: typeof vaultData[0], index: number
     )
 }
 
-
 export default Section5VaultProof;
-
-    

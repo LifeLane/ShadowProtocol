@@ -66,13 +66,17 @@ const Section4BurnServe = () => {
                 </div>
 
                 <div className="text-center border-t border-dashed border-primary/30 pt-6">
-                    <h3 className="text-xl sm:text-2xl font-bold text-primary glow-accent mb-4">
-                        Burn Meter
-                    </h3>
+                    <div className="border-y border-dashed border-primary/20 py-2 max-w-sm mx-auto mb-4">
+                        <h3 className="text-xl sm:text-2xl font-bold text-accent glow-accent mb-2 flex items-center justify-center gap-2">
+                            <Flame className="w-6 h-6"/>
+                            Burn Meter
+                        </h3>
+                    </div>
                     <div className="bg-black/30 p-4 rounded-lg max-w-md mx-auto mb-4">
-                        <p className="text-4xl font-bold text-destructive glow mb-2">
-                            {burnedAmount.toLocaleString()} SHADOW Burned 🔥
-                        </p>
+                        <div className="text-4xl font-bold text-destructive glow mb-2">
+                           <div>{burnedAmount.toLocaleString()} SHADOW</div>
+                           <div>Burned 🔥</div>
+                        </div>
                         <Progress value={progress} className="h-3" indicatorClassName="bg-destructive"/>
                         <p className="text-sm text-muted-foreground mt-2">Tracking Unclaimed & Unused Tokens</p>
                     </div>

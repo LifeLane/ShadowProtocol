@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from "react";
@@ -35,7 +34,7 @@ const Section4BurnServe = () => {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-left">
                     <div className="bg-black/20 border border-primary/20 p-4 rounded-lg flex items-center gap-4">
                         <ShieldCheck className="w-8 h-8 text-primary flex-shrink-0" />
                         <div>
@@ -50,11 +49,18 @@ const Section4BurnServe = () => {
                             <p className="text-sm text-muted-foreground">Prevents market manipulation.</p>
                         </div>
                     </div>
-                    <div className="bg-black/20 border border-primary/20 p-4 rounded-lg flex items-center gap-4 col-span-1 lg:col-span-1">
+                    <div className="bg-black/20 border border-primary/20 p-4 rounded-lg flex items-center gap-4">
                         <Package className="w-8 h-8 text-primary flex-shrink-0" />
                         <div>
                             <h3 className="font-bold text-lg text-primary">Utility Vaults</h3>
                             <p className="text-sm text-muted-foreground">Airdrop, Stake, and Reward pools.</p>
+                        </div>
+                    </div>
+                     <div className="bg-black/20 border border-primary/20 p-4 rounded-lg flex items-center gap-4">
+                        <Flame className="w-8 h-8 text-primary flex-shrink-0" />
+                        <div>
+                            <h3 className="font-bold text-lg text-primary">Rug-Proof by Design</h3>
+                            <p className="text-sm text-muted-foreground">Each unused SHADOW from utility vaults will be automatically burned by the protocol.</p>
                         </div>
                     </div>
                 </div>

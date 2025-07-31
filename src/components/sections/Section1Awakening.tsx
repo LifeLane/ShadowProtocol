@@ -38,7 +38,6 @@ const Section1Awakening = () => {
                         '> > >Every Token Must Serve or Burn 🔥'
                     ]}
                     className="text-primary text-lg sm:text-3xl md:text-5xl font-bold"
-                    whitespaceClass="whitespace-pre"
                 />
                  <motion.div
                     className="text-center w-full mt-4"

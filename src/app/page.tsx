@@ -13,9 +13,8 @@ import Section6Roadmap from "@/components/sections/Section6Roadmap";
 import Section7Claim from "@/components/sections/Section7Claim";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
-import LinkMarquee from "@/components/common/LinkMarquee";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
-import TrustMarquee from "@/components/common/TrustMarquee";
+import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -55,8 +54,8 @@ export default function Home() {
         <Section6Roadmap />
         <Section7Claim />
       </main>
-      <LinkMarquee />
       <Footer />
+      <StickyFooterMarquee />
       <ScrollToTopButton />
     </>
   );

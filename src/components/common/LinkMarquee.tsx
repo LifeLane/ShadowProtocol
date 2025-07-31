@@ -16,10 +16,10 @@ const links = [
     { href: "https://birdeye.so/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR?chain=solana", name: "Birdeye", icon: Eye }
 ];
 
-const LinkMarquee = () => {
+const LinkMarquee = ({ direction = 'normal' }: { direction?: 'normal' | 'reverse' }) => {
     return (
-        <div className="w-full overflow-hidden bg-secondary py-3 border-t border-b border-secondary">
-            <div className="flex animate-marquee-infinite">
+        <div className="w-full overflow-hidden bg-secondary py-3 border-t border-b border-primary/20">
+            <div className={`flex ${direction === 'normal' ? 'animate-marquee-infinite' : 'animate-marquee-infinite-reverse'}`}>
                 {links.concat(links).map((link, index) => (
                     <Link href={link.href} key={index} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 mx-6 flex-shrink-0 text-muted-foreground hover:text-primary transition-colors duration-300">
                         <link.icon className="w-4 h-4" />
@@ -32,8 +32,18 @@ const LinkMarquee = () => {
                     from { transform: translateX(0%); }
                     to { transform: translateX(-50%); }
                 }
+                @keyframes marquee-infinite-reverse {
+                    from { transform: translateX(-50%); }
+                    to { transform: translateX(0%); }
+                }
                 .animate-marquee-infinite {
                     animation: marquee-infinite 40s linear infinite;
+                    will-change: transform;
+                    display: flex;
+                    width: max-content;
+                }
+                .animate-marquee-infinite-reverse {
+                    animation: marquee-infinite-reverse 40s linear infinite;
                     will-change: transform;
                     display: flex;
                     width: max-content;

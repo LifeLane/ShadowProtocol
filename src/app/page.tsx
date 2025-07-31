@@ -35,7 +35,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-background">
-        <div className="text-primary glow text-2xl font-bold animate-pulse">
+        <div className="text-primary glow text-xl font-bold animate-pulse">
           &gt; boot --shadow-core
         </div>
       </div>

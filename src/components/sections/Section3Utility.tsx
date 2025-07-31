@@ -30,12 +30,20 @@ const Section3Utility = () => {
     return (
         <AnimatedSection id="utility" animationClassName="bg-starfield">
             <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-6xl font-bold text-primary glow">
-                    Real Use. Real Tools. Live Now.
-                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8">
+                    <h2 className="text-4xl md:text-6xl font-bold text-primary glow">
+                        Real Use.
+                    </h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-primary glow">
+                        Real Tools.
+                    </h2>
+                    <h2 className="text-4xl md:text-6xl font-bold text-primary glow">
+                        Live Now.
+                    </h2>
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
                 {features.map((feature, index) => (
                     <motion.div
                         key={index}

@@ -5,14 +5,14 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { Lock, Search, ChevronDown } from "lucide-react";
+import { Lock, Search, ChevronDown, ShieldCheck } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 const phasesData = [
   {
-    phase: "Phase 1 — Genesis Locks",
+    phase: "Genesis Locks",
     totalLocked: "4,000,000,000",
     vaults: [
       { name: "Airdrop Vault Alpha", amount: "1,000,000,000", url: "https://solscan.io/account/BUuvTwwdjugFjuiBq2bwqxPQhAnLDF5S8mVMzPg7UWSW" },
@@ -22,7 +22,7 @@ const phasesData = [
     ]
   },
   {
-    phase: "Phase 2 — Development Vaults",
+    phase: "Development Vaults",
     totalLocked: "2,900,000,000",
     vaults: [
       { name: "Core Dev Vault", amount: "900,000,000", url: "https://solscan.io/account/FRFW5VNevgATBzX9yNUBZcGoPa9A2YxbvDCiZJR66cb6" },
@@ -32,7 +32,7 @@ const phasesData = [
     ]
   },
   {
-    phase: "Phase 3 — Reserves & DAO",
+    phase: "Reserves & DAO",
     totalLocked: "2,100,000,000",
     vaults: [
        { name: "Growth Vault Horizon", amount: "500,000,000", url: "https://solscan.io/account/Bqswcxct2H1W51AVYedCMUUxF4kcZApDZwN2JEhX2r7r" },
@@ -43,7 +43,7 @@ const phasesData = [
     ]
   },
   {
-    phase: "Phase 4 — Tactical Vaults",
+    phase: "Tactical Vaults",
     totalLocked: "850,000,000",
     vaults: [
       { name: "Treasury Buffer Shade", amount: "400,000,000", url: "https://solscan.io/account/44dxXdzEpFMXqpQ9BHhDAzxCt6AY2XWuWAw24WNSSd8h" },
@@ -74,13 +74,11 @@ const Section5VaultProof = () => {
                     {phasesData.map((phase, index) => (
                         <AccordionItem value={`item-${index}`} key={index} className="bg-black/20 border border-primary/20 rounded-lg">
                             <AccordionTrigger className="p-4 sm:p-6 text-left hover:no-underline">
-                                <div className="w-full flex justify-between items-center">
-                                    <div className="flex-grow">
-                                        <h3 className="text-xl sm:text-2xl font-bold text-accent glow-accent">{phase.phase}</h3>
-                                        <p className="text-lg text-primary glow">{parseInt(phase.totalLocked, 10).toLocaleString()} SHADOW</p>
-                                    </div>
-                                    <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 text-primary" />
+                                <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center text-left">
+                                    <h3 className="text-xl sm:text-2xl font-bold text-accent glow-accent">{phase.phase}</h3>
+                                    <p className="text-lg text-primary glow mt-2 sm:mt-0">Total Locked: {parseInt(phase.totalLocked, 10).toLocaleString()} SHADOW</p>
                                 </div>
+                                <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200 text-primary ml-4" />
                             </AccordionTrigger>
                             <AccordionContent className="p-4 sm:p-6 pt-0">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -97,14 +95,14 @@ const Section5VaultProof = () => {
                     <p className="text-2xl font-bold text-primary glow mb-6">20 Vaults. 0 Dev Access. 100% On-Chain Proof.</p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">
-                            <Link href="https://solscan.io/" target="_blank">
+                            <Link href="#roadmap">
                                 <Search className="mr-2" />
-                                Track All Wallets
+                                View Unlock Timeline
                             </Link>
                         </Button>
                          <Button asChild size="lg" variant="outline" className="glow">
-                             <Link href="#roadmap">
-                                View Unlock Timeline
+                            <Link href="#claim">
+                               <ShieldCheck className="mr-2"/> Why 99% Locked?
                             </Link>
                         </Button>
                     </div>

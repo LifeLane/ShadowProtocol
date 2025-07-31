@@ -387,13 +387,13 @@
       inset: -100%;
       width: 300%;
       height: 300%;
+      z-index: -1;
       background-image:
           radial-gradient(circle, hsl(var(--accent) / 0.8), 2%, transparent 10%),
           radial-gradient(circle, hsl(var(--primary) / 0.7), 2%, transparent 10%);
       background-size: 50px 50px, 70px 70px;
       mix-blend-mode: screen;
       animation: quantum-flicker 15s linear infinite;
-      z-index: -1;
   }
   .bg-quantum-flicker-pattern::after {
       animation-direction: reverse;

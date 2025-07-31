@@ -1,4 +1,3 @@
-
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
@@ -90,23 +89,6 @@ const Section5VaultProof = () => {
                         </AccordionItem>
                     ))}
                 </Accordion>
-
-                <div className="text-center border-t border-dashed border-primary/30 pt-8 mt-8">
-                    <p className="text-2xl font-bold text-primary glow mb-6">20 Vaults. 0 Dev Access. 100% On-Chain Proof.</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                         <Button asChild size="lg" className="btn-shine">
-                            <Link href="#roadmap">
-                                <Search className="mr-2" />
-                                View Unlock Timeline
-                            </Link>
-                        </Button>
-                         <Button asChild size="lg" variant="outline" className="glow">
-                            <Link href="#claim">
-                               <ShieldCheck className="mr-2"/> Why 99% Locked?
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
             </Terminal>
         </AnimatedSection>
     );

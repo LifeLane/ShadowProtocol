@@ -112,7 +112,7 @@ const Header = ({ scaleX }: HeaderProps) => {
                             </TooltipProvider>
                         )}
                          <Button asChild className="hidden sm:inline-flex btn-shine">
-                            <Link href="#airdrop">
+                            <Link href="#claim-key">
                                 <Send className="mr-2" />
                                 Airdrop
                             </Link>
@@ -144,7 +144,7 @@ const Header = ({ scaleX }: HeaderProps) => {
                         ))}
                     </nav>
                      <Button asChild size="lg" className="btn-shine" onClick={() => setIsMenuOpen(false)}>
-                        <Link href="#airdrop">
+                        <Link href="#claim-key">
                             <Send className="mr-2" />
                             Airdrop Console
                         </Link>

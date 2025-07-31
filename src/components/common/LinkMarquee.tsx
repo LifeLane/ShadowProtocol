@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { LinkIcon, Send, Terminal, Search, Eye, ShieldCheck, Zap, BarChart2, GitFork } from 'lucide-react';
 
 const links = [
-    { href: "https://gmgn.ai/sol/token/solscan_B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "Solscan", icon: Search },
-    { href: "https://app.bubblemaps.io/sol/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "Bubblemaps", icon: GitFork },
-    { href: "https://t.me/BlumCryptoTradingBot?start=ia0HoVfVWL_T_B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "Telegram", icon: Send },
+    { href: "https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "Solscan", icon: Search },
+    { href: "https://gmgn.ai/sol/token/solscan_B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "GMGN", icon: GitFork },
+    { href: "#", name: "Telegram", icon: Send },
     { href: "https://www.geckoterminal.com/solana/tokens/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "GeckoTerminal", icon: Terminal },
     { href: "https://dexscreener.com/solana/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "DexScreener", icon: BarChart2 },
     { href: "https://rugcheck.xyz/tokens/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "RugCheck", icon: ShieldCheck },
@@ -15,6 +15,7 @@ const links = [
     { href: "https://www.dextools.io/app/en/solana/pair-explorer/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "DEXTools", icon: LinkIcon },
     { href: "https://birdeye.so/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR?chain=solana", name: "Birdeye", icon: Eye }
 ];
+
 
 const LinkMarquee = ({ direction = 'normal' }: { direction?: 'normal' | 'reverse' }) => {
     return (

@@ -28,7 +28,7 @@ const Section3Utility = () => {
     ];
 
     return (
-        <AnimatedSection id="utility" animationClassName="bg-starfield">
+        <AnimatedSection id="ecosystem" animationClassName="bg-starfield">
             <div className="text-center mb-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8">
                     <h2 className="text-4xl md:text-6xl font-bold text-primary glow">
@@ -73,7 +73,7 @@ const Section3Utility = () => {
             <div className="mt-12 text-center space-y-4">
                 <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary glow">Access Free. Upgrade by Holding. SHADOW = Your Utility Key.</p>
                 <Button asChild size="lg" variant="outline" className="glow">
-                    <Link href="#staking">
+                    <Link href="#claim-key">
                         <Zap className="mr-2" />
                         Stake to Upgrade AI Power
                     </Link>

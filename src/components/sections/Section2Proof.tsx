@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect, useRef } from "react";
@@ -62,7 +63,7 @@ const Section2Proof = () => {
     ];
 
     return (
-        <AnimatedSection id="neural-core" animationClassName="bg-pulse-grid-pattern">
+        <AnimatedSection id="proof" animationClassName="bg-pulse-grid-pattern">
             <Terminal title="NEURAL_CORE_INTEGRITY_CHECK.md" className="w-full max-w-7xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 text-center text-2xl sm:text-3xl font-bold text-accent glow-accent mb-8">
                     <div className="p-2 md:border-r md:border-primary/30">SHADOW Is Immutable.</div>
@@ -82,7 +83,7 @@ const Section2Proof = () => {
                             transition={{ delay: index * 0.2 }}
                         >
                             <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mx-auto mb-3" />
-                            <p className="text-2xl md:text-3xl font-bold text-primary glow">
+                            <p className="text-xl md:text-2xl font-bold text-primary glow">
                                 {stat.isCounter ? <AnimatedCounter to={stat.value as number} /> : stat.value}
                                 {stat.suffix}
                             </p>
@@ -111,7 +112,7 @@ const Section2Proof = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">
-                            <Link href="https://solscan.io/" target="_blank">
+                            <Link href="https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR" target="_blank">
                                 <Search className="mr-2" />
                                 Verify Smart Contract
                             </Link>

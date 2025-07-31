@@ -91,7 +91,7 @@ const Section1Awakening = () => {
                         </Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="glow">
-                         <Link href="#airdrop">
+                         <Link href="#claim-key">
                             <Rocket />
                             Airdrop Console
                         </Link>

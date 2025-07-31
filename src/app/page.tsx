@@ -7,14 +7,15 @@ import Section1Awakening from "@/components/sections/Section1Awakening";
 import SectionAISignal from "@/components/sections/SectionAISignal";
 import Section2Proof from "@/components/sections/Section2Proof";
 import Section3Utility from "@/components/sections/Section3Utility";
-import Section4BurnServe from "@/components/sections/Section4BurnServe";
+import Section4Tokenomics from "@/components/sections/Section4Tokenomics";
 import Section5VaultProof from "@/components/sections/Section5VaultProof";
 import Section6Roadmap from "@/components/sections/Section6Roadmap";
-import Section7Claim from "@/components/sections/Section7Claim";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
+import TokenManifest from "@/components/sections/TokenManifest";
+import SectionClaimKey from "@/components/sections/SectionClaimKey";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -46,13 +47,14 @@ export default function Home() {
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
+        <TokenManifest />
         <SectionAISignal />
         <Section2Proof />
         <Section3Utility />
-        <Section4BurnServe />
+        <Section4Tokenomics />
         <Section5VaultProof />
         <Section6Roadmap />
-        <Section7Claim />
+        <SectionClaimKey />
       </main>
       <Footer />
       <StickyFooterMarquee />

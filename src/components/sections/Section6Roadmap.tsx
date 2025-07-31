@@ -78,7 +78,7 @@ const Section6Roadmap = () => {
 
                 <div className="mt-12">
                     <Button asChild size="lg" className="btn-shine">
-                        <Link href="#">
+                        <Link href="#claim-key">
                             Join the Ecosystem
                         </Link>
                     </Button>

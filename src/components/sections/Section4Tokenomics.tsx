@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Flame, ShieldCheck, Lock, Package } from 'lucide-react';
+import { Flame, ShieldCheck, Lock, Package, PieChart } from 'lucide-react';
 import Link from 'next/link';
 import { Progress } from "@/components/ui/progress";
 
-const Section4BurnServe = () => {
+const Section4Tokenomics = () => {
     const [burnedAmount, setBurnedAmount] = useState(3421000);
     const [progress, setProgress] = useState(0);
 
@@ -26,7 +26,7 @@ const Section4BurnServe = () => {
     }, []);
 
     return (
-        <AnimatedSection id="burn-serve" className="bg-circuit-pattern">
+        <AnimatedSection id="tokenomics" animationClassName="bg-circuit-pattern">
             <Terminal title="TOKENOMICS_PROTOCOL_v2.cfg" className="w-full max-w-6xl">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl sm:text-4xl font-bold text-accent glow-accent mb-2">
@@ -78,7 +78,7 @@ const Section4BurnServe = () => {
                             </Link>
                         </Button>
                          <Button asChild size="lg" variant="outline" className="glow">
-                             <Link href="#staking">
+                             <Link href="#claim-key">
                                 Stake to Prevent Burn
                             </Link>
                         </Button>
@@ -89,4 +89,4 @@ const Section4BurnServe = () => {
     );
 };
 
-export default Section4BurnServe;
+export default Section4Tokenomics;

@@ -535,6 +535,48 @@
     animation: shine 4s ease-in-out infinite;
     z-index: -1;
   }
+
+  /* --- Vault Neon Cards --- */
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px hsl(var(--primary) / 0.7); }
+    50% { box-shadow: 0 0 20px hsl(var(--primary) / 1); }
+    100% { box-shadow: 0 0 10px hsl(var(--primary) / 0.7); }
+  }
+
+  .neon-card {
+    @apply bg-black border border-primary rounded-lg p-5 text-center transition-transform duration-200;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.7);
+  }
+
+  .neon-card:hover {
+    transform: scale(1.02);
+    animation: pulseGlow 1.5s infinite;
+  }
+
+  .vault-title {
+    @apply font-orbitron text-lg mb-2;
+    color: hsl(var(--accent));
+    text-shadow: 0 0 10px hsl(var(--accent));
+  }
+
+  .vault-amount {
+    @apply text-3xl font-bold my-2;
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary));
+  }
+
+  .vault-unit {
+    @apply text-sm text-muted-foreground tracking-widest mb-5;
+  }
+
+  .verify-btn {
+    @apply inline-block bg-primary text-primary-foreground py-2 px-5 rounded-md font-bold no-underline transition-all duration-300;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.8);
+  }
+  
+  .verify-btn:hover {
+    box-shadow: 0 0 15px hsl(var(--primary) / 1);
+  }
 }
 
 @keyframes shine {

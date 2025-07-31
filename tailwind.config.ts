@@ -21,6 +21,7 @@ const config = {
         body: ['"Source Code Pro"', 'monospace'],
         headline: ['"Source Code Pro"', 'monospace'],
         code: ['"Source Code Pro"', 'monospace'],
+        orbitron: ['"Orbitron"', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

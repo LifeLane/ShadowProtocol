@@ -67,7 +67,7 @@ const Section2Proof = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 text-center md:text-left text-2xl sm:text-3xl font-bold text-accent glow-accent mb-8">
                     <div className="p-2 md:border-r md:border-primary/30">SHADOW Is Immutable.</div>
                     <div className="p-2">10 Billion Forged.</div>
-                    <div className="p-2 md:border-r md:border-t md:border-primary/30">99% Locked.</div>
+                    <div className="p-2 md:border-r md:border-t md:border-primary/30">99% Supply Locked.</div>
                     <div className="p-2 md:border-t md:border-primary/30">Zero Mint Authority.</div>
                 </div>
 

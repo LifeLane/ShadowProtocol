@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect, useRef } from "react";
@@ -115,5 +114,3 @@ const Section2Proof = () => {
 };
 
 export default Section2Proof;
-
-    

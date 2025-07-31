@@ -1,3 +1,4 @@
+
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
@@ -51,10 +52,14 @@ const Section1Awakening = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 3.5 }}>
                         <Typewriter
-                            texts={["A new token is born from the chain’s neural memory."]}
-                            className="text-accent mt-4 md:mt-8 text-sm sm:text-xl md:text-2xl"
+                            texts={[
+                                "SHADOW Is Not a Meme. SHADOW Is Protocol.",
+                                "Rug-Proof by Design | Powered by AI | Locked Forever.",
+                                "99% Supply Locked | Zero Mint Authority | Full Transparency."
+                            ]}
+                            className="text-accent mt-4 md:mt-8 text-sm sm:text-lg md:text-xl"
                             speed={30}
-                            pause={5000}
+                            pause={2000}
                         />
                      </motion.div>
                 </motion.div>

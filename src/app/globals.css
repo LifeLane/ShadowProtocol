@@ -229,10 +229,10 @@
   }
   
   .glow {
-    text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary));
+    text-shadow: 0 0 5px hsl(var(--primary) / 0.7), 0 0 8px hsl(var(--primary) / 0.5);
   }
   .glow-accent {
-     text-shadow: 0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent)), 0 0 15px hsl(var(--accent));
+     text-shadow: 0 0 5px hsl(var(--accent) / 0.7), 0 0 8px hsl(var(--accent) / 0.5);
   }
   
   /* --- BACKGROUND ANIMATIONS --- */

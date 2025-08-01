@@ -10,12 +10,12 @@ const ForgeSparks = () => {
 
     useEffect(() => {
         const generateSparks = () => {
-            const newSparks = Array.from({ length: 30 }).map((_, i) => ({
+            const newSparks = Array.from({ length: 50 }).map((_, i) => ({
                 id: i + Date.now(),
                 left: `${Math.random() * 100}%`,
-                size: Math.random() * 2 + 1,
-                delay: Math.random() * 5,
-                duration: Math.random() * 3 + 4,
+                size: Math.random() * 2.5 + 1,
+                delay: Math.random() * 7,
+                duration: Math.random() * 5 + 3,
             }));
             setSparks(newSparks);
         };

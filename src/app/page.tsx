@@ -60,8 +60,8 @@ export default function Home() {
         <Section6Roadmap />
         <SectionClaimKey />
       </main>
-      <RevealedFooterLogo />
       <Footer />
+      <RevealedFooterLogo />
       <StickyFooterMarquee />
       <ScrollToTopButton />
     </>

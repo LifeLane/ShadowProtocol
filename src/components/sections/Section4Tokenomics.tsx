@@ -3,9 +3,8 @@
 
 import { useState, useEffect } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
-import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
-import { Flame, ShieldCheck, Lock, Package, PieChart } from 'lucide-react';
+import { Flame, ShieldCheck, Lock, Package } from 'lucide-react';
 import Link from 'next/link';
 import { Progress } from "@/components/ui/progress";
 
@@ -27,7 +26,7 @@ const Section4Tokenomics = () => {
 
     return (
         <AnimatedSection id="tokenomics" animationClassName="bg-circuit-pattern">
-            <Terminal title="TOKENOMICS_PROTOCOL_v2.cfg" className="w-full max-w-6xl">
+            <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8 w-full">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl sm:text-4xl font-bold text-accent glow-accent mb-2">
                         Every Token Must Serve… or Burn 🔥
@@ -49,7 +48,7 @@ const Section4Tokenomics = () => {
                             <p className="text-sm text-muted-foreground">Prevents market manipulation.</p>
                         </div>
                     </div>
-                    <div className="bg-black/20 border border-primary/20 p-4 rounded-lg flex items-center gap-4 col-span-1 lg:col-span-1">
+                    <div className="bg-black/20 border border-primary/20 p-4 rounded-lg flex items-center gap-4 col-span-1 lg:col-span-1 md:col-span-2">
                         <Package className="w-8 h-8 text-primary flex-shrink-0" />
                         <div>
                             <h3 className="font-bold text-lg text-primary">Utility Vaults</h3>
@@ -84,7 +83,7 @@ const Section4Tokenomics = () => {
                         </Button>
                     </div>
                 </div>
-            </Terminal>
+            </div>
         </AnimatedSection>
     );
 };

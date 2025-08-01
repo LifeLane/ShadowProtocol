@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScanLine, Copy, ExternalLink, Hash, Calendar, Settings, CircleOff, Fingerprint, Anchor, BookUser, BarChart, FileJson } from 'lucide-react';
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 const tokenDetails = [
   { label: 'Token Name', value: 'SHADOW (SHADOW)', icon: Hash },
@@ -57,15 +58,15 @@ const TokenManifest = () => {
     };
 
     const DetailItem = ({ item }: { item: { label: string, value: string, icon: any, copyable?: boolean } }) => (
-        <div className="flex items-start gap-3">
-            <item.icon className="w-4 h-4 text-primary mt-1 shrink-0" />
+        <div className="flex items-start gap-4">
+            <item.icon className="w-5 h-5 text-primary mt-1 shrink-0" />
             <div className="flex-grow">
                 <div className="text-muted-foreground font-bold">{item.label}</div>
-                <div className="font-mono text-primary flex items-center gap-2 flex-wrap">
+                <div className="font-mono text-primary flex items-center gap-2 flex-wrap text-sm">
                     <span className="break-all">{item.copyable ? truncateAddress(item.value) : item.value}</span>
                     {item.copyable && (
-                        <Button variant="ghost" size="icon" className="w-8 h-8" onClick={() => handleCopy(item.value)}>
-                            <Copy className="w-5 h-5 text-accent"/>
+                        <Button variant="ghost" size="icon" className="w-7 h-7" onClick={() => handleCopy(item.value)}>
+                            <Copy className="w-4 h-4 text-accent"/>
                         </Button>
                     )}
                 </div>
@@ -90,29 +91,40 @@ const TokenManifest = () => {
     );
 
     const DesktopLayout = () => (
-         <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-8 text-sm">
-                {/* Column 1: Core Details */}
-                <div className="space-y-4">
-                    {tokenDetails.map((item) => <DetailItem key={item.label} item={item} />)}
+         <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div className="space-y-6">
+                    <DetailItem item={tokenDetails[0]} />
+                    <DetailItem item={tokenDetails[2]} />
+                    <DetailItem item={tokenDetails[4]} />
                 </div>
+                <div className="space-y-6">
+                    <DetailItem item={tokenDetails[1]} />
+                    <DetailItem item={tokenDetails[3]} />
+                    <DetailItem item={tokenDetails[5]} />
+                </div>
+            </div>
+            
+            <Separator className="my-8 border-dashed border-primary/20" />
 
-                {/* Column 2: Authorities & Explorer Links */}
-                <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-8">
+                <div className="space-y-4">
+                    <div className="font-bold text-muted-foreground">Authorities</div>
                     <div className="space-y-3">
-                        <div className="font-bold text-muted-foreground">Authorities</div>
                         {authorityDetails.map((item) => <AuthorityItem key={item.label} item={item} />)}
                     </div>
+                </div>
+                 <div className="space-y-4">
+                    <div className="font-bold text-muted-foreground">Explorer Links</div>
                     <div className="space-y-3">
-                        <div className="font-bold text-muted-foreground">Explorer Links</div>
                         {explorerLinks.map((link) => <LinkItem key={link.label} link={link} />)}
                     </div>
                 </div>
-
-                {/* Column 3: Analysis & Holders */}
-                <div className="space-y-3">
+                 <div className="space-y-4">
                     <div className="font-bold text-muted-foreground">Analysis & Holders</div>
-                    {analysisLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                    <div className="space-y-3">
+                        {analysisLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                    </div>
                 </div>
             </div>
         </div>

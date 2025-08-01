@@ -260,6 +260,10 @@
   }
   
   /* --- BACKGROUND ANIMATIONS --- */
+  .bg-ai-eye-pulse {
+    position: relative;
+    overflow: hidden;
+  }
   .bg-ai-eye-pulse::before {
     content: '';
     position: absolute;
@@ -290,6 +294,10 @@
   }
 
   /* Section 2: Pulse Grid Overlay */
+  .bg-pulse-grid-pattern {
+    position: relative;
+    overflow: hidden;
+  }
   .bg-pulse-grid-pattern::before {
     content: '';
     position: absolute;
@@ -328,6 +336,10 @@
       to {background-position:-10000px 5000px;}
   }
 
+  .bg-starfield {
+    position: relative;
+    overflow: hidden;
+  }
   .bg-starfield::before {
     content: '';
     position: absolute;
@@ -349,6 +361,10 @@
   }
 
   /* Section 4: Matrix Drift + Code Pulse */
+  .bg-matrix-drift-pattern {
+    position: relative;
+    overflow: hidden;
+  }
   .bg-matrix-drift-pattern::before {
     content: '';
     position: absolute;
@@ -368,6 +384,10 @@
   }
 
   /* Section 5: Quantum Flicker Fields */
+  .bg-quantum-flicker-pattern {
+    position: relative;
+    overflow: hidden;
+  }
   .bg-quantum-flicker-pattern::before,
   .bg-quantum-flicker-pattern::after {
       content: '';
@@ -395,6 +415,10 @@
   @keyframes bg-scroll {
     0% { background-position: 0 0; }
     100% { background-position: -100px -100px; }
+  }
+  .bg-circuit-pattern {
+    position: relative;
+    overflow: hidden;
   }
   .bg-circuit-pattern::before {
     content: '';

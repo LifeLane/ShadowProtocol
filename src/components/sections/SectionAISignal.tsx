@@ -7,7 +7,7 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
-import { Loader2, TrendingUp, TrendingDown, Minus, ShoppingCart, ArrowUp, ArrowDown, Pause, AlertTriangle } from "lucide-react";
+import { Loader2, ArrowUp, ArrowDown, Pause, ShoppingCart, AlertTriangle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -78,9 +78,9 @@ const SectionAISignal = () => {
 
     const getSentimentInfo = (sentiment: InsightResult['sentiment']) => {
         switch (sentiment) {
-            case 'BULLISH': return { SignalIcon: ArrowUp, signalText: "BUY", signalClass: "bg-primary/10 text-primary border-primary/20" };
-            case 'BEARISH': return { SignalIcon: ArrowDown, signalText: "SELL", signalClass: "bg-destructive/10 text-destructive border-destructive/20" };
-            default: return { SignalIcon: Pause, signalText: "HOLD", signalClass: "bg-accent/10 text-accent border-accent/20" };
+            case 'BULLISH': return { SentimentIcon: ArrowUp, signalText: "BUY", signalClass: "bg-primary/10 text-primary border-primary/20" };
+            case 'BEARISH': return { SentimentIcon: ArrowDown, signalText: "SELL", signalClass: "bg-destructive/10 text-destructive border-destructive/20" };
+            default: return { SentimentIcon: Pause, signalText: "HOLD", signalClass: "bg-accent/10 text-accent border-accent/20" };
         }
     };
 
@@ -129,7 +129,7 @@ const SectionAISignal = () => {
                             )}
                             {insight && (() => {
                                 const sentimentInfo = getSentimentInfo(insight.sentiment);
-                                const { SignalIcon } = sentimentInfo;
+                                const { SentimentIcon } = sentimentInfo;
                                 return (
                                 <div
                                     className="w-full flex flex-col items-center gap-8"
@@ -139,7 +139,7 @@ const SectionAISignal = () => {
                                         <div className={cn("rounded-lg border-2 p-6 flex flex-col items-center justify-center animate-border-pulse-glow", sentimentInfo.signalClass)}>
                                             <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">AI Signal</p>
                                             <div className="flex items-center gap-4 my-2">
-                                                <SignalIcon className="w-12 h-12" />
+                                                <SentimentIcon className="w-12 h-12" />
                                                 <p className="text-5xl font-bold">{sentimentInfo.signalText}</p>
                                             </div>
                                         </div>
@@ -175,19 +175,19 @@ const SectionAISignal = () => {
                                             </Link>
                                         </Button>
                                     </div>
+                                    <div className="mt-8 w-full max-w-4xl">
+                                        <Alert className="bg-black/20 border-destructive/30 text-muted-foreground">
+                                            <AlertTriangle className="h-4 w-4 text-accent" />
+                                            <AlertTitle className="text-accent glow-accent">Transmission Advisory</AlertTitle>
+                                            <AlertDescription>
+                                                These signals are echoes from the core, not commands. They are for research only. Trust your own judgment—the final risk is yours.
+                                            </AlertDescription>
+                                        </Alert>
+                                    </div>
                                 </div>
                             )})()}
                         </div>
                     )}
-                    <div className="mt-8">
-                        <Alert className="bg-black/20 border-primary/20 text-muted-foreground">
-                            <AlertTriangle className="h-4 w-4 text-accent" />
-                            <AlertTitle className="text-accent glow-accent">Transmission Advisory</AlertTitle>
-                            <AlertDescription>
-                                These signals are echoes from the core, not commands. They are for research only. Trust your own judgment—the final risk is yours.
-                            </AlertDescription>
-                        </Alert>
-                    </div>
                 </Terminal>
             </div>
         </AnimatedSection>

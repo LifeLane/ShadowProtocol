@@ -40,7 +40,7 @@ const Section1Awakening = () => {
                         '> >rug-proof protocol confirmed.....',
                         '> > >Every Token Must Serve or Burn 🔥'
                     ]}
-                    className="text-primary text-lg sm:text-2xl md:text-4xl font-bold"
+                    className="text-primary text-base sm:text-lg md:text-xl font-bold"
                 />
                  <motion.div
                     className="text-center w-full mt-4"

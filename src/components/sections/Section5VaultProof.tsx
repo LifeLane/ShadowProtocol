@@ -31,7 +31,7 @@ const vaultsData = [
 
 const Section5VaultProof = () => {
     return (
-        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern">
+        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern" className="px-4 sm:px-8">
             <div className="w-full">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
@@ -42,7 +42,7 @@ const Section5VaultProof = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     {vaultsData.map((vault, index) => (
                         <VaultCard key={index} vault={vault} index={index} />
                     ))}

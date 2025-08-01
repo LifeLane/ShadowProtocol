@@ -65,7 +65,7 @@ const Section6Roadmap = () => {
                                   <div className="w-3 h-3 rounded-full bg-primary group-hover:bg-background animate-pulse"></div>
                                 </div>
 
-                                <div className="w-full bg-black/30 border border-primary/20 rounded-lg p-6 backdrop-blur-sm card-animated-border">
+                                <div className="w-full bg-black/30 border border-primary/20 rounded-lg p-6 backdrop-blur-sm card-animated-border-hover">
                                     <item.icon className={`w-10 h-10 mx-auto mb-4 ${item.color}`} />
                                     <h3 className={`text-2xl font-bold ${item.color} glow`}>{item.phase}</h3>
                                     <p className="text-muted-foreground font-bold mt-1">{item.status}</p>

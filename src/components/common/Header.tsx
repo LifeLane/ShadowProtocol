@@ -62,7 +62,9 @@ const Header = ({ scaleX }: HeaderProps) => {
     const handleThemeChange = () => {
         const currentIndex = themes.findIndex(t => t.value === theme);
         const nextIndex = (currentIndex + 1) % themes.length;
-        setTheme(themes[nextIndex].value);
+        const newTheme = themes[nextIndex].value;
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
     };
 
     const CurrentThemeIcon = (themes.find(t => t.value === theme) || themes[0]).icon;

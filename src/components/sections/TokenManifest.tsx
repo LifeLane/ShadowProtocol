@@ -50,7 +50,7 @@ const TokenManifest = () => {
 
     return (
         <AnimatedSection id="token-manifest" animationClassName="bg-starfield">
-            <Terminal title="TOKEN_MANIFEST.md" className="w-full md:max-w-7xl">
+            <Terminal title="TOKEN_MANIFEST.md" className="w-full max-w-7xl">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl sm:text-4xl font-bold text-primary glow mb-2">
                         SHADOW Smart Contract Manifest

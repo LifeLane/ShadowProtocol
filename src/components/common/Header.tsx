@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart, Lock, FileJson } from 'lucide-react';
+import { Cpu, Atom, PieChart, Lock, Menu, X, Bot, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart, FileJson } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
@@ -24,7 +24,6 @@ const navItems = [
 ];
 
 const themes = [
-  { value: 'theme-cyberpunk', label: 'Cyberpunk', icon: Terminal },
   { value: 'theme-solar-flare', label: 'Solar Flare', icon: Sun },
   { value: 'theme-arcane-codex', label: 'Arcane Codex', icon: Scroll },
   { value: 'theme-neon-noir', label: 'Neon Noir', icon: Palette },
@@ -39,18 +38,18 @@ type HeaderProps = {
 
 const Header = ({ scaleX }: HeaderProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [theme, setTheme] = useState('theme-cyberpunk');
+    const [theme, setTheme] = useState('theme-neon-noir');
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        const storedTheme = localStorage.getItem('theme') || 'theme-cyberpunk';
+        const storedTheme = localStorage.getItem('theme') || 'theme-neon-noir';
         setTheme(storedTheme);
     }, []);
 
     useEffect(() => {
         if (mounted) {
-            document.documentElement.classList.remove('theme-cyberpunk', 'theme-solar-flare', 'theme-arcane-codex', 'theme-neon-noir', 'theme-glacial-circuit', 'theme-crimson-cypher', 'theme-bio-forge');
+            document.documentElement.classList.remove('theme-solar-flare', 'theme-arcane-codex', 'theme-neon-noir', 'theme-glacial-circuit', 'theme-crimson-cypher', 'theme-bio-forge');
             document.documentElement.classList.add(theme);
             if (theme === 'theme-glacial-circuit') {
               document.documentElement.classList.remove('dark');

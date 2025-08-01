@@ -15,14 +15,14 @@ const AnimatedSection = ({ children, id, className = '', animationClassName = ''
   return (
     <motion.section
       id={id}
-      className={cn("w-full flex items-center justify-center px-4 sm:px-8 py-16 lg:px-16 lg:py-24 relative overflow-hidden", className)}
+      className={cn("w-full flex items-center justify-center px-4 sm:px-8 py-16 lg:py-24 relative overflow-hidden", className)}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8 }}
     >
       <div className={cn("absolute inset-0 w-full h-full", animationClassName)} style={{ zIndex: -1 }}></div>
-      <div className="relative z-10 w-full flex flex-col items-center justify-center">
+      <div className="relative z-10 w-full max-w-7xl flex flex-col items-center justify-center">
         {children}
       </div>
     </motion.section>

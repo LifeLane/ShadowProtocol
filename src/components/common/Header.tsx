@@ -49,7 +49,7 @@ const Header = ({ scaleX }: HeaderProps) => {
 
     useEffect(() => {
         if (mounted) {
-            document.documentElement.classList.remove('theme-solar-flare', 'theme-arcane-codex', 'theme-neon-noir', 'theme-glacial-circuit', 'theme-crimson-cypher', 'theme-bio-forge');
+            document.documentElement.className = '';
             document.documentElement.classList.add(theme);
             if (theme === 'theme-glacial-circuit') {
               document.documentElement.classList.remove('dark');

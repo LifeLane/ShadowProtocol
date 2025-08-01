@@ -78,8 +78,7 @@ const Section4Tokenomics = () => {
                             </Link>
                         </Button>
                          <Button asChild size="lg" variant="outline" className="glow">
-                             <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FB6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
-                                <ShoppingCart className="mr-2" />
+                             <Link href="#claim-key">
                                 Stake to Prevent Burn
                             </Link>
                         </Button>

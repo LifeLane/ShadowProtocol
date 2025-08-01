@@ -1,8 +1,7 @@
 
-
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useScroll, useSpring } from "framer-motion";
 import Section1Awakening from "@/components/sections/Section1Awakening";
 import SectionAISignal from "@/components/sections/SectionAISignal";
@@ -18,6 +17,7 @@ import TokenManifest from "@/components/sections/TokenManifest";
 import SectionClaimKey from "@/components/sections/SectionClaimKey";
 import LinkMarquee from "@/components/common/LinkMarquee";
 import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
+import RevealedFooterLogo from "@/components/common/RevealedFooterLogo";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -28,11 +28,38 @@ export default function Home() {
   });
 
   const [isLoading, setIsLoading] = useState(true);
+  const [showFooterMarquee, setShowFooterMarquee] = useState(false);
+
+  const topMarqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000); // Simulate loading
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFooterMarquee(!entry.isIntersecting);
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0.1
+      }
+    );
+
+    const currentRef = topMarqueeRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [topMarqueeRef]);
+
 
   if (isLoading) {
     return (
@@ -46,21 +73,26 @@ export default function Home() {
 
   return (
     <>
-      <LinkMarquee />
+      <div ref={topMarqueeRef}>
+        <LinkMarquee />
+      </div>
       <Header scaleX={scaleX} />
-      <main className="flex flex-col items-center text-foreground/80">
-        <Section1Awakening />
-        <TokenManifest />
-        <SectionAISignal />
-        <Section2Proof />
-        <Section3Utility />
-        <Section4Tokenomics />
-        <Section5VaultProof />
-        <Section6Roadmap />
-        <SectionClaimKey />
-      </main>
-      <Footer />
-      <StickyFooterMarquee />
+      <div className="relative">
+        <main className="flex flex-col items-center text-foreground/80 bg-background z-10 relative">
+          <Section1Awakening />
+          <TokenManifest />
+          <SectionAISignal />
+          <Section2Proof />
+          <Section3Utility />
+          <Section4Tokenomics />
+          <Section5VaultProof />
+          <Section6Roadmap />
+          <SectionClaimKey />
+        </main>
+        <Footer />
+        <RevealedFooterLogo />
+      </div>
+      {showFooterMarquee && <StickyFooterMarquee />}
       <ScrollToTopButton />
     </>
   );

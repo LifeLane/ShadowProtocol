@@ -9,7 +9,7 @@ import { Button } from '../ui/button';
 
 const Footer = ({ className }: { className?: string }) => {
     return (
-        <footer className={cn("w-full border-t border-primary/20 bg-transparent py-6 mb-24", className)}>
+        <footer className={cn("w-full border-t border-primary/20 bg-background py-6 z-20 relative mb-[30vh]", className)}>
             <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 grid justify-items-center gap-8 text-center">
                  <div className="w-full max-w-md space-y-4">
                     <h3 className="text-xl font-bold text-accent glow-accent">Intercept SHADOW Comms</h3>

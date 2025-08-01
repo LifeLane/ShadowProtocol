@@ -78,9 +78,9 @@ const SectionAISignal = () => {
 
     const getSentimentInfo = (sentiment: InsightResult['sentiment']) => {
         switch (sentiment) {
-            case 'BULLISH': return { signalIcon: ArrowUp, signalText: "BUY", signalClass: "bg-primary/10 text-primary border-primary/20" };
-            case 'BEARISH': return { signalIcon: ArrowDown, signalText: "SELL", signalClass: "bg-destructive/10 text-destructive border-destructive/20" };
-            default: return { signalIcon: Pause, signalText: "HOLD", signalClass: "bg-accent/10 text-accent border-accent/20" };
+            case 'BULLISH': return { SignalIcon: ArrowUp, signalText: "BUY", signalClass: "bg-primary/10 text-primary border-primary/20" };
+            case 'BEARISH': return { SignalIcon: ArrowDown, signalText: "SELL", signalClass: "bg-destructive/10 text-destructive border-destructive/20" };
+            default: return { SignalIcon: Pause, signalText: "HOLD", signalClass: "bg-accent/10 text-accent border-accent/20" };
         }
     };
 
@@ -129,7 +129,7 @@ const SectionAISignal = () => {
                             )}
                             {insight && (() => {
                                 const sentimentInfo = getSentimentInfo(insight.sentiment);
-                                const SentimentIcon = sentimentInfo.signalIcon;
+                                const { SignalIcon } = sentimentInfo;
                                 return (
                                 <div
                                     className="w-full flex flex-col items-center gap-8"
@@ -139,7 +139,7 @@ const SectionAISignal = () => {
                                         <div className={cn("rounded-lg border-2 p-6 flex flex-col items-center justify-center animate-border-pulse-glow", sentimentInfo.signalClass)}>
                                             <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">AI Signal</p>
                                             <div className="flex items-center gap-4 my-2">
-                                                <SentimentIcon className="w-12 h-12" />
+                                                <SignalIcon className="w-12 h-12" />
                                                 <p className="text-5xl font-bold">{sentimentInfo.signalText}</p>
                                             </div>
                                         </div>

@@ -2,11 +2,12 @@
 "use client"
 
 import Link from 'next/link';
-import { LinkIcon, Send, Terminal, Search, Eye, ShieldCheck, Zap, BarChart2, GitFork } from 'lucide-react';
+import { LinkIcon, Send, Terminal, Search, Eye, ShieldCheck, Zap, BarChart2, GitFork, TrendingUp } from 'lucide-react';
 
 const links = [
     { href: "https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "Solscan", icon: Search },
     { href: "https://gmgn.ai/sol/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "GMGN", icon: GitFork },
+    { href: "https://dex.coinmarketcap.com/token/solana/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR/", name: "CoinMarketCap", icon: TrendingUp },
     { href: "#", name: "Telegram", icon: Send },
     { href: "https://www.geckoterminal.com/solana/pools/AY53pXFjCMbFpQ9yTT2s2T61v9a8yY26b1hFME5kZW9r", name: "GeckoTerminal", icon: Terminal },
     { href: "https://dexscreener.com/solana/ay53pxfjcmbfpq9ytt2s2t61v9a8yy26b1hfme5kzw9r", name: "DexScreener", icon: BarChart2 },

@@ -210,6 +210,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  html:not(.theme-glacial-circuit) body {
     text-shadow: 0 0 2px hsl(var(--primary) / 0.5);
   }
 

@@ -18,10 +18,10 @@ const links = [
 ];
 
 
-const LinkMarquee = ({ direction = 'normal' }: { direction?: 'normal' | 'reverse' }) => {
+const LinkMarquee = () => {
     return (
-        <div className="w-full overflow-hidden bg-secondary py-3 border-t border-b border-primary/20">
-            <div className={`flex ${direction === 'normal' ? 'animate-marquee-infinite' : 'animate-marquee-infinite-reverse'}`}>
+        <div className="w-full overflow-hidden bg-secondary py-3 border-b border-primary/20">
+            <div className="animate-marquee-infinite flex">
                 {links.concat(links).map((link, index) => (
                     <Link href={link.href} key={index} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 mx-6 flex-shrink-0 text-muted-foreground hover:text-primary transition-colors duration-300">
                         <link.icon className="w-4 h-4" />
@@ -34,18 +34,8 @@ const LinkMarquee = ({ direction = 'normal' }: { direction?: 'normal' | 'reverse
                     from { transform: translateX(0%); }
                     to { transform: translateX(-50%); }
                 }
-                @keyframes marquee-infinite-reverse {
-                    from { transform: translateX(-50%); }
-                    to { transform: translateX(0%); }
-                }
                 .animate-marquee-infinite {
                     animation: marquee-infinite 40s linear infinite;
-                    will-change: transform;
-                    display: flex;
-                    width: max-content;
-                }
-                .animate-marquee-infinite-reverse {
-                    animation: marquee-infinite-reverse 40s linear infinite;
                     will-change: transform;
                     display: flex;
                     width: max-content;

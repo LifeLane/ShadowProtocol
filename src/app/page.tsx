@@ -14,9 +14,9 @@ import Section6Roadmap from "@/components/sections/Section6Roadmap";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import ScrollToTopButton from "@/components/common/ScrollToTopButton";
-import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
 import TokenManifest from "@/components/sections/TokenManifest";
 import SectionClaimKey from "@/components/sections/SectionClaimKey";
+import LinkMarquee from "@/components/common/LinkMarquee";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -45,6 +45,7 @@ export default function Home() {
 
   return (
     <>
+      <LinkMarquee />
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
         <Section1Awakening />
@@ -58,7 +59,6 @@ export default function Home() {
         <SectionClaimKey />
       </main>
       <Footer />
-      <StickyFooterMarquee />
       <ScrollToTopButton />
     </>
   );

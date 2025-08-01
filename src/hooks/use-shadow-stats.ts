@@ -8,29 +8,36 @@ export interface ShadowStats {
 }
 
 const SHADOW_CONTRACT_ADDRESS = 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR';
+const SOLANA_ASSET_PLATFORM = 'solana';
 
-// This implementation uses a public, keyless Jupiter API endpoint.
-// It fetches a list of tokens and finds SHADOW by its contract address.
+
+// This implementation uses the public, keyless CoinGecko API.
+// It is a reliable source for price, market cap, and 24h change data.
 async function getLiveStats(): Promise<ShadowStats | null> {
     try {
-        const response = await fetch('https://token.jup.ag/v4/token-list');
-        if (!response.ok) {
-            throw new Error(`Jupiter Token List API error: ${response.statusText}`);
-        }
-        const tokenListData = await response.json();
-        
-        const shadowToken = tokenListData.find(
-            (token: any) => token.address.toLowerCase() === SHADOW_CONTRACT_ADDRESS.toLowerCase()
-        );
+        const url = `https://api.coingecko.com/api/v3/simple/token_price/${SOLANA_ASSET_PLATFORM}?contract_addresses=${SHADOW_CONTRACT_ADDRESS}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`;
 
-        if (!shadowToken || !shadowToken.price || !shadowToken.marketCap || !shadowToken.priceChange24h) {
-             throw new Error('SHADOW token data not found or incomplete in Jupiter response.');
+        const response = await fetch(url, {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+            throw new Error(`CoinGecko API error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const tokenData = data[SHADOW_CONTRACT_ADDRESS.toLowerCase()];
+        
+        if (!tokenData || typeof tokenData.usd === 'undefined') {
+            throw new Error('SHADOW token data not found in CoinGecko response.');
         }
 
         return {
-            price: shadowToken.price,
-            marketCap: shadowToken.marketCap,
-            priceChange24h: shadowToken.priceChange24h,
+            price: tokenData.usd,
+            marketCap: tokenData.usd_market_cap,
+            priceChange24h: tokenData.usd_24h_change,
         };
 
     } catch (error) {

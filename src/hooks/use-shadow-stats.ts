@@ -1,6 +1,9 @@
 
 "use server";
 
+import { Connection, PublicKey } from '@solana/web3.js';
+import { Liquidity, TokenAmount, Token, Percent } from '@raydium-io/raydium-sdk';
+
 export interface ShadowStats {
     price: number;
     marketCap: number;
@@ -10,17 +13,15 @@ export interface ShadowStats {
 const SHADOW_CONTRACT_ADDRESS = 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR';
 const SOLANA_ASSET_PLATFORM = 'solana';
 
-
-// This implementation uses the public, keyless CoinGecko API.
-// It is a reliable source for price, market cap, and 24h change data.
 async function getLiveStats(): Promise<ShadowStats | null> {
     try {
-        const url = `https://api.coingecko.com/api/v3/simple/token_price/${SOLANA_ASSET_PLATFORM}?contract_addresses=${SHADOW_CONTRACT_ADDRESS}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`;
+        const coingeckoUrl = `https://api.coingecko.com/api/v3/simple/token_price/${SOLANA_ASSET_PLATFORM}?contract_addresses=${SHADOW_CONTRACT_ADDRESS}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`;
 
-        const response = await fetch(url, {
-          headers: {
-            'Accept': 'application/json'
-          }
+        const response = await fetch(coingeckoUrl, {
+            headers: {
+                'Accept': 'application/json'
+            },
+            next: { revalidate: 60 } // Revalidate every 60 seconds
         });
 
         if (!response.ok) {
@@ -45,7 +46,6 @@ async function getLiveStats(): Promise<ShadowStats | null> {
         return null;
     }
 }
-
 
 export async function useShadowStats(): Promise<ShadowStats | null> {
     const stats = await getLiveStats();

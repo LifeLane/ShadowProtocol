@@ -48,7 +48,7 @@ const ForgeSparks = () => {
 
 const RevealedFooterLogo = () => {
     return (
-        <section className="relative w-full h-96 bg-background overflow-hidden flex items-center justify-center">
+        <section className="sticky bottom-0 left-0 w-full h-[30vh] bg-background flex items-center justify-center -z-10">
             <ForgeSparks />
             <div className="relative z-10 w-full flex items-center justify-center">
                 <ShadowLogo />

@@ -49,19 +49,21 @@ export default function Home() {
     <>
       <LinkMarquee />
       <Header scaleX={scaleX} />
-      <main className="flex flex-col items-center text-foreground/80">
-        <Section1Awakening />
-        <TokenManifest />
-        <SectionAISignal />
-        <Section2Proof />
-        <Section3Utility />
-        <Section4Tokenomics />
-        <Section5VaultProof />
-        <Section6Roadmap />
-        <SectionClaimKey />
-      </main>
-      <Footer />
-      <RevealedFooterLogo />
+      <div className="relative">
+        <main className="flex flex-col items-center text-foreground/80 bg-background z-10 relative">
+          <Section1Awakening />
+          <TokenManifest />
+          <SectionAISignal />
+          <Section2Proof />
+          <Section3Utility />
+          <Section4Tokenomics />
+          <Section5VaultProof />
+          <Section6Roadmap />
+          <SectionClaimKey />
+        </main>
+        <Footer />
+        <RevealedFooterLogo />
+      </div>
       <StickyFooterMarquee />
       <ScrollToTopButton />
     </>

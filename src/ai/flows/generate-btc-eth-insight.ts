@@ -38,7 +38,7 @@ const getCryptoPrice = ai.defineTool(
             throw new Error(`Unsupported ticker symbol: ${input.ticker}`);
         }
 
-        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`, { cache: 'no-store' });
         if (!response.ok) {
             throw new Error(`CoinGecko API error: ${response.statusText}`);
         }

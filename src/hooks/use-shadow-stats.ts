@@ -1,8 +1,7 @@
 
 "use server";
 
-const SHADOW_TOKEN_ADDRESS = 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR'; 
-const COINMARKETCAP_API_URL = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest`;
+const SHADOW_TOKEN_TICKER = 'SHADOW'; 
 
 export interface ShadowStats {
     price: number;
@@ -10,39 +9,97 @@ export interface ShadowStats {
     priceChange24h: number;
 }
 
-export async function useShadowStats(): Promise<ShadowStats | null> {
+// Helper function to fetch from CoinGecko API
+async function getCoinGeckoStats(ticker: string): Promise<Partial<ShadowStats>> {
     try {
-        const apiKey = process.env.COINMARKETCAP_API_KEY;
-        if (!apiKey || apiKey === 'YOUR_COINMARKETCAP_API_KEY') {
-            throw new Error("CoinMarketCap API key is not configured.");
-        }
+        const searchResponse = await fetch(`https://api.coingecko.com/api/v3/search?query=${ticker}`);
+        if (!searchResponse.ok) throw new Error('CoinGecko search failed.');
+        const searchData = await searchResponse.json();
+        const coinId = searchData.coins?.[0]?.id;
+        if (!coinId) throw new Error('Coin not found on CoinGecko.');
 
-        const response = await fetch(`${COINMARKETCAP_API_URL}?address=${SHADOW_TOKEN_ADDRESS}`, {
-            headers: {
-                'X-CMC_PRO_API_KEY': apiKey,
-                'Accept': 'application/json',
-            }
-        });
-
-        if (!response.ok) {
-            const errorBody = await response.text();
-            console.error(`CoinMarketCap API error: ${response.status}`, errorBody);
-            throw new Error(`Failed to fetch price from CoinMarketCap. Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const tokenData = data.data?.[SHADOW_TOKEN_ADDRESS]?.[0];
-
-        if (!tokenData || !tokenData.quote.USD) {
-            throw new Error("SHADOW token data not found in CoinMarketCap API response for the given address.");
-        }
-
-        const quote = tokenData.quote.USD;
+        const statsResponse = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`);
+        if (!statsResponse.ok) throw new Error('CoinGecko stats fetch failed.');
+        const statsData = await statsResponse.json();
+        
+        const marketData = statsData[coinId];
+        if (!marketData) throw new Error('Market data not found in CoinGecko response.');
 
         return {
-            price: quote.price || 0,
-            marketCap: quote.market_cap || 0,
-            priceChange24h: quote.percent_change_24h || 0,
+            marketCap: marketData.usd_market_cap,
+            priceChange24h: marketData.usd_24h_change,
+        };
+    } catch (error) {
+        console.warn('CoinGecko fetch failed:', error);
+        return {}; // Return empty object on failure
+    }
+}
+
+async function getCryptoPrice(ticker: string): Promise<number> {
+    const upperTicker = ticker.toUpperCase();
+    
+    // 1. Try Binance API (High volume, usually accurate)
+    try {
+      const binanceSymbol = `${upperTicker}USDT`;
+      const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${binanceSymbol}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.price) {
+          return parseFloat(data.price);
+        }
+      }
+    } catch (error) {
+      console.warn(`Binance API failed for ${ticker}, trying Polygon.`, error);
+    }
+
+    // 2. Fallback to Polygon API (Professional data provider)
+    try {
+      const polygonApiKey = process.env.POLYGON_API_KEY;
+      if (!polygonApiKey || polygonApiKey === 'YOUR_POLYGON_API_KEY') {
+        throw new Error('Price data source is temporarily unavailable. Please configure the Polygon API Key.');
+      }
+      const polygonSymbol = `X:${upperTicker}USD`;
+      const response = await fetch(`https://api.polygon.io/v2/aggs/ticker/${polygonSymbol}/prev?adjusted=true&apiKey=${polygonApiKey}`);
+      
+      if (!response.ok) {
+        const errorBody = await response.text();
+        console.error(`Polygon API error for ${ticker}: ${response.status} ${response.statusText}`, errorBody);
+        throw new Error(`Failed to fetch price from Polygon. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const price = data.results?.[0]?.c;
+
+      if (price) {
+        return price;
+      } else {
+        throw new Error(`Price data not found for ${ticker} in Polygon API response.`);
+      }
+    } catch (error) {
+      console.error(`Failed to fetch price for ${ticker} from all sources:`, error);
+      if (error instanceof Error) {
+        throw new Error(`Could not fetch price for ${ticker}: ${error.message}`);
+      }
+      throw new Error(`An unknown error occurred while fetching the price for ${ticker}.`);
+    }
+}
+
+
+export async function useShadowStats(): Promise<ShadowStats | null> {
+    try {
+        const [price, geckoStats] = await Promise.all([
+            getCryptoPrice(SHADOW_TOKEN_TICKER),
+            getCoinGeckoStats(SHADOW_TOKEN_TICKER)
+        ]);
+
+        if (price === undefined || geckoStats.marketCap === undefined || geckoStats.priceChange24h === undefined) {
+             throw new Error("Failed to retrieve all required stats.");
+        }
+
+        return {
+            price,
+            marketCap: geckoStats.marketCap,
+            priceChange24h: geckoStats.priceChange24h,
         };
 
     } catch (err) {

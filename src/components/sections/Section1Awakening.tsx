@@ -22,7 +22,7 @@ const Section1Awakening = () => {
                         '> >rug-proof protocol confirmed.....',
                         '> > >Every Token Must Serve or Burn 🔥'
                     ]}
-                    className="text-primary text-lg sm:text-2xl md:text-4xl font-bold"
+                    className="text-accent text-lg sm:text-2xl md:text-4xl font-bold"
                 />
                  <motion.div
                     className="text-center w-full mt-4"
@@ -31,33 +31,21 @@ const Section1Awakening = () => {
                     transition={{ delay: 2.5 }}
                 >
                     <ShadowLogo />
-                     {isMobile && (
-                        <motion.p
-                            className="text-accent mt-4 text-base"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 3.5 }}
-                        >
-                            SHADOW Is Not a Meme. SHADOW Is Protocol.
-                        </motion.p>
-                     )}
-                     {!isMobile && (
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 3.5 }}>
-                            <Typewriter
-                                texts={[
-                                    "SHADOW Is Not a Meme. SHADOW Is Protocol.",
-                                    "Rug-Proof by Design | Powered by AI | Locked Forever.",
-                                    "99% Supply Locked | Zero Mint Authority | Full Transparency."
-                                ]}
-                                className="text-accent mt-4 md:mt-8 text-sm sm:text-lg md:text-xl"
-                                speed={30}
-                                pause={2000}
-                            />
-                        </motion.div>
-                     )}
+                </motion.div>
+                
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 3.5 }}>
+                    <Typewriter
+                        texts={[
+                            "SHADOW Is Not a Meme. SHADOW Is Protocol.",
+                            "Rug-Proof by Design | Powered by AI | Locked Forever."
+                        ]}
+                        className="text-primary mt-4 md:mt-8 text-sm sm:text-lg md:text-xl"
+                        speed={30}
+                        pause={2000}
+                    />
                 </motion.div>
 
                 <motion.div

@@ -33,22 +33,18 @@ const Section3Utility = () => {
     return (
         <AnimatedSection id="ecosystem" animationClassName="bg-starfield">
             <div className="text-center mb-12 w-full max-w-4xl">
-                <div className="grid grid-cols-1 md:grid-cols-3">
-                    <div className="p-4 border-b-2 md:border-b-0 md:border-r-2 border-primary/50 animate-border-pulse-glow">
-                        <h2 className="text-4xl md:text-5xl font-bold text-primary glow">
-                            Real Use
-                        </h2>
-                    </div>
-                    <div className="p-4 border-b-2 md:border-b-0 md:border-r-2 border-accent/50 animate-border-pulse-glow">
-                        <h2 className="text-4xl md:text-5xl font-bold text-primary glow">
-                            Real Tools
-                        </h2>
-                    </div>
-                    <div className="p-4">
-                        <h2 className="text-4xl md:text-5xl font-bold text-primary glow">
-                            Live Now
-                        </h2>
-                    </div>
+                <div className="flex items-center justify-center space-x-4 md:space-x-8">
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-primary glow">
+                        Real Use
+                    </h2>
+                    <div className="h-12 w-px bg-primary/50 animate-border-pulse-glow"></div>
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-primary glow">
+                        Real Tools
+                    </h2>
+                     <div className="h-12 w-px bg-accent/50 animate-border-pulse-glow"></div>
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-primary glow">
+                        Live Now
+                    </h2>
                 </div>
             </div>
 

@@ -3,14 +3,14 @@
 
 import { useState, useEffect } from 'react';
 
-// NOTE: Using Birdeye's public API. In a production app, you'd want to
-// proxy this through your own backend to avoid rate limiting and expose an API key safely.
 const SHADOW_TOKEN_ADDRESS = 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR';
-const API_URL = `https://public-api.birdeye.so/defi/token_overview?address=${SHADOW_TOKEN_ADDRESS}`;
+const BINANCE_API_URL = `https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT`;
+const COINGECKO_API_URL = `https://api.coingecko.com/api/v3/simple/token_price/solana?contract_addresses=${SHADOW_TOKEN_ADDRESS}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`;
 
 export interface ShadowStats {
     liquidity: number;
     marketCap: number;
+    price: number;
     priceChange24h: number;
 }
 
@@ -24,29 +24,37 @@ export function useShadowStats() {
             setIsLoading(true);
             setError(null);
             try {
-                // The public API requires an `x-chain: solana` header.
-                const response = await fetch(API_URL, {
-                    headers: {
-                        'x-chain': 'solana'
-                    }
+                const [binanceRes, coingeckoRes] = await Promise.all([
+                    fetch(BINANCE_API_URL),
+                    fetch(COINGECKO_API_URL)
+                ]);
+
+                if (!binanceRes.ok) {
+                    throw new Error(`Binance API error: ${binanceRes.status}`);
+                }
+                if (!coingeckoRes.ok) {
+                    throw new Error(`CoinGecko API error: ${coingeckoRes.status}`);
+                }
+
+                const binanceData = await binanceRes.json();
+                const coingeckoData = await coingeckoRes.json();
+
+                const tokenData = coingeckoData[SHADOW_TOKEN_ADDRESS.toLowerCase()];
+
+                if (!tokenData || !binanceData.price) {
+                    throw new Error("Price or token data not found in API response.");
+                }
+                
+                // Note: Liquidity data is not available from these public APIs without a key.
+                // We'll use a placeholder or remove it if not essential. For now, let's use market cap as a proxy.
+                const marketCap = tokenData.usd_market_cap || 0;
+
+                setStats({
+                    price: tokenData.usd,
+                    marketCap: marketCap,
+                    liquidity: marketCap, // Using market cap as a fallback for liquidity
+                    priceChange24h: tokenData.usd_24h_change || 0,
                 });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || `API error: ${response.status}`);
-                }
-
-                const data = await response.json();
-
-                if (data.success && data.data) {
-                    setStats({
-                        liquidity: data.data.liquidity,
-                        marketCap: data.data.mc,
-                        priceChange24h: data.data.priceChange24h,
-                    });
-                } else {
-                    throw new Error(data.message || "Invalid data format from API.");
-                }
 
             } catch (err) {
                 console.error("Failed to fetch shadow stats:", err);
@@ -57,9 +65,7 @@ export function useShadowStats() {
         };
 
         fetchStats();
-
-        // Refetch every 60 seconds
-        const intervalId = setInterval(fetchStats, 60000);
+        const intervalId = setInterval(fetchStats, 60000); // Refetch every 60 seconds
 
         return () => clearInterval(intervalId);
     }, []);

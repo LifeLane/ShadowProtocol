@@ -1,7 +1,7 @@
 
 "use client"
 
-import { DollarSign, Droplets, TrendingUp, ShoppingCart, Loader2 } from 'lucide-react';
+import { DollarSign, Droplets, TrendingUp, ShoppingCart, Loader2, CircleDollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { useShadowStats } from '@/hooks/use-shadow-stats';
@@ -48,14 +48,14 @@ const LiveStatsBanner = () => {
 
         const statItems = [
             {
+                icon: CircleDollarSign,
+                label: 'Price',
+                value: `$${stats.price.toLocaleString('en-US', { minimumFractionDigits: 6, maximumFractionDigits: 6 })}`
+            },
+            {
                 icon: DollarSign,
                 label: 'Market Cap',
                 value: `$${stats.marketCap.toLocaleString('en-US', { notation: 'compact', maximumFractionDigits: 2 })}`
-            },
-            {
-                icon: Droplets,
-                label: 'Liquidity',
-                value: `$${stats.liquidity.toLocaleString('en-US', { notation: 'compact', maximumFractionDigits: 2 })}`
             },
             {
                 icon: TrendingUp,

@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
+import { cn } from "@/lib/utils"
 
 const FormSchema = z.object({
   telegram: z.string().min(5, { message: "Telegram handle must be at least 5 characters." }).refine(val => val.startsWith('@'), { message: "Handle must start with @" }),
@@ -89,13 +90,13 @@ const SectionClaimKey = () => {
                 exit={{ opacity: 0 }}
               >
                 {/* Progress Bar */}
-                <div className="flex justify-between items-center px-4">
+                <div className="flex justify-between items-center px-1 sm:px-4">
                   {steps.map((s, index) => (
-                    <div key={s.id} className="flex-1 flex items-center gap-2">
+                    <div key={s.id} className={cn("flex-1 flex items-center", index === 0 ? "justify-start" : index === steps.length - 1 ? "justify-end" : "justify-center" )}>
                        <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${step >= s.id ? 'border-primary' : 'border-muted'}`}>
                            {step > s.id ? <Check className="w-5 h-5 text-primary" /> : <s.icon className={`w-5 h-5 ${step >= s.id ? 'text-primary' : 'text-muted'}`} />}
                        </div>
-                       {index < steps.length -1 && <div className={`h-0.5 flex-1 ${step > s.id ? 'bg-primary' : 'bg-muted'}`}></div>}
+                       {index < steps.length - 1 && <div className={`h-0.5 flex-1 mx-2 ${step > s.id ? 'bg-primary' : 'bg-muted'}`}></div>}
                     </div>
                   ))}
                 </div>

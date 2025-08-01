@@ -4,8 +4,11 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ScanLine, Copy, ExternalLink, Hash, Calendar, Settings, CircleOff, Fingerprint, Anchor, BookUser, BarChart, FileJson } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScanLine, Copy, ExternalLink, Hash, Calendar, Settings, CircleOff, Fingerprint, Anchor, BookUser, BarChart, FileJson } from 'lucide-react';
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const tokenDetails = [
   { label: 'Token Name', value: 'SHADOW (SHADOW)', icon: Hash },
@@ -38,6 +41,7 @@ const analysisLinks = [
 
 const TokenManifest = () => {
     const { toast } = useToast();
+    const isMobile = useIsMobile();
 
     const handleCopy = (value: string) => {
         navigator.clipboard.writeText(value);
@@ -46,6 +50,115 @@ const TokenManifest = () => {
             description: value,
         });
     };
+
+    const DetailItem = ({ item }: { item: { label: string, value: string, icon: any, copyable?: boolean } }) => (
+        <div className="flex items-start gap-3">
+            <item.icon className="w-4 h-4 text-primary mt-1 shrink-0" />
+            <div className="flex-grow">
+                <div className="text-muted-foreground font-bold">{item.label}</div>
+                <div className="font-mono text-primary-foreground flex items-center gap-2 flex-wrap">
+                    <span className="break-all">{item.value}</span>
+                    {item.copyable && (
+                        <Button variant="ghost" size="icon" className="w-6 h-6" onClick={() => handleCopy(item.value)}>
+                            <Copy className="w-3 h-3"/>
+                        </Button>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+
+    const AuthorityItem = ({ item }: { item: { label: string, revoked: boolean, icon: any }}) => (
+        <div className="flex items-center gap-3">
+            <item.icon className="w-4 h-4 text-primary shrink-0" />
+            <div>{item.label}</div>
+            {item.revoked && <Badge variant="destructive">REVOKED</Badge>}
+        </div>
+    );
+
+    const LinkItem = ({ link }: { link: { label: string, href: string, icon: any }}) => (
+         <a href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline">
+            <link.icon className="w-4 h-4" />
+            <span>{link.label}</span>
+            <ExternalLink className="w-3 h-3" />
+        </a>
+    );
+
+    const DesktopLayout = () => (
+         <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-8 text-sm">
+                {/* Column 1: Core Details */}
+                <div className="space-y-4">
+                    {tokenDetails.map((item) => <DetailItem key={item.label} item={item} />)}
+                </div>
+
+                {/* Column 2: Authorities & Explorer Links */}
+                <div className="space-y-8">
+                    <div className="space-y-3">
+                        <div className="font-bold text-muted-foreground">Authorities</div>
+                        {authorityDetails.map((item) => <AuthorityItem key={item.label} item={item} />)}
+                    </div>
+                    <div className="space-y-3">
+                        <div className="font-bold text-muted-foreground">Explorer Links</div>
+                        {explorerLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                    </div>
+                </div>
+
+                {/* Column 3: Analysis & Holders */}
+                <div className="space-y-3">
+                    <div className="font-bold text-muted-foreground">Analysis & Holders</div>
+                    {analysisLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                </div>
+            </div>
+        </div>
+    )
+
+    const MobileLayout = () => (
+        <Tabs defaultValue="core" className="w-full">
+            <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="core">Core</TabsTrigger>
+                <TabsTrigger value="authorities">Authorities</TabsTrigger>
+                <TabsTrigger value="analysis">Analysis</TabsTrigger>
+            </TabsList>
+            <TabsContent value="core">
+                 <Card className="bg-black/30 border-primary/30">
+                    <CardHeader>
+                        <CardTitle className="text-primary glow">Core Details</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        {tokenDetails.map((item) => <DetailItem key={item.label} item={item} />)}
+                    </CardContent>
+                </Card>
+            </TabsContent>
+            <TabsContent value="authorities">
+                 <Card className="bg-black/30 border-primary/30">
+                    <CardHeader>
+                        <CardTitle className="text-primary glow">Authorities & Explorer</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                        <div className="space-y-3">
+                            <div className="font-bold text-muted-foreground">Authorities</div>
+                            {authorityDetails.map((item) => <AuthorityItem key={item.label} item={item} />)}
+                        </div>
+                         <div className="space-y-3">
+                            <div className="font-bold text-muted-foreground">Explorer Links</div>
+                            {explorerLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                        </div>
+                    </CardContent>
+                </Card>
+            </TabsContent>
+            <TabsContent value="analysis">
+                 <Card className="bg-black/30 border-primary/30">
+                    <CardHeader>
+                        <CardTitle className="text-primary glow">Analysis & Holders</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                        {analysisLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                    </CardContent>
+                </Card>
+            </TabsContent>
+        </Tabs>
+    );
 
     return (
         <AnimatedSection id="token-manifest" animationClassName="bg-starfield">
@@ -58,66 +171,7 @@ const TokenManifest = () => {
                         Full On-Chain Transparency. Verified. Immutable.
                     </p>
                 </div>
-
-                <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-8 text-sm">
-                        {/* Column 1: Core Details */}
-                        <div className="space-y-4">
-                            {tokenDetails.map((item) => (
-                                <div key={item.label} className="flex items-start gap-3">
-                                    <item.icon className="w-4 h-4 text-primary mt-1 shrink-0" />
-                                    <div className="flex-grow">
-                                        <div className="text-muted-foreground font-bold">{item.label}</div>
-                                        <div className="font-mono text-primary-foreground flex items-center gap-2 flex-wrap">
-                                            <span className="break-all">{item.value}</span>
-                                            {item.copyable && (
-                                                <Button variant="ghost" size="icon" className="w-6 h-6" onClick={() => handleCopy(item.value)}>
-                                                    <Copy className="w-3 h-3"/>
-                                                </Button>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Column 2: Authorities & Explorer Links */}
-                        <div className="space-y-8">
-                            <div className="space-y-3">
-                                <div className="font-bold text-muted-foreground">Authorities</div>
-                                {authorityDetails.map((item) => (
-                                    <div key={item.label} className="flex items-center gap-3">
-                                        <item.icon className="w-4 h-4 text-primary shrink-0" />
-                                        <div>{item.label}</div>
-                                        {item.revoked && <Badge variant="destructive">REVOKED</Badge>}
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="space-y-3">
-                                <div className="font-bold text-muted-foreground">Explorer Links</div>
-                                {explorerLinks.map((link) => (
-                                    <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline">
-                                        <link.icon className="w-4 h-4" />
-                                        <span>{link.label}</span>
-                                        <ExternalLink className="w-3 h-3" />
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Column 3: Analysis & Holders */}
-                        <div className="space-y-3">
-                            <div className="font-bold text-muted-foreground">Analysis & Holders</div>
-                            {analysisLinks.map((link) => (
-                                <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline">
-                                    <link.icon className="w-4 h-4" />
-                                    <span>{link.label}</span>
-                                    <ExternalLink className="w-3 h-3" />
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                 {isMobile ? <MobileLayout /> : <DesktopLayout />}
             </div>
         </AnimatedSection>
     )

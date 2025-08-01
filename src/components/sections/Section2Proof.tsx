@@ -3,7 +3,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
-import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { Lock, ShieldOff, BarChart, Search, Globe, Ban, KeyRound, Eye } from 'lucide-react';
 import { motion, useInView } from "framer-motion";
@@ -64,7 +63,7 @@ const Section2Proof = () => {
 
     return (
         <AnimatedSection id="proof" animationClassName="bg-pulse-grid-pattern">
-            <Terminal title="NEURAL_CORE_INTEGRITY_CHECK.md" className="w-full max-w-7xl">
+            <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8 w-full max-w-7xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 text-center text-2xl sm:text-3xl font-bold text-accent glow-accent mb-8">
                     <div className="p-2 md:border-r md:border-primary/30">SHADOW Is Immutable.</div>
                     <div className="p-2">10 Billion Forged.</div>
@@ -72,7 +71,7 @@ const Section2Proof = () => {
                     <div className="p-2 md:border-t md:border-primary/30">Zero Mint Authority.</div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 text-center">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 text-center">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
@@ -125,7 +124,7 @@ const Section2Proof = () => {
                         </Button>
                     </div>
                 </div>
-            </Terminal>
+            </div>
         </AnimatedSection>
     );
 };

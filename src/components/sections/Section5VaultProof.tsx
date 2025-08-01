@@ -3,6 +3,7 @@
 
 import { Lock } from "lucide-react";
 import { motion } from "framer-motion";
+import AnimatedSection from "@/components/common/AnimatedSection";
 
 const vaultsData = [
     { name: "Airdrop Vault Alpha", amount: "1B", unit: "SHADOW", url: "https://solscan.io/account/BUuvTwwdjugFjuiBq2bwqxPQhAnLDF5S8mVMzPg7UWSW" },
@@ -30,9 +31,8 @@ const vaultsData = [
 
 const Section5VaultProof = () => {
     return (
-        <section id="vault-proof" className="w-full flex items-center justify-center px-4 sm:px-8 py-16 lg:py-24 relative bg-background">
-            <div className="absolute inset-0 w-full h-full bg-quantum-flicker-pattern" style={{ zIndex: 1 }}></div>
-             <div className="w-full max-w-7xl relative z-10">
+        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern">
+             <div className="w-full max-w-7xl">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
                         Vault of Shadows — 99% of SHADOW Locked. Forever.
@@ -48,7 +48,7 @@ const Section5VaultProof = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </AnimatedSection>
     );
 };
 
@@ -61,7 +61,7 @@ const VaultCard = ({ vault, index }: { vault: { name: string, amount: string, un
             transition={{ duration: 0.5, delay: index * 0.05 }}
             className="neon-card"
         >
-            <h3 className="vault-title text-sm">{vault.name}</h3>
+            <h3 className="vault-title text-sm h-12 flex items-center justify-center">{vault.name}</h3>
             <div className="vault-amount text-2xl">{vault.amount}</div>
             <p className="vault-unit">{vault.unit}</p>
             <a href={vault.url} target="_blank" rel="noopener noreferrer" className="verify-btn text-xs">
@@ -72,3 +72,5 @@ const VaultCard = ({ vault, index }: { vault: { name: string, amount: string, un
 }
 
 export default Section5VaultProof;
+
+    

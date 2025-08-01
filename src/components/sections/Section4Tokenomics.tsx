@@ -26,7 +26,7 @@ const Section4Tokenomics = () => {
 
     return (
         <AnimatedSection id="tokenomics" animationClassName="bg-circuit-pattern">
-            <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8 w-full">
+            <div className="bg-black/30 border border-primary/20 rounded-lg shadow-lg backdrop-blur-sm p-4 md:p-8 w-full max-w-7xl">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl sm:text-4xl font-bold text-accent glow-accent mb-2">
                         Every Token Must Serve… or Burn 🔥
@@ -58,7 +58,8 @@ const Section4Tokenomics = () => {
                 </div>
 
                 <div className="text-center border-t border-dashed border-primary/30 pt-6">
-                    <h3 className="text-xl sm:text-2xl font-bold text-primary glow-accent mb-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-primary glow-accent mb-4 flex items-center justify-center gap-2">
+                        <Flame />
                         Burn Meter
                     </h3>
                     <div className="bg-black/30 p-4 rounded-lg max-w-md mx-auto mb-4">
@@ -90,3 +91,5 @@ const Section4Tokenomics = () => {
 };
 
 export default Section4Tokenomics;
+
+    

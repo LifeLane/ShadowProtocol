@@ -87,7 +87,7 @@ const Section2Proof = () => {
                                 {stat.isCounter ? <AnimatedCounter to={stat.value as number} /> : stat.value}
                                 {stat.suffix}
                             </p>
-                            <p className="text-muted-foreground text-sm md:text-base mt-2">{stat.label}</p>
+                            <h3 className="text-muted-foreground text-sm md:text-base mt-2">{stat.label}</h3>
                         </motion.div>
                     ))}
                 </div>
@@ -131,3 +131,5 @@ const Section2Proof = () => {
 };
 
 export default Section2Proof;
+
+    

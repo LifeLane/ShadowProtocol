@@ -1,7 +1,6 @@
 
 "use client"
 
-import AnimatedSection from "@/components/common/AnimatedSection";
 import { Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -31,8 +30,9 @@ const vaultsData = [
 
 const Section5VaultProof = () => {
     return (
-        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern">
-             <div className="w-full">
+        <section id="vault-proof" className="w-full flex items-center justify-center px-4 sm:px-8 py-16 lg:py-24 relative bg-background">
+            <div className="absolute inset-0 w-full h-full bg-quantum-flicker-pattern" style={{ zIndex: 1 }}></div>
+             <div className="w-full max-w-7xl relative z-10">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
                         Vault of Shadows — 99% of SHADOW Locked. Forever.
@@ -48,7 +48,7 @@ const Section5VaultProof = () => {
                     ))}
                 </div>
             </div>
-        </AnimatedSection>
+        </section>
     );
 };
 

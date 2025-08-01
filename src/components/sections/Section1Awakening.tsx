@@ -47,6 +47,27 @@ const Section1Awakening = () => {
                         pause={2000}
                     />
                 </motion.div>
+
+                <motion.div
+                    className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 4.5 }}
+                >
+                    <Button asChild size={isMobile ? 'default' : 'lg'} className="w-full sm:w-auto btn-shine">
+                        <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FB6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
+                            <ShoppingCart className="mr-2" />
+                            Buy SHADOW Now
+                        </Link>
+                    </Button>
+                    <Button asChild size={isMobile ? 'default' : 'lg'} variant="outline" className="w-full sm:w-auto glow">
+                        <Link href="#claim-key">
+                            <KeyRound className="mr-2" />
+                            Airdrop Console
+                        </Link>
+                    </Button>
+                </motion.div>
+
             </div>
              <motion.div
                 className="absolute bottom-10 left-1/2 -translate-x-1/2"

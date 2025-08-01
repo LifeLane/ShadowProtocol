@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart } from 'lucide-react';
+import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
@@ -17,6 +17,7 @@ import {
 
 const navItems = [
     { name: 'Signal', href: '#ai-signal', icon: Cpu },
+    { name: 'Proof', href: '#proof', icon: ShieldCheck },
     { name: 'Ecosystem', href: '#ecosystem', icon: Atom },
     { name: 'Tokenomics', href: '#tokenomics', icon: PieChart },
     { name: 'Roadmap', href: '#roadmap', icon: GitMerge },
@@ -49,7 +50,7 @@ const Header = ({ scaleX }: HeaderProps) => {
 
     useEffect(() => {
         if (mounted) {
-            document.documentElement.classList.remove('theme-cyberpunk', 'theme-solar-flare', 'theme-arcane-codex', 'theme-neon-noir', 'theme-glacial-circuit', 'theme-crimson-cypher', 'theme-bio-forge');
+            document.documentElement.className = '';
             document.documentElement.classList.add(theme);
             if (theme === 'theme-glacial-circuit') {
               document.documentElement.classList.remove('dark');

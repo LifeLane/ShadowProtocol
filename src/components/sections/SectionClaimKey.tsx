@@ -123,11 +123,11 @@ const SectionClaimKey = () => {
                   ))}
                 </AnimatePresence>
                 
-                <div className="flex justify-center gap-4 pt-4">
-                  {step > 1 && <Button type="button" variant="outline" onClick={prevStep} className="glow">Previous</Button>}
-                  {step < steps.length && <Button type="button" onClick={() => nextStep(currentStepData?.field as keyof FormValues)} className="btn-shine">Next</Button>}
+                <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                  {step > 1 && <Button type="button" variant="outline" onClick={prevStep} className="glow w-full sm:w-auto">Previous</Button>}
+                  {step < steps.length && <Button type="button" onClick={() => nextStep(currentStepData?.field as keyof FormValues)} className="btn-shine w-full sm:w-auto">Next</Button>}
                   {step === steps.length && (
-                    <Button type="submit" disabled={isLoading} className="btn-shine glow w-48">
+                    <Button type="submit" disabled={isLoading} className="btn-shine glow w-full sm:w-48">
                       {isLoading ? <Loader2 className="animate-spin" /> : <><KeyRound /> Finalize Claim</>}
                     </Button>
                   )}

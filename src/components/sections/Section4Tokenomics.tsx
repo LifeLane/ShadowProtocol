@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import { Flame, ShieldCheck, Lock, Package } from 'lucide-react';
+import { Flame, ShieldCheck, Lock, Package, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import { Progress } from "@/components/ui/progress";
 
@@ -71,13 +71,14 @@ const Section4Tokenomics = () => {
                     <p className="text-muted-foreground mb-6">Unused SHADOW from utility vaults is burned automatically by the protocol.</p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">
-                            <Link href="#">
+                            <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FB6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
                                 <Flame className="mr-2" />
                                 View Burn Dashboard
                             </Link>
                         </Button>
                          <Button asChild size="lg" variant="outline" className="glow">
-                             <Link href="#claim-key">
+                             <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FB6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
+                                <ShoppingCart className="mr-2" />
                                 Stake to Prevent Burn
                             </Link>
                         </Button>

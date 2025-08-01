@@ -176,7 +176,7 @@ const SectionAISignal = () => {
                                         </Button>
                                     </div>
                                 </div>
-                            )})}
+                            )})()}
                         </div>
                     )}
                 </Terminal>

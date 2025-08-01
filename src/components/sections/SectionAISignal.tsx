@@ -7,7 +7,7 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
-import { Loader2, TrendingUp, TrendingDown, Minus, ShoppingCart, ArrowUp, ArrowDown, Pause } from "lucide-react";
+import { Loader2, TrendingUp, TrendingDown, Minus, ShoppingCart, ArrowUp, ArrowDown, Pause, AlertTriangle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -99,7 +99,7 @@ const SectionAISignal = () => {
                         </div>
                         <div className="flex flex-col items-center justify-center gap-4">
                              <Select onValueChange={setSymbol} defaultValue={symbol}>
-                                <SelectTrigger className="w-full max-w-xs bg-black/30 border-primary/30 h-12 text-lg">
+                                <SelectTrigger className="w-full max-w-xs bg-black/30 border-primary/30 h-12 text-lg animate-border-glow">
                                     <SelectValue placeholder="Select a token" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -179,6 +179,15 @@ const SectionAISignal = () => {
                             )})()}
                         </div>
                     )}
+                    <div className="mt-8">
+                        <Alert className="bg-black/20 border-primary/20 text-muted-foreground">
+                            <AlertTriangle className="h-4 w-4 text-accent" />
+                            <AlertTitle className="text-accent glow-accent">Transmission Advisory</AlertTitle>
+                            <AlertDescription>
+                                These signals are echoes from the core, not commands. They are for research only. Trust your own judgment—the final risk is yours.
+                            </AlertDescription>
+                        </Alert>
+                    </div>
                 </Terminal>
             </div>
         </AnimatedSection>

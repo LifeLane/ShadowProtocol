@@ -8,7 +8,7 @@ import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2, TrendingUp, TrendingDown, Minus, Gamepad2, ShoppingCart } from "lucide-react";
+import { Loader2, TrendingUp, TrendingDown, Minus, ShoppingCart, ArrowUp, ArrowDown, Pause } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -16,9 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 
 type InsightResult = {
@@ -79,9 +79,9 @@ const SectionAISignal = () => {
 
     const getSentimentInfo = (sentiment: InsightResult['sentiment']) => {
         switch (sentiment) {
-            case 'BULLISH': return { icon: <TrendingUp className="w-6 h-6 mr-3 text-primary" /> };
-            case 'BEARISH': return { icon: <TrendingDown className="w-6 h-6 mr-3 text-destructive" /> };
-            default: return { icon: <Minus className="w-6 h-6 mr-3 text-accent" /> };
+            case 'BULLISH': return { icon: <TrendingUp className="w-6 h-6 mr-3 text-primary" />, signalIcon: ArrowUp, signalText: "BUY", signalClass: "bg-primary/10 text-primary border-primary/20" };
+            case 'BEARISH': return { icon: <TrendingDown className="w-6 h-6 mr-3 text-destructive" />, signalIcon: ArrowDown, signalText: "SELL", signalClass: "bg-destructive/10 text-destructive border-destructive/20" };
+            default: return { icon: <Minus className="w-6 h-6 mr-3 text-accent" />, signalIcon: Pause, signalText: "HOLD", signalClass: "bg-accent/10 text-accent border-accent/20" };
         }
     };
 
@@ -143,29 +143,42 @@ const SectionAISignal = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5 }}
-                                    className="w-full max-w-3xl flex flex-col items-center gap-8"
+                                    className="w-full flex flex-col items-center gap-8"
                                 >
-                                    <Card className="bg-black/20 border-primary/30 card-animated-border w-full">
-                                        <CardHeader>
-                                            <CardTitle className="text-accent glow-accent flex items-center text-2xl">
-                                                {getSentimentInfo(insight.sentiment).icon}
-                                                {insight.keyFinding}
-                                            </CardTitle>
-                                            <div className="flex flex-col gap-2 pt-4">
-                                                <div className="flex justify-between items-center">
-                                                    <span className="text-muted-foreground font-bold">Shadow Score</span>
-                                                    <span className={`font-bold text-2xl ${getScoreColor(insight.shadowScore)}`}>{insight.shadowScore}</span>
-                                                </div>
-                                                <div className="w-full h-2 rounded-full bg-gradient-to-r from-destructive via-accent to-primary relative">
-                                                    <div className="absolute top-0 h-full w-1 bg-white/80 rounded-full shadow-lg" style={{ left: `calc(${((insight.shadowScore + 100) / 200) * 100}% - 2px)` }}></div>
-                                                </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
+                                        {/* Signal Card */}
+                                        <div className={cn("rounded-lg border-2 p-6 flex flex-col items-center justify-center animate-border-pulse-glow", getSentimentInfo(insight.sentiment).signalClass)}>
+                                            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">AI Signal</p>
+                                            <div className="flex items-center gap-4 my-2">
+                                                <getSentimentInfo(insight.sentiment).signalIcon className="w-12 h-12" />
+                                                <p className="text-5xl font-bold">{getSentimentInfo(insight.sentiment).signalText}</p>
                                             </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-muted-foreground whitespace-pre-wrap text-lg">{insight.insight}</p>
-                                        </CardContent>
-                                    </Card>
-                                     <motion.div
+                                        </div>
+
+                                        {/* Key Finding Card */}
+                                        <div className="md:col-span-2 bg-black/20 border border-primary/30 rounded-lg p-6 flex flex-col justify-center">
+                                            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Key Finding</p>
+                                            <p className="text-2xl font-bold text-accent glow-accent">{insight.keyFinding}</p>
+                                        </div>
+
+                                        {/* Shadow Score Card */}
+                                        <div className="md:col-span-3 bg-black/20 border border-primary/30 rounded-lg p-6">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Shadow Score</p>
+                                                <span className={`font-bold text-2xl ${getScoreColor(insight.shadowScore)}`}>{insight.shadowScore}</span>
+                                            </div>
+                                            <div className="w-full h-2 rounded-full bg-gradient-to-r from-destructive via-accent to-primary relative">
+                                                <div className="absolute top-0 h-full w-1 bg-white/80 rounded-full shadow-lg" style={{ left: `calc(${((insight.shadowScore + 100) / 200) * 100}% - 2px)` }}></div>
+                                            </div>
+                                        </div>
+                                        
+                                         {/* Insight Text */}
+                                        <div className="md:col-span-3 bg-black/20 border border-primary/30 rounded-lg p-6">
+                                            <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">Detailed Analysis</p>
+                                            <p className="text-muted-foreground whitespace-pre-wrap text-lg font-mono">{insight.insight}</p>
+                                        </div>
+                                    </div>
+                                    <motion.div
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.3 }}
@@ -173,7 +186,7 @@ const SectionAISignal = () => {
                                         <Button asChild size="lg" className="btn-shine glow animate-border-glow">
                                             <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FB6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank" rel="noopener noreferrer">
                                                 <ShoppingCart className="mr-2" />
-                                                Trade on this Signal
+                                                Trade SHADOW Now
                                             </Link>
                                         </Button>
                                     </motion.div>

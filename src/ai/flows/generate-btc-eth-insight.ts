@@ -65,7 +65,7 @@ export type GenerateCryptoInsightInput = z.infer<typeof GenerateCryptoInsightInp
 
 const GenerateCryptoInsightOutputSchema = z.object({
   keyFinding: z.string().describe('A very short, catchy headline for the insight. Maximum 5 words.'),
-  insight: z.string().describe("The detailed AI-generated insight on the cryptocurrency trend. Start with the ticker and price. Keep it concise and use a cyberpunk tone."),
+  insight: z.string().describe("The detailed AI-generated insight on the cryptocurrency trend. Start with the ticker and price. Keep it concise and use a cyberpunk tone, like the analysis in the provided image."),
   sentiment: z.enum(['BULLISH', 'BEARISH', 'NEUTRAL']).describe('The overall market sentiment.'),
   shadowScore: z.number().int().min(-100).max(100).describe('A sentiment score from -100 (extremely bearish) to 100 (extremely bullish), where 0 is neutral.'),
 });
@@ -82,7 +82,7 @@ Analyze the cryptocurrency {{{symbol}}} with a current price of {{{price}}}.
 
 Based on this, generate the following structured output:
 1.  **keyFinding**: A punchy, 5-word-max headline. (e.g., "Volatility Spike Imminent" or "Consolidating for a Breakout").
-2.  **insight**: A concise, actionable analysis in your cyberpunk tone. You MUST start with the ticker symbol and the real-time price. (e.g., "$BTC: $69,420.00 - Market's holding its breath. Whales are accumulating low-key. A surge past 70k is on the cards. Or it's a trap. Your call.").
+2.  **insight**: A concise, actionable analysis in your cyberpunk tone. You MUST start with the ticker symbol and the real-time price. Be direct and informative, similar to this example: "$BTC: $115,124.00 - Breaking new walls. Data streams are green, algorithms bullish. Prepare for orbital ascent... or catastrophic cascade. Your risk."
 3.  **sentiment**: Classify the market sentiment as BULLISH, BEARISH, or NEUTRAL.
 4.  **shadowScore**: Assign a sentiment score from -100 (max bearish) to 100 (max bullish).
 `,

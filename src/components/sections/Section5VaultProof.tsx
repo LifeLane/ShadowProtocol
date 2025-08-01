@@ -1,3 +1,4 @@
+
 "use client"
 
 import AnimatedSection from "@/components/common/AnimatedSection";
@@ -31,19 +32,21 @@ const vaultsData = [
 const Section5VaultProof = () => {
     return (
         <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
-                    Vault of Shadows — 99% of SHADOW Locked. Forever.
-                </h2>
-                <p className="text-accent glow-accent text-lg max-w-3xl mx-auto">
-                    20 Locks. Zero Mint. Zero Dev Access. Every Vault Verified On-Chain. Only SHADOW That Serves Lives. The Rest Burns 🔥
-                </p>
-            </div>
+            <div className="w-full max-w-7xl">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
+                        Vault of Shadows — 99% of SHADOW Locked. Forever.
+                    </h2>
+                    <p className="text-accent glow-accent text-lg max-w-3xl mx-auto">
+                        20 Locks. Zero Mint. Zero Dev Access. Every Vault Verified On-Chain. Only SHADOW That Serves Lives. The Rest Burns 🔥
+                    </p>
+                </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
-                {vaultsData.map((vault, index) => (
-                    <VaultCard key={index} vault={vault} index={index} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+                    {vaultsData.map((vault, index) => (
+                        <VaultCard key={index} vault={vault} index={index} />
+                    ))}
+                </div>
             </div>
         </AnimatedSection>
     );

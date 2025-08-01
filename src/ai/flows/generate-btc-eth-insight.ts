@@ -78,7 +78,6 @@ const GenerateCryptoInsightOutputSchema = z.object({
   insight: z.string().describe("The detailed AI-generated insight on the cryptocurrency trend. Start with the ticker and price. Keep it concise and use a cyberpunk tone."),
   sentiment: z.enum(['BULLISH', 'BEARISH', 'NEUTRAL']).describe('The overall market sentiment.'),
   shadowScore: z.number().int().min(-100).max(100).describe('A sentiment score from -100 (extremely bearish) to 100 (extremely bullish), where 0 is neutral.'),
-  price: z.number().describe('The raw numerical price of the cryptocurrency.'),
 });
 export type GenerateCryptoInsightOutput = z.infer<typeof GenerateCryptoInsightOutputSchema>;
 
@@ -86,7 +85,7 @@ export type GenerateCryptoInsightOutput = z.infer<typeof GenerateCryptoInsightOu
 const insightPrompt = ai.definePrompt({
   name: 'cryptoInsightPrompt',
   input: { schema: z.object({ symbol: z.string(), price: z.string() }) },
-  output: { schema: GenerateCryptoInsightOutputSchema.omit({ price: true }) },
+  output: { schema: GenerateCryptoInsightOutputSchema },
   prompt: `You are a witty but sharp financial analyst AI, a true cyberpunk hacker of the financial matrix. Your name is Shadow. You provide razor-sharp insights on cryptocurrency trends. Your tone is cool, concise, and a little cryptic.
 
 Analyze the cryptocurrency {{{symbol}}} with a current price of {{{price}}}.
@@ -119,7 +118,7 @@ const generateCryptoInsightFlow = ai.defineFlow(
     if (!output) {
       throw new Error('AI failed to generate an insight.');
     }
-    return { ...output, price };
+    return output;
   }
 );
 

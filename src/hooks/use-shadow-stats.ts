@@ -1,11 +1,10 @@
 
-"use client";
+"use server";
 
-import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import type { GenerateCryptoInsightOutput } from "@/ai/flows/generate-btc-eth-insight";
 
-const SHADOW_TOKEN_ADDRESS = 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR';
-const COINGECKO_API_URL = `https://api.coingecko.com/api/v3/simple/token_price/solana?contract_addresses=${SHADOW_TOKEN_ADDRESS}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true`;
+const SHADOW_TOKEN_SYMBOL = 'SHADOW'; 
+const COINMARKETCAP_API_URL = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest`;
 
 export interface ShadowStats {
     price: number;
@@ -15,30 +14,37 @@ export interface ShadowStats {
 
 export async function useShadowStats(symbol: string = 'SOL'): Promise<ShadowStats | null> {
     try {
-        const [insightResult, coingeckoRes] = await Promise.all([
-            generateCryptoInsight({ symbol }),
-            fetch(COINGECKO_API_URL)
-        ]);
-
-        if (!coingeckoRes.ok) {
-            console.error(`CoinGecko API error: ${coingeckoRes.status}`);
-            // We can still proceed if we have the price from the insight flow
-        }
-        
-        const coingeckoData = await coingeckoRes.json();
-        const tokenData = coingeckoData[SHADOW_TOKEN_ADDRESS.toLowerCase()];
-
-        if (!insightResult.price) {
-            throw new Error("Price data not found in AI insight response.");
+        const apiKey = process.env.COINMARKETCAP_API_KEY;
+        if (!apiKey || apiKey === 'YOUR_COINMARKETCAP_API_KEY') {
+            throw new Error("CoinMarketCap API key is not configured.");
         }
 
-        const marketCap = tokenData?.usd_market_cap || 0;
-        const priceChange24h = tokenData?.usd_24h_change || 0;
+        const response = await fetch(`${COINMARKETCAP_API_URL}?symbol=${SHADOW_TOKEN_SYMBOL}`, {
+            headers: {
+                'X-CMC_PRO_API_KEY': apiKey,
+                'Accept': 'application/json',
+            }
+        });
+
+        if (!response.ok) {
+            const errorBody = await response.text();
+            console.error(`CoinMarketCap API error: ${response.status}`, errorBody);
+            throw new Error(`Failed to fetch price from CoinMarketCap. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const tokenData = data.data?.[SHADOW_TOKEN_SYMBOL]?.[0];
+
+        if (!tokenData || !tokenData.quote.USD) {
+            throw new Error("SHADOW token data not found in CoinMarketCap API response.");
+        }
+
+        const quote = tokenData.quote.USD;
 
         return {
-            price: insightResult.price,
-            marketCap: marketCap,
-            priceChange24h: priceChange24h,
+            price: quote.price || 0,
+            marketCap: quote.market_cap || 0,
+            priceChange24h: quote.percent_change_24h || 0,
         };
 
     } catch (err) {

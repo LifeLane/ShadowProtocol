@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart, ShieldCheck } from 'lucide-react';
+import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart, ShieldCheck, Lock, FileJson } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
@@ -17,10 +17,10 @@ import {
 
 const navItems = [
     { name: 'Signal', href: '#ai-signal', icon: Cpu },
-    { name: 'Proof', href: '#proof', icon: ShieldCheck },
     { name: 'Ecosystem', href: '#ecosystem', icon: Atom },
     { name: 'Tokenomics', href: '#tokenomics', icon: PieChart },
-    { name: 'Roadmap', href: '#roadmap', icon: GitMerge },
+    { name: 'Token Manifest', href: '#token-manifest', icon: FileJson },
+    { name: 'Vault', href: '#vault-proof', icon: Lock },
 ];
 
 const themes = [

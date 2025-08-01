@@ -43,7 +43,7 @@ const Section6Roadmap = () => {
         <AnimatedSection id="roadmap" animationClassName="bg-pulse-grid-pattern">
             <div className="w-full max-w-6xl text-center">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 text-primary glow">
-                    From Genesis to Singularity — The SHADOW Protocol Roadmap
+                    From Genesis to Singularity — <br /> The SHADOW Protocol Roadmap
                 </h2>
 
                 <div className="relative w-full max-w-5xl mx-auto">

@@ -61,11 +61,11 @@ const VaultCard = ({ vault, index }: { vault: { name: string, amount: string, un
             transition={{ duration: 0.5, delay: index * 0.05 }}
             className="neon-card"
         >
-            <h3 className="vault-title">{vault.name}</h3>
-            <div className="vault-amount">{vault.amount}</div>
+            <h3 className="vault-title text-sm">{vault.name}</h3>
+            <div className="vault-amount text-2xl">{vault.amount}</div>
             <p className="vault-unit">{vault.unit}</p>
-            <a href={vault.url} target="_blank" rel="noopener noreferrer" className="verify-btn">
-                <Lock className="inline-block mr-2" size={16} /> Verify Lock
+            <a href={vault.url} target="_blank" rel="noopener noreferrer" className="verify-btn text-xs">
+                <Lock className="inline-block mr-2" size={12} /> Verify Lock
             </a>
         </motion.div>
     )

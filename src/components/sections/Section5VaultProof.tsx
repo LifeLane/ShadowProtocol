@@ -31,8 +31,8 @@ const vaultsData = [
 
 const Section5VaultProof = () => {
     return (
-        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern" className="px-4 sm:px-8">
-            <div className="w-full">
+        <AnimatedSection id="vault-proof" animationClassName="bg-quantum-flicker-pattern">
+             <div className="w-full">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary glow mb-2">
                         Vault of Shadows — 99% of SHADOW Locked. Forever.

@@ -1,8 +1,10 @@
 
+"use client";
+
 import { DollarSign, TrendingUp, ShoppingCart, CircleDollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { useShadowStats } from '@/hooks/use-shadow-stats';
+import type { ShadowStats } from '@/hooks/use-shadow-stats';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -16,8 +18,7 @@ const StatItem = ({ icon: Icon, label, value, colorClass }: { icon: React.Elemen
     </div>
 );
 
-const LiveStatsBanner = async () => {
-    const stats = await useShadowStats('SOL');
+const LiveStatsBanner = ({ stats }: { stats: ShadowStats | null }) => {
 
     const bannerContent = () => {
         if (!stats) {

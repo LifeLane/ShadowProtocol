@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 import { LinkIcon, Send, Terminal, Search, Eye, ShieldCheck, Zap, BarChart2, GitFork, TrendingUp } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const links = [
     { href: "https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR", name: "Solscan", icon: Search },
@@ -18,27 +19,34 @@ const links = [
 ];
 
 
-const LinkMarquee = () => {
+const LinkMarquee = ({ direction = 'normal' }: { direction?: 'normal' | 'reverse' }) => {
+    const animationClass = direction === 'reverse' ? 'animate-marquee-reverse' : 'animate-marquee-normal';
+    const allLinks = [...links, ...links]; // Duplicate for seamless looping
+
     return (
-        <div className="w-full overflow-hidden bg-secondary py-3 border-b border-primary/20">
-            <div className="animate-marquee-infinite flex">
-                {links.concat(links).map((link, index) => (
-                    <Link href={link.href} key={index} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 mx-6 flex-shrink-0 text-muted-foreground hover:text-primary transition-colors duration-300">
+        <div className="w-full overflow-hidden bg-secondary py-3 border-b border-t border-primary/20">
+            <div className={cn("flex w-max", animationClass)}>
+                {allLinks.map((link, index) => (
+                    <Link href={link.href} key={`${direction}-${index}`} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 mx-6 flex-shrink-0 text-muted-foreground hover:text-primary transition-colors duration-300">
                         <link.icon className="w-4 h-4" />
                         <span className="font-bold text-sm">{link.name}</span>
                     </Link>
                 ))}
             </div>
             <style jsx>{`
-                @keyframes marquee-infinite {
+                @keyframes marquee-normal {
                     from { transform: translateX(0%); }
                     to { transform: translateX(-50%); }
                 }
-                .animate-marquee-infinite {
-                    animation: marquee-infinite 40s linear infinite;
-                    will-change: transform;
-                    display: flex;
-                    width: max-content;
+                @keyframes marquee-reverse {
+                    from { transform: translateX(-50%); }
+                    to { transform: translateX(0%); }
+                }
+                .animate-marquee-normal {
+                    animation: marquee-normal 40s linear infinite;
+                }
+                .animate-marquee-reverse {
+                    animation: marquee-reverse 40s linear infinite;
                 }
             `}</style>
         </div>

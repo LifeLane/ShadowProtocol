@@ -17,6 +17,7 @@ import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import TokenManifest from "@/components/sections/TokenManifest";
 import SectionClaimKey from "@/components/sections/SectionClaimKey";
 import LinkMarquee from "@/components/common/LinkMarquee";
+import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -59,6 +60,7 @@ export default function Home() {
         <SectionClaimKey />
       </main>
       <Footer />
+      <StickyFooterMarquee />
       <ScrollToTopButton />
     </>
   );

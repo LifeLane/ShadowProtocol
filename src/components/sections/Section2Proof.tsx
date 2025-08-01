@@ -71,7 +71,7 @@ const Section2Proof = () => {
                     <div className="p-2 md:border-t md:border-primary/30">Zero Mint Authority.</div>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 text-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 text-center">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}

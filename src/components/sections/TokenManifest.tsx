@@ -38,6 +38,10 @@ const analysisLinks = [
   { label: 'Token Metadata', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#metadata', icon: FileJson },
 ];
 
+const truncateAddress = (address: string, start: number = 6, end: number = 4) => {
+    if (address.length <= start + end) return address;
+    return `${address.substring(0, start)}...${address.substring(address.length - end)}`;
+}
 
 const TokenManifest = () => {
     const { toast } = useToast();
@@ -56,11 +60,11 @@ const TokenManifest = () => {
             <item.icon className="w-4 h-4 text-primary mt-1 shrink-0" />
             <div className="flex-grow">
                 <div className="text-muted-foreground font-bold">{item.label}</div>
-                <div className="font-mono text-primary-foreground flex items-center gap-2 flex-wrap">
-                    <span className="break-all">{item.value}</span>
+                <div className="font-mono text-primary flex items-center gap-2 flex-wrap">
+                    <span className="break-all">{item.copyable ? truncateAddress(item.value) : item.value}</span>
                     {item.copyable && (
-                        <Button variant="ghost" size="icon" className="w-6 h-6" onClick={() => handleCopy(item.value)}>
-                            <Copy className="w-3 h-3"/>
+                        <Button variant="ghost" size="icon" className="w-8 h-8" onClick={() => handleCopy(item.value)}>
+                            <Copy className="w-4 h-4 text-accent"/>
                         </Button>
                     )}
                 </div>
@@ -69,7 +73,7 @@ const TokenManifest = () => {
     );
 
     const AuthorityItem = ({ item }: { item: { label: string, revoked: boolean, icon: any }}) => (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 text-primary-foreground">
             <item.icon className="w-4 h-4 text-primary shrink-0" />
             <div>{item.label}</div>
             {item.revoked && <Badge variant="destructive">REVOKED</Badge>}
@@ -117,8 +121,8 @@ const TokenManifest = () => {
         <Tabs defaultValue="core" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="core">Core</TabsTrigger>
-                <TabsTrigger value="authorities">Authorities</TabsTrigger>
-                <TabsTrigger value="analysis">Analysis</TabsTrigger>
+                <TabsTrigger value="auth">Auth</TabsTrigger>
+                <TabsTrigger value="links">Links</TabsTrigger>
             </TabsList>
             <TabsContent value="core">
                  <Card className="bg-black/30 border-primary/30">
@@ -130,30 +134,32 @@ const TokenManifest = () => {
                     </CardContent>
                 </Card>
             </TabsContent>
-            <TabsContent value="authorities">
+            <TabsContent value="auth">
                  <Card className="bg-black/30 border-primary/30">
                     <CardHeader>
-                        <CardTitle className="text-primary glow">Authorities & Explorer</CardTitle>
+                        <CardTitle className="text-primary glow">Authorities</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <div className="space-y-3">
-                            <div className="font-bold text-muted-foreground">Authorities</div>
                             {authorityDetails.map((item) => <AuthorityItem key={item.label} item={item} />)}
-                        </div>
-                         <div className="space-y-3">
-                            <div className="font-bold text-muted-foreground">Explorer Links</div>
-                            {explorerLinks.map((link) => <LinkItem key={link.label} link={link} />)}
                         </div>
                     </CardContent>
                 </Card>
             </TabsContent>
-            <TabsContent value="analysis">
+            <TabsContent value="links">
                  <Card className="bg-black/30 border-primary/30">
                     <CardHeader>
-                        <CardTitle className="text-primary glow">Analysis & Holders</CardTitle>
+                        <CardTitle className="text-primary glow">Analysis & Explorer</CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-3">
-                        {analysisLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                    <CardContent className="space-y-6">
+                        <div className="space-y-3">
+                            <div className="font-bold text-muted-foreground">Explorer Links</div>
+                            {explorerLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                        </div>
+                        <div className="space-y-3">
+                            <div className="font-bold text-muted-foreground">Analysis Links</div>
+                            {analysisLinks.map((link) => <LinkItem key={link.label} link={link} />)}
+                        </div>
                     </CardContent>
                 </Card>
             </TabsContent>

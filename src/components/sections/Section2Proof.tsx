@@ -112,7 +112,7 @@ const Section2Proof = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                          <Button asChild size="lg" className="btn-shine">
-                            <Link href="https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw" target="_blank">
+                            <Link href="https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR" target="_blank">
                                 <Search className="mr-2" />
                                 Verify Smart Contract
                             </Link>

@@ -2,7 +2,7 @@
 
 "use client"
 
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import { useScroll, useSpring } from "framer-motion";
 import Section1Awakening from "@/components/sections/Section1Awakening";
 import SectionAISignal from "@/components/sections/SectionAISignal";
@@ -17,8 +17,6 @@ import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
 import TokenManifest from "@/components/sections/TokenManifest";
 import SectionClaimKey from "@/components/sections/SectionClaimKey";
-import LiveStatsBanner, { LiveStatsBannerSkeleton } from "@/components/common/LiveStatsBanner";
-import { useShadowStats } from "@/hooks/use-shadow-stats";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -29,17 +27,9 @@ export default function Home() {
   });
 
   const [isLoading, setIsLoading] = useState(true);
-  const [stats, setStats] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000); // Simulate loading
-    
-    async function fetchStats() {
-        const shadowStats = await useShadowStats();
-        setStats(shadowStats);
-    }
-    fetchStats();
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -57,9 +47,6 @@ export default function Home() {
     <>
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
-        <Suspense fallback={<LiveStatsBannerSkeleton />}>
-            <LiveStatsBanner stats={stats} />
-        </Suspense>
         <Section1Awakening />
         <TokenManifest />
         <SectionAISignal />

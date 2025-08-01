@@ -35,7 +35,7 @@ export default function Home() {
     const timer = setTimeout(() => setIsLoading(false), 2000); // Simulate loading
     
     async function fetchStats() {
-        const shadowStats = await useShadowStats('SOL');
+        const shadowStats = await useShadowStats();
         setStats(shadowStats);
     }
     fetchStats();

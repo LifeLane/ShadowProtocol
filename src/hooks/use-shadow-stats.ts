@@ -1,9 +1,7 @@
 
 "use server";
 
-import type { GenerateCryptoInsightOutput } from "@/ai/flows/generate-btc-eth-insight";
-
-const SHADOW_TOKEN_SYMBOL = 'SHADOW'; 
+const SHADOW_TOKEN_ADDRESS = 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR'; 
 const COINMARKETCAP_API_URL = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest`;
 
 export interface ShadowStats {
@@ -12,14 +10,14 @@ export interface ShadowStats {
     priceChange24h: number;
 }
 
-export async function useShadowStats(symbol: string = 'SOL'): Promise<ShadowStats | null> {
+export async function useShadowStats(): Promise<ShadowStats | null> {
     try {
         const apiKey = process.env.COINMARKETCAP_API_KEY;
         if (!apiKey || apiKey === 'YOUR_COINMARKETCAP_API_KEY') {
             throw new Error("CoinMarketCap API key is not configured.");
         }
 
-        const response = await fetch(`${COINMARKETCAP_API_URL}?symbol=${SHADOW_TOKEN_SYMBOL}`, {
+        const response = await fetch(`${COINMARKETCAP_API_URL}?address=${SHADOW_TOKEN_ADDRESS}`, {
             headers: {
                 'X-CMC_PRO_API_KEY': apiKey,
                 'Accept': 'application/json',
@@ -33,10 +31,10 @@ export async function useShadowStats(symbol: string = 'SOL'): Promise<ShadowStat
         }
 
         const data = await response.json();
-        const tokenData = data.data?.[SHADOW_TOKEN_SYMBOL]?.[0];
+        const tokenData = data.data?.[SHADOW_TOKEN_ADDRESS]?.[0];
 
         if (!tokenData || !tokenData.quote.USD) {
-            throw new Error("SHADOW token data not found in CoinMarketCap API response.");
+            throw new Error("SHADOW token data not found in CoinMarketCap API response for the given address.");
         }
 
         const quote = tokenData.quote.USD;

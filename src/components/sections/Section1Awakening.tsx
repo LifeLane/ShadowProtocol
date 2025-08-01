@@ -6,7 +6,7 @@ import Typewriter from "@/components/common/Typewriter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { Rocket, KeyRound } from 'lucide-react';
+import { ShoppingCart, KeyRound } from 'lucide-react';
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const ShadowLogo = () => (
@@ -85,14 +85,14 @@ const Section1Awakening = () => {
                     transition={{ delay: 4, duration: 0.8 }}
                 >
                     <Button asChild size="lg" className="btn-shine glow">
-                        <Link href="#claim-key">
-                            <KeyRound />
-                            Join Public Offering
+                        <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FBnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
+                            <ShoppingCart />
+                            Buy SHADOW Now
                         </Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="glow">
                          <Link href="#claim-key">
-                            <Rocket />
+                            <KeyRound />
                             Airdrop Console
                         </Link>
                     </Button>

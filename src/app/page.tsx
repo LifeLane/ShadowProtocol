@@ -16,6 +16,7 @@ import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
 import TokenManifest from "@/components/sections/TokenManifest";
 import SectionClaimKey from "@/components/sections/SectionClaimKey";
+import SectionTrustBanner from "@/components/common/SectionTrustBanner";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -46,6 +47,7 @@ export default function Home() {
     <>
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
+        <SectionTrustBanner/>
         <Section1Awakening />
         <TokenManifest />
         <SectionAISignal />

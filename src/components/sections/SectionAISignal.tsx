@@ -8,7 +8,7 @@ import Terminal from "@/components/common/Terminal";
 import { Button } from "@/components/ui/button";
 import { generateCryptoInsight } from "@/ai/flows/generate-btc-eth-insight";
 import { motion } from "framer-motion";
-import { Loader2, TrendingUp, TrendingDown, Minus, Gamepad2 } from "lucide-react";
+import { Loader2, TrendingUp, TrendingDown, Minus, Gamepad2, ShoppingCart } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -171,9 +171,9 @@ const SectionAISignal = () => {
                                         transition={{ delay: 0.3 }}
                                     >
                                         <Button asChild size="lg" className="btn-shine glow animate-border-glow">
-                                            <Link href="https://www.socialnot.com" target="_blank" rel="noopener noreferrer">
-                                                <Gamepad2 className="mr-2" />
-                                                Play the Genesis Game
+                                            <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FBnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank" rel="noopener noreferrer">
+                                                <ShoppingCart className="mr-2" />
+                                                Trade on this Signal
                                             </Link>
                                         </Button>
                                     </motion.div>

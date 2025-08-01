@@ -3,7 +3,7 @@
 
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { Button } from "@/components/ui/button";
-import { Check, Clock, Cpu, Milestone } from "lucide-react";
+import { Check, Clock, Cpu, Milestone, ShoppingCart } from "lucide-react";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -78,8 +78,9 @@ const Section6Roadmap = () => {
 
                 <div className="mt-12">
                     <Button asChild size="lg" className="btn-shine">
-                        <Link href="#claim-key">
-                            Join the Ecosystem
+                        <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FBnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
+                             <ShoppingCart className="mr-2" />
+                            Join the Revolution
                         </Link>
                     </Button>
                 </div>

@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, MotionValue } from 'framer-motion';
-import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna } from 'lucide-react';
+import { Cpu, Atom, PieChart, GitMerge, Send, Menu, X, Bot, Terminal, Sun, Scroll, Palette, SunSnow, ShieldAlert, Dna, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedNavLink from './AnimatedNavLink';
 import { cn } from '@/lib/utils';
@@ -112,9 +112,9 @@ const Header = ({ scaleX }: HeaderProps) => {
                             </TooltipProvider>
                         )}
                          <Button asChild className="hidden sm:inline-flex btn-shine">
-                            <Link href="#claim-key">
-                                <Send className="mr-2" />
-                                Airdrop
+                            <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FBnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
+                                <ShoppingCart className="mr-2" />
+                                Trade SHADOW
                             </Link>
                         </Button>
                         <button
@@ -144,9 +144,9 @@ const Header = ({ scaleX }: HeaderProps) => {
                         ))}
                     </nav>
                      <Button asChild size="lg" className="btn-shine" onClick={() => setIsMenuOpen(false)}>
-                        <Link href="#claim-key">
-                            <Send className="mr-2" />
-                            Airdrop Console
+                        <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FBnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
+                            <ShoppingCart className="mr-2" />
+                            Trade SHADOW
                         </Link>
                     </Button>
                 </div>

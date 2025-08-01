@@ -9,11 +9,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScanLine, Copy, ExternalLink, Hash, Calendar, Settings, CircleOff, Fingerprint, Anchor, BookUser, BarChart, FileJson } from 'lucide-react';
 import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 const tokenDetails = [
   { label: 'Token Name', value: 'SHADOW (SHADOW)', icon: Hash },
   { label: 'Decimals', value: '6', icon: Settings },
-  { label: 'Token Address', value: 'B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR', copyable: true, icon: Fingerprint },
+  { label: 'Token Address', value: 'BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw', copyable: true, icon: Fingerprint },
   { label: 'Creator', value: '38XnV4BZownmFeFrykAYhfMJvWxaZ31t4zBa96HqChEe', copyable: true, icon: Anchor },
   { label: 'First Mint', value: 'July 15, 2025 15:12:33 +UTC', icon: Calendar },
   { label: 'Token Extensions', value: 'False', icon: FileJson },
@@ -26,16 +27,16 @@ const authorityDetails = [
 ];
 
 const explorerLinks = [
-  { label: 'Token Explorer', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR', icon: ScanLine },
-  { label: 'Transactions', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#transactions', icon: ScanLine },
-  { label: 'DeFi Activities', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#defiactivities', icon: ScanLine },
+  { label: 'Token Explorer', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw', icon: ScanLine },
+  { label: 'Transactions', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw#transactions', icon: ScanLine },
+  { label: 'DeFi Activities', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw#defiactivities', icon: ScanLine },
 ];
 
 const analysisLinks = [
-  { label: 'Holder View', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#holders', icon: BookUser },
-  { label: 'Token Analytics', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#analytics', icon: BarChart },
-  { label: 'Pool and Markets', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#markets', icon: BarChart },
-  { label: 'Token Metadata', href: 'https://solscan.io/token/B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR#metadata', icon: FileJson },
+  { label: 'Holder View', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw#holders', icon: BookUser },
+  { label: 'Token Analytics', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw#analytics', icon: BarChart },
+  { label: 'Pool and Markets', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw#markets', icon: BarChart },
+  { label: 'Token Metadata', href: 'https://solscan.io/token/BnNyE9j7hvqQznFNjx57bvCRwSmLeVpWP6iRThfppcfw#metadata', icon: FileJson },
 ];
 
 const truncateAddress = (address: string, start: number = 6, end: number = 4) => {
@@ -64,7 +65,7 @@ const TokenManifest = () => {
                     <span className="break-all">{item.copyable ? truncateAddress(item.value) : item.value}</span>
                     {item.copyable && (
                         <Button variant="ghost" size="icon" className="w-8 h-8" onClick={() => handleCopy(item.value)}>
-                            <Copy className="w-4 h-4 text-accent"/>
+                            <Copy className="w-5 h-5 text-accent"/>
                         </Button>
                     )}
                 </div>
@@ -73,7 +74,7 @@ const TokenManifest = () => {
     );
 
     const AuthorityItem = ({ item }: { item: { label: string, revoked: boolean, icon: any }}) => (
-        <div className="flex items-center gap-3 text-primary-foreground">
+        <div className="flex items-center gap-3 text-primary">
             <item.icon className="w-4 h-4 text-primary shrink-0" />
             <div>{item.label}</div>
             {item.revoked && <Badge variant="destructive">REVOKED</Badge>}

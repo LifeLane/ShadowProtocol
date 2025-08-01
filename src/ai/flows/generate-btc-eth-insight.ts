@@ -9,6 +9,19 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
+// Map common symbols to CoinGecko API IDs
+const cryptoIdMap: { [key: string]: string } = {
+    'BTC': 'bitcoin',
+    'ETH': 'ethereum',
+    'SOL': 'solana',
+    'DOGE': 'dogecoin',
+    'ADA': 'cardano',
+    'LINK': 'chainlink',
+    'XRP': 'ripple',
+    'DOT': 'polkadot'
+};
+
+
 const getCryptoPrice = ai.defineTool(
   {
     name: 'getCryptoPrice',
@@ -19,28 +32,28 @@ const getCryptoPrice = ai.defineTool(
     outputSchema: z.number(),
   },
   async (input) => {
-    // This tool is simplified as the primary stats are now fetched by useShadowStats.
-    // This can be expanded with a reliable, keyed API if needed for general signals.
     try {
-      const symbol = input.ticker.toUpperCase();
-      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${symbol.toLowerCase()}&vs_currencies=usd`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch price from CoinGecko. Status: ${response.status}`);
-      }
-      const data = await response.json();
-      const price = data[symbol.toLowerCase()]?.usd;
-
-      if (price) {
-        return price;
-      } else {
-        throw new Error(`Price data not found for ${input.ticker} in CoinGecko response.`);
-      }
-    } catch (error) {
-        console.error(`Failed to fetch price for ${input.ticker}:`, error);
-        if (error instanceof Error) {
-            throw new Error(`Could not fetch price for ${input.ticker}: ${error.message}`);
+        const coinId = cryptoIdMap[input.ticker.toUpperCase()];
+        if (!coinId) {
+            throw new Error(`Unsupported ticker symbol: ${input.ticker}`);
         }
-        throw new Error(`An unknown error occurred while fetching the price for ${input.ticker}.`);
+
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
+        if (!response.ok) {
+            throw new Error(`CoinGecko API error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        const price = data[coinId]?.usd;
+
+        if (typeof price !== 'number') {
+            throw new Error(`Price data not found for ${input.ticker} in CoinGecko response.`);
+        }
+        return price;
+
+    } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+        console.error(`Failed to fetch price for ${input.ticker}:`, errorMessage);
+        throw new Error(`Could not fetch price for ${input.ticker}: ${errorMessage}`);
     }
   }
 );

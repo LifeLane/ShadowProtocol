@@ -1,7 +1,8 @@
 
+
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useScroll, useSpring } from "framer-motion";
 import Section1Awakening from "@/components/sections/Section1Awakening";
 import SectionAISignal from "@/components/sections/SectionAISignal";
@@ -16,7 +17,7 @@ import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import StickyFooterMarquee from "@/components/common/StickyFooterMarquee";
 import TokenManifest from "@/components/sections/TokenManifest";
 import SectionClaimKey from "@/components/sections/SectionClaimKey";
-import LiveStatsBanner from "@/components/common/LiveStatsBanner";
+import LiveStatsBanner, { LiveStatsBannerSkeleton } from "@/components/common/LiveStatsBanner";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -47,7 +48,9 @@ export default function Home() {
     <>
       <Header scaleX={scaleX} />
       <main className="flex flex-col items-center text-foreground/80">
-        <LiveStatsBanner />
+        <Suspense fallback={<LiveStatsBannerSkeleton />}>
+            <LiveStatsBanner />
+        </Suspense>
         <Section1Awakening />
         <TokenManifest />
         <SectionAISignal />

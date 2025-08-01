@@ -1,11 +1,10 @@
 
-"use client"
-
-import { DollarSign, Droplets, TrendingUp, ShoppingCart, Loader2, CircleDollarSign } from 'lucide-react';
+import { DollarSign, TrendingUp, ShoppingCart, CircleDollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { useShadowStats } from '@/hooks/use-shadow-stats';
 import { cn } from '@/lib/utils';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const StatItem = ({ icon: Icon, label, value, colorClass }: { icon: React.ElementType, label: string, value: string, colorClass?: string }) => (
     <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
@@ -17,22 +16,11 @@ const StatItem = ({ icon: Icon, label, value, colorClass }: { icon: React.Elemen
     </div>
 );
 
-const LiveStatsBanner = () => {
-    const { stats, isLoading, error } = useShadowStats();
+const LiveStatsBanner = async () => {
+    const stats = await useShadowStats('SOL');
 
     const bannerContent = () => {
-        if (isLoading) {
-            return (
-                <div className="flex items-center justify-center w-full">
-                    <div className="flex items-center space-x-3 text-sm sm:text-base">
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        <span>Loading Live On-Chain Data...</span>
-                    </div>
-                </div>
-            );
-        }
-
-        if (error || !stats) {
+        if (!stats) {
             return (
                 <div className="flex items-center justify-center w-full">
                     <div className="flex items-center space-x-3 text-sm sm:text-base">
@@ -103,5 +91,57 @@ const LiveStatsBanner = () => {
         </div>
     );
 };
+
+export const LiveStatsBannerSkeleton = () => {
+    return (
+        <div className="w-full overflow-hidden bg-background text-foreground py-2 md:py-3 border-b-2 border-primary/20 relative z-20 h-[48px] md:h-[56px] flex items-center">
+            <div className="flex animate-marquee-infinite items-center">
+                <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="w-5 h-5 rounded-full" />
+                    <Skeleton className="w-48 h-5" />
+                </div>
+                <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="w-5 h-5 rounded-full" />
+                    <Skeleton className="w-32 h-5" />
+                </div>
+                 <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="w-5 h-5 rounded-full" />
+                    <Skeleton className="w-24 h-5" />
+                </div>
+                 <div className="mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="h-8 w-40" />
+                </div>
+                {/* Duplicate for marquee */}
+                 <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="w-5 h-5 rounded-full" />
+                    <Skeleton className="w-48 h-5" />
+                </div>
+                <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="w-5 h-5 rounded-full" />
+                    <Skeleton className="w-32 h-5" />
+                </div>
+                 <div className="flex items-center space-x-3 mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="w-5 h-5 rounded-full" />
+                    <Skeleton className="w-24 h-5" />
+                </div>
+                 <div className="mx-4 sm:mx-6 flex-shrink-0">
+                    <Skeleton className="h-8 w-40" />
+                </div>
+            </div>
+             <style jsx>{`
+                @keyframes marquee-infinite {
+                    from { transform: translateX(0%); }
+                    to { transform: translateX(-50%); }
+                }
+                .animate-marquee-infinite {
+                    animation: marquee-infinite 40s linear infinite;
+                    will-change: transform;
+                    display: flex;
+                    width: max-content;
+                }
+            `}</style>
+        </div>
+    )
+}
 
 export default LiveStatsBanner;

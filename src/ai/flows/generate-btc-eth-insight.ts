@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview Generates AI insights on cryptocurrency trends.
@@ -37,8 +38,8 @@ const getCryptoPrice = ai.defineTool(
     // 2. Fallback to Polygon API
     try {
       const polygonApiKey = process.env.POLYGON_API_KEY;
-      if (!polygonApiKey) {
-        throw new Error('Price data source is temporarily unavailable. Please try again later.');
+      if (!polygonApiKey || polygonApiKey === 'YOUR_POLYGON_API_KEY') {
+        throw new Error('Price data source is temporarily unavailable. Please configure the Polygon API Key.');
       }
       const polygonSymbol = `X:${ticker}USD`;
       const response = await fetch(`https://api.polygon.io/v2/aggs/ticker/${polygonSymbol}/prev?adjusted=true&apiKey=${polygonApiKey}`);
@@ -70,19 +71,22 @@ const getCryptoPrice = ai.defineTool(
 const GenerateCryptoInsightInputSchema = z.object({
   symbol: z.string().describe('The cryptocurrency ticker symbol, e.g., BTC, ETH, SOL.'),
 });
-type GenerateCryptoInsightInput = z.infer<typeof GenerateCryptoInsightInputSchema>;
+export type GenerateCryptoInsightInput = z.infer<typeof GenerateCryptoInsightInputSchema>;
 
 const GenerateCryptoInsightOutputSchema = z.object({
   keyFinding: z.string().describe('A very short, catchy headline for the insight. Maximum 5 words.'),
   insight: z.string().describe("The detailed AI-generated insight on the cryptocurrency trend. Start with the ticker and price. Keep it concise and use a cyberpunk tone."),
   sentiment: z.enum(['BULLISH', 'BEARISH', 'NEUTRAL']).describe('The overall market sentiment.'),
   shadowScore: z.number().int().min(-100).max(100).describe('A sentiment score from -100 (extremely bearish) to 100 (extremely bullish), where 0 is neutral.'),
+  price: z.number().describe('The raw numerical price of the cryptocurrency.'),
 });
+export type GenerateCryptoInsightOutput = z.infer<typeof GenerateCryptoInsightOutputSchema>;
+
 
 const insightPrompt = ai.definePrompt({
   name: 'cryptoInsightPrompt',
   input: { schema: z.object({ symbol: z.string(), price: z.string() }) },
-  output: { schema: GenerateCryptoInsightOutputSchema },
+  output: { schema: GenerateCryptoInsightOutputSchema.omit({ price: true }) },
   prompt: `You are a witty but sharp financial analyst AI, a true cyberpunk hacker of the financial matrix. Your name is Shadow. You provide razor-sharp insights on cryptocurrency trends. Your tone is cool, concise, and a little cryptic.
 
 Analyze the cryptocurrency {{{symbol}}} with a current price of {{{price}}}.
@@ -115,10 +119,10 @@ const generateCryptoInsightFlow = ai.defineFlow(
     if (!output) {
       throw new Error('AI failed to generate an insight.');
     }
-    return output;
+    return { ...output, price };
   }
 );
 
-export async function generateCryptoInsight(input: GenerateCryptoInsightInput): Promise<z.infer<typeof GenerateCryptoInsightOutputSchema>> {
+export async function generateCryptoInsight(input: GenerateCryptoInsightInput): Promise<GenerateCryptoInsightOutput> {
   return generateCryptoInsightFlow(input);
 }

@@ -47,26 +47,6 @@ const Section1Awakening = () => {
                         pause={2000}
                     />
                 </motion.div>
-
-                <motion.div
-                    className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 4, duration: 0.8 }}
-                >
-                    <Button asChild size="lg" className="btn-shine glow">
-                        <Link href="https://link.gmgn.ai/?url=https%3A%2F%2Fgmgn.ai%2Fsol%2Ftoken%2FB6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR&page=TokenDetail&params=%7B%22chainName%22%3A%22sol%22%2C%22address%22%3A%22B6XHf6ouZAy5Enq4kR3Po4CD5axn1EWc7aZKR9gmr2QR%22%7D&ref=j40KRTAR&referral=j40KRTAR&chain=sol" target="_blank">
-                            <ShoppingCart />
-                            Buy SHADOW Now
-                        </Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="glow">
-                         <Link href="#claim-key">
-                            <KeyRound />
-                            Airdrop Console
-                        </Link>
-                    </Button>
-                </motion.div>
             </div>
              <motion.div
                 className="absolute bottom-10 left-1/2 -translate-x-1/2"

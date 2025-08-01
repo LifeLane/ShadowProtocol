@@ -7,23 +7,26 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { motion } from "framer-motion";
 import { Brain, Zap, BarChartHorizontal } from 'lucide-react';
 import Link from 'next/link';
+import { Badge } from "@/components/ui/badge";
 
 
 const Section3Utility = () => {
     const features = [
-        {
-            icon: Brain,
-            title: "SHADOWGPT",
-            description: "Free AI Chat Powered by SHADOW. Stake SHADOW to unlock advanced AI capabilities, faster responses, and deeper insights.",
-            ctaText: "Launch SHADOWGPT Now",
-            ctaLink: "#",
-        },
         {
             icon: BarChartHorizontal,
             title: "SHADOWSignal",
             description: "On-Chain AI Trading Signals. Real-time, no subscriptions. Powered by the protocol and enhanced by your stake.",
             ctaText: "View Signal Terminal",
             ctaLink: "#ai-signal",
+            isLive: true,
+        },
+        {
+            icon: Brain,
+            title: "SHADOWGPT",
+            description: "Free AI Chat Powered by SHADOW. Stake SHADOW to unlock advanced AI capabilities, faster responses, and deeper insights.",
+            ctaText: "Awaiting Deployment",
+            ctaLink: "#",
+            isLive: false,
         }
     ];
 
@@ -61,14 +64,17 @@ const Section3Utility = () => {
                         <Card className="bg-black/40 card-animated-border-hover h-full flex flex-col text-center">
                             <CardHeader className="items-center">
                                 <feature.icon className="w-16 h-16 text-primary mb-4" />
-                                <CardTitle className="text-3xl text-accent glow-accent">{feature.title}</CardTitle>
+                                <CardTitle className="text-3xl text-accent glow-accent flex items-center gap-3">
+                                  {feature.title}
+                                  {!feature.isLive && <Badge variant="outline">Coming Soon</Badge>}
+                                </CardTitle>
                             </CardHeader>
                             <CardContent className="flex-grow">
                                 <CardDescription className="text-lg text-muted-foreground">{feature.description}</CardDescription>
                             </CardContent>
                             <CardFooter className="flex-col gap-4">
-                                <Button asChild size="lg" className="w-full btn-shine">
-                                    <Link href={feature.ctaLink}>{feature.ctaText}</Link>
+                                <Button asChild={feature.isLive} size="lg" className="w-full btn-shine" disabled={!feature.isLive}>
+                                    {feature.isLive ? <Link href={feature.ctaLink}>{feature.ctaText}</Link> : <span>{feature.ctaText}</span> }
                                 </Button>
                             </CardFooter>
                         </Card>
